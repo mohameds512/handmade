@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:handmade/controller/auth/successresetpassword_controller.dart';
+import 'package:handmade/controller/forgetpassword/successresetpassword_controller.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:handmade/view/widget/auth/custombuttonauth.dart';

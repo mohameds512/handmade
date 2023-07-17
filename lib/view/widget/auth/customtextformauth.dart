@@ -32,6 +32,7 @@ class CustomTextFormAuth extends StatelessWidget {
       child: TextFormField(
         keyboardType: isNumber? TextInputType.number : TextInputType.text,
         validator: valid,
+        controller: myController,
         obscureText: obscureText == null || obscureText == false ? false : true ,
         decoration: InputDecoration(
             hintText: hinttext.tr,

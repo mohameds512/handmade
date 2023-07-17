@@ -90,6 +90,7 @@ dev_dependencies:
   responsive_builder: ^0.4.2
   image_pickers: ^2.0.4+1
   password_strength: ^0.2.0
+  lottie: ^2.4.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -109,6 +110,11 @@ flutter:
      - assets/images/onboardingtwo.PNG
      - assets/images/onboardingthree.PNG
      - assets/images/onboardingfour.PNG
+     - assets/lottie/loading.JSON
+     - assets/lottie/loading1.JSON
+     - assets/lottie/offline.JSON
+     - assets/lottie/server_error.JSON
+     - assets/lottie/errorfailure.JSON
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

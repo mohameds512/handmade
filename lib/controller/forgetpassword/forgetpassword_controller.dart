@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:handmade/core/constant/routes.dart';
+import 'package:handmade/data/datasource/remote/forgetpassword/checkemail.dart';
 
 abstract class ForgetPasswordController extends GetxController {
   late TextEditingController email;
@@ -10,15 +11,18 @@ abstract class ForgetPasswordController extends GetxController {
 }
 class ForgetPasswordControllerImp extends ForgetPasswordController{
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  CheckEmailData checkEmailData = CheckEmailData(Get.find());
   @override
   checkEmail() {
-
+    Get.offNamed(AppRoute.verifycode_resetpassword);
   }
   @override
   goToVerifyCode() {
+    print('email.text');
+    print(email.text);
     var formdata = formstate.currentState;
     if(formdata!.validate() ){
-      Get.offNamed(AppRoute.verifycode);
+      Get.offNamed(AppRoute.verifycode_resetpassword);
     }else{
       print("ffffffff");
     }

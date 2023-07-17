@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:handmade/controller/auth/resetpassword_controller.dart';
+import 'package:handmade/controller/forgetpassword/resetpassword_controller.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/functions/validinput.dart';
 import 'package:handmade/view/widget/auth/logoauth.dart';

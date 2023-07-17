@@ -8,7 +8,7 @@ class Crud {
   Future<Either<StatusRequest,Map>> postDate(String linkurl , Map data) async{
     try{
       if(await checkInternet()){
-        var response = await http.get(Uri.parse(linkurl));
+        var response = await http.post(Uri.parse(linkurl),body: data);
 
         if(response.statusCode == 200 || response.statusCode == 201){
 

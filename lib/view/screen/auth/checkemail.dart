@@ -6,7 +6,7 @@ import 'package:get/get_utils/get_utils.dart';
 
 import 'package:handmade/view/widget/auth/logoauth.dart';
 import 'package:get/get.dart';
-import '../../../controller/auth/checkemail_controller.dart';
+import '../../../controller/forgetpassword/checkemail_controller.dart';
 import '../../../controller/auth/verifycode_controller.dart';
 
 import '../../widget/auth/customtextbodyauth.dart';
@@ -51,7 +51,7 @@ class VerifyEmail extends StatelessWidget {
               },
               //runs when every textfield is filled
               onSubmit: (String verificationCode){
-                controller.goToSuccessSignUp();
+                controller.checkCode();
               }, // end onSubmit
             ),
 

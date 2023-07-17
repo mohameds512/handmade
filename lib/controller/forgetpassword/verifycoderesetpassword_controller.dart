@@ -3,20 +3,22 @@ import 'package:get/get.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/data/datasource/remote/auth/verivycodesignup.dart';
+import 'package:handmade/data/datasource/remote/forgetpassword/verifycode.dart';
 
 import '../../core/functions/handlingdatacontroller.dart';
 
-abstract class VerifyCodeController extends GetxController {
+abstract class VerifyCodeResetPassword extends GetxController {
 
-  VerifyCodeSignUpData verifyCodeSignUpData = VerifyCodeSignUpData(Get.find());
+
   checkCode();
-  goResetPassword();
-  goSuccessSignUp(String verificationCode);
+  goResetPassword(String verificationCode);
+
 
 }
-class VerifyCodeControllerImp extends VerifyCodeController{
+class VerifyCodeResetPasswordImp extends VerifyCodeResetPassword{
 
   String? email;
+  VerifyCodeForgetPasswordData verifyCodeForgetPasswordData = VerifyCodeForgetPasswordData(Get.find());
   StatusRequest? statusRequest;
   @override
   checkCode() {
@@ -24,28 +26,27 @@ class VerifyCodeControllerImp extends VerifyCodeController{
     throw UnimplementedError();
   }
   @override
-  goSuccessSignUp(String verificationCode) async{
-    print(email);
+  goResetPassword(String verificationCode) async{
+
     statusRequest = StatusRequest.loading;
     update();
-    var response = await verifyCodeSignUpData.postData(email!, verificationCode);
+    print(email);
+    print(verificationCode);
+    var response = await  verifyCodeForgetPasswordData.postData(email!, verificationCode);
     print("response");
     print(response);
     statusRequest = handlingData(response);
     if(response["status"] == true ){
       print('eeeeeeeeeeeeeeeeeee');
-      Get.offNamed(AppRoute.success_signup);
+      Get.offNamed(AppRoute.resetpassword,arguments: {
+        "email":email
+      });
     }else{
       Get.defaultDialog(title: "Warning",middleText:  "Invalid Code");
       statusRequest = StatusRequest.failure;
 
     }
     update();
-  }
-  @override
-  goResetPassword() {
-
-    Get.offNamed(AppRoute.resetpassword);
   }
 
   @override
