@@ -17,12 +17,14 @@ class HomeControllerImp extends HomeController {
   String? username ;
   String? email ;
   String? phone ;
+  String? img_route ;
   int? id;
 
   HomeData homeData = HomeData(Get.find());
   StatusRequest? statusRequest;
   List data = [];
   List categories = [];
+  List items = [];
 
 
 
@@ -32,6 +34,7 @@ class HomeControllerImp extends HomeController {
     id        = myServices.sharedPreference.getInt("id");
     email     = myServices.sharedPreference.getString("email");
     phone     = myServices.sharedPreference.getString("phone");
+    img_route = myServices.sharedPreference.getString("img_route");
     update();
 
   }
@@ -44,6 +47,7 @@ class HomeControllerImp extends HomeController {
     statusRequest = handlingData(response);
     if(StatusRequest.success == statusRequest){
       categories.addAll(response["data"]["data"]["categories"]);
+      items.addAll(response["data"]["data"]["items"]);
     }
     update();
   }

@@ -19,7 +19,7 @@ class Home extends StatelessWidget {
               statusRequest: controller.statusRequest!,
               widget:
               Container(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 15),
 
                   child:  ListView(
                     children: [
@@ -60,7 +60,7 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Stack(children: [
                           Container(
                             alignment: Alignment.center,
@@ -90,20 +90,71 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        height: 200,
-                        child: ListView.builder(
+                        height: 100,
+                        child: ListView.separated(
+
+                          separatorBuilder: (context,index)=>const SizedBox(width: 15,),
                           itemCount: controller.categories.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context , index){
-                                return Container(
-                                  height: 50,
+                              return Column(
+                                children: [
+                                    Container(
+                                    decoration: BoxDecoration(
+                                    color: AppColor.secondColor,
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                                    height: 70,
+                                    width: 70,
                                     child:
-                                    // Center(child: Text(controller.categories[index]["desc"],style: TextStyle(fontSize: 50),))
-                                    Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/1707px-NewTux.svg.png",height: 150,width: 250,),
-                                  // SvgPicture.network("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/NewTux.svg/1707px-NewTux.svg.png"),
-                                );
+                                    Image.network(controller.categories[index]["img_route"],color: AppColor.shadowPrimaryColor),
 
+                                    ),
+                                  Text(controller.categories[index]["name"],style: TextStyle(color: AppColor.black,fontSize: 13),)
+                                ],
+                                
+                              );
+                            },
+                        )
+                      ),
+                      const SizedBox(height: 10,),
+                      const Text("Products",style: TextStyle(fontSize: 20,color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
+                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 200,
+                        child: ListView.builder(
+                          itemCount: controller.items.length,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context , i){
+                              return Stack(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                                    child: Image.network(controller.items[i]['img_route'],width: 120,height: 90,)
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColor.secondColor.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(5)
+                                    ),
+                                    height: 100,
+                                    width: 140,
 
+                                  ),
+                                  Positioned(
+                                    left:5,
+                                      top:5,
+                                      child:
+                                      Text(
+                                        controller.items[i]["name"],
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12),)
+                                  )
+                                ],
+                              );
                             }
                         ),
                       )
