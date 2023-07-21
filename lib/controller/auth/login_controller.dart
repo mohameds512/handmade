@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/auth/login_data.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
 import '../../core/class/statusrequest.dart';
+import '../../services/services.dart';
 
 abstract class LoginController extends GetxController {
   late TextEditingController email;
   late TextEditingController password;
+  MyServices myServices = Get.find();
   StatusRequest? statusRequest = StatusRequest.none;
   String? status = 'success';
   bool isShowPassword = true;
@@ -33,9 +35,15 @@ class LoginControllerImp extends LoginController{
       update();
       var response = await loginData.postData(email.text,password.text);
       statusRequest = handlingData(response);
-      print("success");
-      print(response);
+
+
       if(response["status"] == "success"){
+
+        myServices.sharedPreference.setInt("id", response["data"]["id"]);
+        myServices.sharedPreference.setString("username", response["data"]["name"]);
+        myServices.sharedPreference.setString("email", response["data"]["email"]);
+        myServices.sharedPreference.setString("phone", response["data"]["phone"]);
+        myServices.sharedPreference.setString("step", "2");
 
         Get.offNamed(AppRoute.home);
         update();
@@ -65,6 +73,11 @@ class LoginControllerImp extends LoginController{
 
   @override
   void onInit() {
+    // FirebaseMessaging.instance.getToken().then((value) {
+    //   print('value');
+    //   print(value);
+    //   String? token = value;
+    // });
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();
