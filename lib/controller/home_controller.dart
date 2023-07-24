@@ -1,6 +1,7 @@
 
 import 'package:get/get.dart';
 import 'package:handmade/core/class/statusrequest.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/homedata.dart';
 import 'package:handmade/services/services.dart';
@@ -9,6 +10,7 @@ import 'package:handmade/services/services.dart';
 abstract class HomeController extends GetxController {
   initialDAta();
   getData();
+  goToItems(List categories , int cat_id);
 }
 
 class HomeControllerImp extends HomeController {
@@ -20,6 +22,7 @@ class HomeControllerImp extends HomeController {
   String? img_route ;
   int? id;
 
+  String? Lang;
   HomeData homeData = HomeData(Get.find());
   StatusRequest? statusRequest;
   List data = [];
@@ -35,6 +38,8 @@ class HomeControllerImp extends HomeController {
     email     = myServices.sharedPreference.getString("email");
     phone     = myServices.sharedPreference.getString("phone");
     img_route = myServices.sharedPreference.getString("img_route");
+
+    Lang = myServices.sharedPreference.getString("lang");
     update();
 
   }
@@ -57,5 +62,13 @@ class HomeControllerImp extends HomeController {
     getData();
     initialDAta();
     super.onInit();
+  }
+
+  @override
+  goToItems(categories,cat_id) {
+    Get.toNamed(AppRoute.items,arguments: {
+      "categories" : categories,
+      "cat_id" : cat_id
+    });
   }
 }

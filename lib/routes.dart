@@ -13,6 +13,8 @@ import 'package:handmade/view/screen/auth/success_signup.dart';
 import 'package:handmade/view/screen/auth/verifycode.dart';
 import 'package:handmade/view/screen/auth/verifycode_resetPassword.dart';
 import 'package:handmade/view/screen/home.dart';
+import 'package:handmade/view/screen/homescreen.dart';
+import 'package:handmade/view/screen/items/items.dart';
 import 'package:handmade/view/screen/language.dart';
 import 'package:handmade/view/screen/onboarding.dart';
 import 'package:get/get.dart';
@@ -33,7 +35,10 @@ List<GetPage<dynamic>> ? routes = [
   GetPage(name: AppRoute.success_signup , page: ()=> const SuccessSignUP()),
   GetPage(name: AppRoute.successresetpassword , page: ()=> const SuccessResetPassword()),
   GetPage(name: AppRoute.onBoarding , page: ()=> const OnBoarding()),
-  GetPage(name: AppRoute.home , page: ()=> const Home()),
+  // GetPage(name: AppRoute.home , page: ()=> const Home()),
+
   GetPage(name: AppRoute.verivyemail , page: ()=> const VerifyEmail()),
   GetPage(name: AppRoute.verifycode_resetpassword , page: ()=> const VerifyCodeForResetPassword()),
+  GetPage(name: AppRoute.home , page: ()=> const HomeScreen()),
+  GetPage(name: AppRoute.items , page: ()=> const Items()),
 ];

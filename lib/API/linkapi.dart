@@ -13,6 +13,9 @@
  // ========================= home_controller ======================
   static const String homePage = "$server/flutter/home/get_all_data";
 
+  // ========================= item_controller ======================
+  static const String cat_items = "$server/flutter/item/get_cat_items";
+
 
 
  }
