@@ -18,6 +18,7 @@ import 'package:handmade/view/screen/items/items.dart';
 import 'package:handmade/view/screen/language.dart';
 import 'package:handmade/view/screen/onboarding.dart';
 import 'package:get/get.dart';
+import 'package:handmade/view/screen/products/productdetails.dart';
 import 'package:handmade/view/test_view.dart';
 
 List<GetPage<dynamic>> ? routes = [
@@ -27,6 +28,7 @@ List<GetPage<dynamic>> ? routes = [
       ]
   ),
   // GetPage(name:"/",page: () => const TestView(),),
+  GetPage(name:"/",page: () => const ProductDetails(),),
   GetPage(name: AppRoute.login , page: ()=> const Login()),
   GetPage(name: AppRoute.signup , page: ()=> const SignUp()),
   GetPage(name: AppRoute.forgetpassword , page: ()=> const ForgetPassword()),
@@ -41,4 +43,5 @@ List<GetPage<dynamic>> ? routes = [
   GetPage(name: AppRoute.verifycode_resetpassword , page: ()=> const VerifyCodeForResetPassword()),
   GetPage(name: AppRoute.home , page: ()=> const HomeScreen()),
   GetPage(name: AppRoute.items , page: ()=> const Items()),
+  GetPage(name: AppRoute.productdetails,page: () => const ProductDetails(),),
 ];

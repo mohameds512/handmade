@@ -7,6 +7,7 @@ abstract class ItemController extends GetxController{
  intialData();
  changeCat(int val);
  getCatItems(cat_i);
+ goToProductDetails(selectedItem);
 }
 
 class ItemControllerImp extends ItemController{
@@ -53,6 +54,15 @@ class ItemControllerImp extends ItemController{
     intialData();
     getCatItems(cat_id);
     super.onInit();
+  }
+
+  @override
+  goToProductDetails(selectedItem) {
+    print("selectedItem");
+    print(selectedItem);
+    Get.toNamed("productdetails", arguments: {
+      "selectedItem" :selectedItem
+    });
   }
 
 
