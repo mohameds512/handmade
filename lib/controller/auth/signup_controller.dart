@@ -28,8 +28,7 @@ class SignUpControllerImp extends SignUpController{
       var response = await signUpData.postData(username.text,email.text,password.text,phone.text);
       statusRequest = handlingData(response);
       if(response["status"] == "success"){
-        print("success");
-        print(response);
+
         Get.offNamed(AppRoute.verifycode,arguments: {
           "email":email.text
         });

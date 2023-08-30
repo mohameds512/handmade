@@ -36,7 +36,7 @@ class CustomListItem extends StatelessWidget {
                     top:5,
                     child:
                     Text(
-                      TransDB(Items[i]["name"]) ,
+                      TransDB(Items[i]["name"]??'') ,
                       style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,

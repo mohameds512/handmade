@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:handmade/controller/favorite_controller.dart';
+import 'package:handmade/controller/favoriteitems_controller.dart';
 import 'package:handmade/controller/items_controller.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
 import 'package:handmade/data/model/itemsModel.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/color.dart';
 
-class ItemsCustomListItems extends GetView<ItemControllerImp> {
+class CustomFavoriteItems extends GetView<FavoriteItemsController> {
   // final ItemsModel itemsModel;
   final List Items;
-  const ItemsCustomListItems({Key? key, required this.Items}) : super(key: key);
+  const CustomFavoriteItems({Key? key, required this.Items}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class ItemsCustomListItems extends GetView<ItemControllerImp> {
                     Hero(
                       tag: Items[index]["id"]!,
                       child: CachedNetworkImage(
-                          imageUrl: Items[index]["img_route"]!,
+                        imageUrl: Items[index]["img_route"]!,
                         height: 100,
                         fit: BoxFit.fill,
                       ),
@@ -61,15 +62,15 @@ class ItemsCustomListItems extends GetView<ItemControllerImp> {
                         Text("${Items[index]["price"]} \$",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "sans",color: AppColor.primaryColor)),
                         IconButton(
                             onPressed: (){
-                              if(controller.checkFavorite(Items[index]["id"])  == '1'){
-                                controller.setFavorite(Items[index]["id"], '0');
-                              }else{
-                                controller.setFavorite(Items[index]["id"], '1');
-                              }
+                              controller.removeFavorite(Items[index]["id"]);
+                              // if(controller.checkFavorite(Items[index]["id"])  == '1'){
+                              //   controller.setFavorite(Items[index]["id"], '0');
+                              // }else{
+                              //   controller.setFavorite(Items[index]["id"], '1');
+                              // }
                             },
-                            icon: controller.checkFavorite(Items[index]["id"])  == '1' ?
-                            Icon(Icons.favorite,color: AppColor.primaryColor,)
-                            :  Icon(Icons.favorite_border,color: AppColor.primaryColor,))
+                            icon:
+                            Icon(Icons.heart_broken_outlined,color: AppColor.primaryColor,))
                       ],
 
                     ),

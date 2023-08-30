@@ -4,57 +4,43 @@ import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/cat_items.dart';
 import 'package:handmade/data/datasource/remote/favorite_data.dart';
+import 'package:handmade/data/datasource/remote/favoriteitemsdata.dart';
 import 'package:handmade/services/services.dart';
 
-abstract class ItemController extends GetxController{
- intialData();
- changeCat(int val);
- getCatItems(cat_id);
- goToProductDetails(selectedItem);
-}
+class FavoriteItemsController extends GetxController{
 
-class ItemControllerImp extends ItemController{
   MyServices myServices = Get.find();
-  List categories = [];
+
   List items = [];
-  int? cat_id ;
-
-  Map isFavorite = {};
-
-
 
 
   @override
   changeCat(val) {
-    cat_id = val;
-    getCatItems(cat_id);
+
     update();
   }
 
   @override
   intialData() {
-    categories = Get.arguments['categories'];
-    cat_id = Get.arguments["cat_id"];
-
     update();
   }
-  CatItemsData catItemsData = CatItemsData(Get.find());
+
+  FavoriteItemsData favoriteItemsData = FavoriteItemsData(Get.find());
   late StatusRequest statusRequest;
   @override
-  getCatItems(cat_id) async {
+  getFavoriteItems() async {
 
     items.clear();
     statusRequest = StatusRequest.loading;
     update();
 
-    var response = await catItemsData.getData(cat_id!,myServices.sharedPreference.getInt("id"));
+    var response = await favoriteItemsData.getData(myServices.sharedPreference.getInt("id"));
 
     statusRequest = handlingData(response);
     update();
     if(response["status"] == "success"){
       items.addAll(response["data"]["items"]);
       update();
-
     }else{
       Get.defaultDialog(title: "Warning",middleText:  "Phone Number Or Email Already Exist");
     }
@@ -87,10 +73,24 @@ class ItemControllerImp extends ItemController{
     favoriteData.getData(id,myServices.sharedPreference.getInt("id"));
 
   }
- @override
+
+  @override
+  removeFavorite(id){
+
+    int index = items.indexWhere((item) => item['id'] == id);
+
+    if (index != -1) {
+      items.removeAt(index);
+    } else {
+
+    }
+    update();
+    favoriteData.getData(id,myServices.sharedPreference.getInt("id"));
+
+  }
+  @override
   void onInit() {
-    intialData();
-    getCatItems(cat_id);
+    getFavoriteItems();
     super.onInit();
   }
 

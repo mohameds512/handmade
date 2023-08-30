@@ -12,6 +12,8 @@ import 'package:handmade/view/screen/auth/success_resetpassword.dart';
 import 'package:handmade/view/screen/auth/success_signup.dart';
 import 'package:handmade/view/screen/auth/verifycode.dart';
 import 'package:handmade/view/screen/auth/verifycode_resetPassword.dart';
+import 'package:handmade/view/screen/cart/cart.dart';
+import 'package:handmade/view/screen/favoritesitems.dart';
 import 'package:handmade/view/screen/home.dart';
 import 'package:handmade/view/screen/homescreen.dart';
 import 'package:handmade/view/screen/items/items.dart';
@@ -27,7 +29,6 @@ List<GetPage<dynamic>> ? routes = [
         MyMiddleware(),
       ]
   ),
-  // GetPage(name:"/",page: () => const TestView(),),
   GetPage(name:"/",page: () => const ProductDetails(),),
   GetPage(name: AppRoute.login , page: ()=> const Login()),
   GetPage(name: AppRoute.signup , page: ()=> const SignUp()),
@@ -44,4 +45,8 @@ List<GetPage<dynamic>> ? routes = [
   GetPage(name: AppRoute.home , page: ()=> const HomeScreen()),
   GetPage(name: AppRoute.items , page: ()=> const Items()),
   GetPage(name: AppRoute.productdetails,page: () => const ProductDetails(),),
+  GetPage(name: AppRoute.favoritesItems,page: () => const FavoriteItems(),),
+
+  GetPage(name:AppRoute.cart,page: () => const Cart(),),
+
 ];

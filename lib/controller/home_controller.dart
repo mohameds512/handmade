@@ -55,6 +55,7 @@ class HomeControllerImp extends HomeController {
       items.addAll(response["data"]["data"]["items"]);
     }
     update();
+
   }
 
   @override

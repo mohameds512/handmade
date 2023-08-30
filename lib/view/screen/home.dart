@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/customappbar.dart';
 import 'package:handmade/view/widget/home/customcardhome.dart';
 import 'package:handmade/view/widget/home/customlistcategory.dart';
@@ -28,8 +29,11 @@ class Home extends StatelessWidget {
                     children: [
                       CustomAppBar(
                           titlehinttext: "search",
-                        onPressedIcon: (){},
+                        // onPressedIcon: (){},
                         onPressedSearch: (){},
+                        onPressedIconFavorite: (){
+                            Get.toNamed(AppRoute.favoritesItems);
+                        },
                       ),
                       const CustomCardHome(titletext: "Month Offer", bodytext: "CashBack 5%"),
                       CustomListCategory(

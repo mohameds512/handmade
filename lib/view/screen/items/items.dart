@@ -6,6 +6,7 @@ import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/view/widget/items/customlistitems.dart';
 import 'package:handmade/view/widget/items/listcategoriesitems.dart';
 import 'package:get/get.dart';
+import '../../../controller/favorite_controller.dart';
 import '../../widget/customappbar.dart';
 
 
@@ -15,6 +16,7 @@ class Items extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(ItemControllerImp());
+
     return
       Scaffold(
       body: Container(
@@ -23,7 +25,7 @@ class Items extends StatelessWidget {
                 children: [
                   CustomAppBar(
                     titlehinttext: "search",
-                    onPressedIcon: (){},
+                    // onPressedIcon: (){},
                     onPressedSearch: (){},
                   ),
                   const ListCategoriesItems(),

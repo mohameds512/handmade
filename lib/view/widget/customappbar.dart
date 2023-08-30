@@ -5,15 +5,16 @@ import '../../core/constant/color.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String titlehinttext;
-  final void Function()? onPressedIcon;
+  // final void Function()? onPressedIcon;
   final void Function()? onPressedSearch;
-  const CustomAppBar({Key? key,  required this.titlehinttext, this.onPressedIcon, this.onPressedSearch}) : super(key: key);
+  final void Function()? onPressedIconFavorite;
+  const CustomAppBar({Key? key,  required this.titlehinttext, this.onPressedSearch, this.onPressedIconFavorite}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      // padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(children: [
         Expanded(child: TextFormField(
           decoration: InputDecoration(
@@ -30,16 +31,34 @@ class CustomAppBar extends StatelessWidget {
           ),
         )),
         const SizedBox(width:15),
+        // Container(
+        //   decoration: BoxDecoration(
+        //       color: AppColor.backgroundColor,
+        //       borderRadius: BorderRadius.circular(10)
+        //   ),
+        //
+        //   child: IconButton(
+        //     onPressed: onPressedIcon,
+        //     icon: const Icon(
+        //         Icons.notifications_active_outlined),
+        //     iconSize: 30 ,color: Colors.grey[600],
+        //   ),
+        // ),
+        // const SizedBox(width:15),
         Container(
+          // height: 55,
           decoration: BoxDecoration(
               color: AppColor.backgroundColor,
-              borderRadius: BorderRadius.circular(10)
-          ),
+              borderRadius: BorderRadius.circular(10),
 
+          ),
+          padding: EdgeInsets.symmetric(vertical: 8),
+          width: 60,
           child: IconButton(
-            onPressed: onPressedIcon,
+            onPressed: onPressedIconFavorite,
+
             icon: const Icon(
-                Icons.notifications_active_outlined),
+                Icons.favorite,color: AppColor.primaryColor,size: 34,),
             iconSize: 30 ,color: Colors.grey[600],
           ),
         ),

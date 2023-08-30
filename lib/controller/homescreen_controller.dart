@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:handmade/view/screen/settings.dart';
 
 import '../view/screen/home.dart';
 abstract class HomeScreenController extends GetxController {
@@ -9,10 +11,22 @@ class HomeScreenControllerImp extends HomeScreenController {
   int selectedPage = 0;
   int? spacerItem;
   List pagestitle = [
-    "Home",
-    "Profile",
-    "Favorites",
-    "Settings",
+    {
+      "title": "Home",
+      "icon": Icons.home
+    },
+    {
+      "title": "Profile",
+      "icon": Icons.person
+    },
+    {
+      "title": "N",
+      "icon": Icons.notifications_active_outlined
+    },
+    {
+      "title": "Settings",
+      "icon": Icons.settings
+    },
   ];
   List<Widget> listPage = [
     const Home(),
@@ -28,12 +42,8 @@ class HomeScreenControllerImp extends HomeScreenController {
         Center(child: Text("Profile"),)
       ],
     ),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(child: Text("favorites"),)
-      ],
-    ),
+    Settings()
+
   ];
   @override
   changePage(int i) {

@@ -29,11 +29,10 @@ class VerifyCodeControllerImp extends VerifyCodeController{
     statusRequest = StatusRequest.loading;
     update();
     var response = await verifyCodeSignUpData.postData(email!, verificationCode);
-    print("response");
-    print(response);
+
     statusRequest = handlingData(response);
     if(response["status"] == true ){
-      print('eeeeeeeeeeeeeeeeeee');
+
       Get.offNamed(AppRoute.success_signup);
     }else{
       Get.defaultDialog(title: "Warning",middleText:  "Invalid Code");

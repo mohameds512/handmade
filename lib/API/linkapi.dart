@@ -1,5 +1,6 @@
  class AppLink{
-  static const String server = "http://127.0.0.1:8000/api";
+  static const String server = "https://antika.dnsmsaeed.net/api";
+  // static const String server = "http://127.0.0.1:8000/api";
 
   // static const String test = "$server/flutter/listUsers";
   static const String test = "https://jsonplaceholder.typicode.com/users/2";
@@ -15,6 +16,14 @@
 
   // ========================= item_controller ======================
   static const String cat_items = "$server/flutter/item/get_cat_items";
+  static const String add_remove_favorite = "$server/flutter/item/AddRemoveFavorite";
+  static const String get_favorite_items = "$server/flutter/item/getFavoritesItems";
+
+ // ========================= cart_controller ======================
+  static const String add_to_cart = "$server/flutter/cart/addToCart";
+  static const String remove_from_cart = "$server/flutter/cart/removeFromCart";
+  static const String index_cart = "$server/flutter/cart/indexCart";
+  static const String count_item_cart = "$server/flutter/cart/countItemCart";
 
 
 

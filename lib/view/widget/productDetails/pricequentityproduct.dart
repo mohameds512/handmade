@@ -13,13 +13,18 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
       children: [
         Row(
           children: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.add)),
+            IconButton(onPressed: (){
+              controller.addCountItemCart(controllerImp.Item!["id"]);
+            } , icon: Icon(Icons.add)),
             Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(border: Border.all(color: Colors.black),borderRadius: BorderRadius.circular(3)),
-              child: Text(controllerImp.Item!["price"].toString(),style: TextStyle(fontFamily: "sans"),),
+              child: Text(controllerImp.coutItemCart.toString(),style: TextStyle(fontFamily: "sans"),),
             ),
-            IconButton(onPressed: (){}, icon: Icon(Icons.remove)),
+            IconButton(onPressed: (){
+              controller.removeCountItemCart(controllerImp.Item!["id"]);
+
+            }, icon: Icon(Icons.remove)),
           ],
         ),
         Spacer(),
