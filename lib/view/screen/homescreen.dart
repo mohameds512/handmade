@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:handmade/controller/homescreen_controller.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:get/get.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/home/custombuttomappbar.dart';
 import 'package:handmade/view/widget/home/custombuttomappbarhome.dart';
 class HomeScreen extends StatelessWidget {
@@ -17,7 +18,9 @@ class HomeScreen extends StatelessWidget {
               // backgroundColor: Colors.lightBlue,
               floatingActionButton: FloatingActionButton(
                 backgroundColor: AppColor.primaryColor,
-                onPressed: (){},child: Icon(Icons.shopping_basket_outlined),
+                onPressed: (){
+                  Get.toNamed(AppRoute.cart);
+                },child: Icon(Icons.shopping_basket_outlined),
               ),
               floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar:

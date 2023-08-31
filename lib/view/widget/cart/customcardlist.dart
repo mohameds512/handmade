@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:handmade/core/constant/ImageAssets.dart';
 
 class CustomCardList extends StatelessWidget {
@@ -7,7 +9,9 @@ class CustomCardList extends StatelessWidget {
   final String price;
   final String count;
   final String imgLink;
-  const CustomCardList({Key? key, required this.name, required this.price, required this.count, required this.imgLink}) : super(key: key);
+  final void Function()? onAdd;
+  final void Function()? onRemove;
+  const CustomCardList({Key? key, required this.name, required this.price, required this.count, required this.imgLink,required this.onAdd,required this.onRemove}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +19,9 @@ class CustomCardList extends StatelessWidget {
       child: Container(child: Row(children: [
         Expanded(
             flex:2,
-            child: Image.network(imgLink,fit: BoxFit.cover,)),
-            // child: Image.asset(imgLink,fit: BoxFit.cover,)),
+            child: CachedNetworkImage(imageUrl: imgLink,fit: BoxFit.cover,)
+        ),
+
         Expanded(
             flex: 3,
             child: ListTile(
@@ -28,7 +33,7 @@ class CustomCardList extends StatelessWidget {
           children: [
             Container(
               // height:30,
-                child: IconButton(onPressed: (){}, icon: Icon(Icons.add))
+                child: IconButton(onPressed: onAdd, icon: Icon(Icons.add))
             ),
             Container(
               // height: 30,
@@ -36,7 +41,7 @@ class CustomCardList extends StatelessWidget {
             ),
             Container(
                 height: 30,
-                child: IconButton(onPressed: (){}, icon: Icon(Icons.remove))
+                child: IconButton(onPressed: onRemove, icon: Icon(Icons.remove))
             ),
           ],
         )),

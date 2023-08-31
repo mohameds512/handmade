@@ -18,8 +18,10 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartController  = Get.put(CartController());
     return Scaffold(
-      bottomNavigationBar:
-      CustomBottomNavigationBarCart(price: "${cartController.totalPrice}", shipping: "568 \$", TotalPrice: "135453 \$"),
+      bottomNavigationBar: GetBuilder<CartController>(builder: (controller) =>
+          CustomBottomNavigationBarCart(price: "${cartController.totalPrice}", shipping: "568 \$", TotalPrice: "135453 \$"),
+      ),
+
       body: GetBuilder<CartController>(builder: ((controller)=>
       HandlingDataView(statusRequest: controller.statusRequest,
           widget:ListView(
@@ -35,6 +37,12 @@ class Cart extends StatelessWidget {
                       cartController.cartItems.length
                       , (index) =>
                         CustomCardList(
+                            onAdd: (){
+                              cartController.addToCartFromCart(cartController.cartItems[index]["id"]!);
+                            },
+                            onRemove: (){
+                              cartController.removeFromCartFromCart(cartController.cartItems[index]["id"]!);
+                            },
                             name: TransDB(cartController.cartItems[index]["name"]),
                             price: "${cartController.cartItems[index]["all_price"].toString()} \$",
                             count: cartController.cartItems[index]["item_count"].toString(),
