@@ -25,7 +25,7 @@ class ProductDetails extends GetView<ProductDetailsControllerImp> {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           color: AppColor.primaryColor,
           onPressed: (){
-            controllerImp.cartController.viewCart();
+            // controllerImp.cartController.viewCart();
             Get.toNamed(AppRoute.cart);
           },
           child: Text("Goto Card",style: TextStyle(color: AppColor.whiteColor,fontWeight: FontWeight.bold),),

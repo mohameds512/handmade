@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/constant/routes.dart';
@@ -11,6 +12,7 @@ abstract class HomeController extends GetxController {
   initialDAta();
   getData();
   goToItems(List categories , int cat_id);
+  TextEditingController? search;
 }
 
 class HomeControllerImp extends HomeController {
@@ -28,9 +30,19 @@ class HomeControllerImp extends HomeController {
   List data = [];
   List categories = [];
   List items = [];
+  List searchItems = [];
+  bool searchResolute = true;
+  bool isSearch = false;
 
-
-
+  checkSearch(val){
+    if(val == ""){
+      isSearch = false;
+    }else{
+      isSearch = true;
+      SearchItems(val);
+    }
+    update();
+  }
   @override
   initialDAta(){
     username  = myServices.sharedPreference.getString("username");
@@ -58,10 +70,40 @@ class HomeControllerImp extends HomeController {
 
   }
 
+
+  @override
+  SearchItems(val) async {
+    statusRequest = StatusRequest.loading;
+    searchItems.clear();
+    searchResolute = true;
+    var response = await homeData.searchItems(val);
+    statusRequest = handlingData(response);
+    if(StatusRequest.success == statusRequest){
+
+      if(response["status"] == "success"){
+
+        searchItems.addAll(response["data"]["items"]);
+      }else{
+        searchResolute = false;
+
+      }
+    }
+    update();
+  }
+
+  @override
+  goToProductDetails(selectedItem) {
+
+    Get.toNamed("productdetails", arguments: {
+      "selectedItem" :selectedItem
+    });
+  }
+
   @override
   void onInit() {
     getData();
     initialDAta();
+    search = TextEditingController();
     super.onInit();
   }
 

@@ -10,4 +10,12 @@ class HomeData {
     return response.fold((l) => l, (r) => r);
 
   }
+
+  searchItems(keyword) async{
+    var response = await crud.postDate(AppLink.search_item, {
+      "keyword":keyword
+    });
+    return response.fold((l) => l, (r) => r);
+
+  }
 }

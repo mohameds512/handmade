@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:handmade/controller/items_controller.dart';
 import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/view/screen/search/listitemsearch.dart';
 import 'package:handmade/view/widget/items/customlistitems.dart';
 import 'package:handmade/view/widget/items/listcategoriesitems.dart';
 import 'package:get/get.dart';
@@ -15,15 +16,20 @@ class Items extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ItemControllerImp());
+    ItemControllerImp controller = Get.put(ItemControllerImp());
 
     return
       Scaffold(
       body: Container(
         padding: EdgeInsets.all(15),
-        child: ListView(
+        child:
+        ListView(
                 children: [
                   CustomAppBar(
+                    myController: controller.search!,
+                    onChanged: (val){
+                      controller.checkSearch(val);
+                    },
                     titlehinttext: "search",
                     // onPressedIcon: (){},
                     onPressedSearch: (){},
@@ -32,7 +38,12 @@ class Items extends StatelessWidget {
                   GetBuilder<ItemControllerImp>(builder: (controllerImp)=>
                     HandlingDataView(
                     statusRequest: controllerImp.statusRequest,
-                    widget:ItemsCustomListItems(Items: controllerImp.items),
+                    widget:
+                        controller.isSearch == false ?
+                    ItemsCustomListItems(Items: controllerImp.items)
+                      :
+                        ListItemsSearch(ItemsSearch: controller.searchItems,searchResolute: controller.searchResolute!,)
+                      ,
                   )
                   )
                 ],

@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:handmade/controller/favorite_controller.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/cat_items.dart';
 import 'package:handmade/data/datasource/remote/favorite_data.dart';
+import 'package:handmade/data/datasource/remote/homedata.dart';
 import 'package:handmade/services/services.dart';
 
 abstract class ItemController extends GetxController{
@@ -18,12 +20,44 @@ class ItemControllerImp extends ItemController{
   List categories = [];
   List items = [];
   int? cat_id ;
-
+  TextEditingController? search;
   Map isFavorite = {};
 
+  List searchItems = [];
+  bool searchResolute = true;
+  bool isSearch = false;
+
+  checkSearch(val){
+    if(val == ""){
+      isSearch = false;
+    }else{
+      isSearch = true;
+      SearchItems(val);
+    }
+    update();
+  }
 
 
+  @override
+  SearchItems(val) async {
+    HomeData homeData = HomeData(Get.find());
+    statusRequest = StatusRequest.loading;
+    searchItems.clear();
+    searchResolute = true;
+    var response = await homeData.searchItems(val);
+    statusRequest = handlingData(response);
+    if(StatusRequest.success == statusRequest){
 
+      if(response["status"] == "success"){
+
+        searchItems.addAll(response["data"]["items"]);
+      }else{
+        searchResolute = false;
+
+      }
+    }
+    update();
+  }
   @override
   changeCat(val) {
     cat_id = val;
@@ -91,6 +125,7 @@ class ItemControllerImp extends ItemController{
   void onInit() {
     intialData();
     getCatItems(cat_id);
+    search = TextEditingController();
     super.onInit();
   }
 

@@ -58,7 +58,7 @@ class ItemsCustomListItems extends GetView<ItemControllerImp> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("${Items[index]["price"]} \$",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "sans",color: AppColor.primaryColor)),
+                        Text("${Items[index]["discount_price"]} \$",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "sans",color: AppColor.primaryColor)),
                         IconButton(
                             onPressed: (){
                               if(controller.checkFavorite(Items[index]["id"])  == '1'){

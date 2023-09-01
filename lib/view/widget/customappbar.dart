@@ -8,7 +8,15 @@ class CustomAppBar extends StatelessWidget {
   // final void Function()? onPressedIcon;
   final void Function()? onPressedSearch;
   final void Function()? onPressedIconFavorite;
-  const CustomAppBar({Key? key,  required this.titlehinttext, this.onPressedSearch, this.onPressedIconFavorite}) : super(key: key);
+  final void Function(String)? onChanged;
+  final TextEditingController myController;
+  const CustomAppBar(
+      {Key? key,
+        required this.titlehinttext,
+        this.onPressedSearch, this.onPressedIconFavorite,
+        this.onChanged,
+        required this.myController
+      }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +25,8 @@ class CustomAppBar extends StatelessWidget {
       // padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(children: [
         Expanded(child: TextFormField(
+          controller: myController,
+          onChanged: onChanged,
           decoration: InputDecoration(
               prefixIcon: IconButton(icon: Icon(Icons.search), onPressed: onPressedSearch,),
               hintText: titlehinttext,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:handmade/controller/favorite_controller.dart';
 import 'package:handmade/core/class/statusrequest.dart';
@@ -5,14 +6,18 @@ import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/cat_items.dart';
 import 'package:handmade/data/datasource/remote/favorite_data.dart';
 import 'package:handmade/data/datasource/remote/favoriteitemsdata.dart';
+import 'package:handmade/data/datasource/remote/homedata.dart';
 import 'package:handmade/services/services.dart';
 
 class FavoriteItemsController extends GetxController{
 
   MyServices myServices = Get.find();
+  TextEditingController? search;
 
   List items = [];
-
+  List searchItems = [];
+  bool searchResolute = true;
+  bool isSearch = false;
 
   @override
   changeCat(val) {
@@ -27,6 +32,39 @@ class FavoriteItemsController extends GetxController{
 
   FavoriteItemsData favoriteItemsData = FavoriteItemsData(Get.find());
   late StatusRequest statusRequest;
+
+
+  checkSearch(val){
+    if(val == ""){
+      isSearch = false;
+    }else{
+      isSearch = true;
+      SearchItems(val);
+    }
+    update();
+  }
+
+  @override
+  SearchItems(val) async {
+    HomeData homeData = HomeData(Get.find());
+    statusRequest = StatusRequest.loading;
+    searchItems.clear();
+    searchResolute = true;
+    var response = await homeData.searchItems(val);
+    statusRequest = handlingData(response);
+    if(StatusRequest.success == statusRequest){
+
+      if(response["status"] == "success"){
+
+        searchItems.addAll(response["data"]["items"]);
+      }else{
+        searchResolute = false;
+
+      }
+    }
+    update();
+  }
+
   @override
   getFavoriteItems() async {
 
@@ -91,6 +129,7 @@ class FavoriteItemsController extends GetxController{
   @override
   void onInit() {
     getFavoriteItems();
+    search = TextEditingController();
     super.onInit();
   }
 
