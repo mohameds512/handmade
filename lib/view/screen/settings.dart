@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:handmade/controller/settings/settings_controller.dart';
 import 'package:handmade/core/constant/ImageAssets.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/core/constant/routes.dart';
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -43,7 +44,7 @@ class Settings extends StatelessWidget {
                 Divider(),
                 ListTile(
                   onTap: (){
-
+                    Get.toNamed(AppRoute.AddressView);
                   },
                   trailing: Icon(Icons.location_on_outlined),
                   title: Text("Address"),

@@ -44,7 +44,7 @@ class Cart extends StatelessWidget {
                               cartController.removeFromCartFromCart(cartController.cartItems[index]["id"]!);
                             },
                             name: TransDB(cartController.cartItems[index]["name"]),
-                            price: "${cartController.cartItems[index]["all_price"].toString()} \$",
+                            price: "${cartController.cartItems[index]["all_price"].toStringAsFixed(2)} \$",
                             count: cartController.cartItems[index]["item_count"].toString(),
                             imgLink: cartController.cartItems[index]["img_route"],
                         ),

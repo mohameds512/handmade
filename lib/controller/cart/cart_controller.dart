@@ -38,7 +38,7 @@ class CartController extends GetxController{
         varTotal++;
         totalCount = varTotal.toString();
         cartItems[index]['item_count'] ++;
-        cartItems[index]['all_price'] = cartItems[index]['all_price'] + cartItems[index]['price'] ;
+        cartItems[index]['all_price'] = cartItems[index]['all_price'] + (cartItems[index]['price'] - (cartItems[index]['price']* cartItems[index]['discount']/100 ));
         double Dtotal_price = double.parse(totalPrice!);
         double varX = Dtotal_price + cartItems[index]['price'];
         totalPrice = varX.toString();
@@ -86,7 +86,7 @@ class CartController extends GetxController{
         int varTotal = int.parse(totalCount!);
         varTotal--;
         totalCount = varTotal.toString();
-        cartItems[index]['all_price'] = cartItems[index]['all_price'] - cartItems[index]['price'] ;
+        cartItems[index]['all_price'] = cartItems[index]['all_price'] - (cartItems[index]['price'] - (cartItems[index]['price']* cartItems[index]['discount']/100 ));
 
         double Dtotal_price = double.parse(totalPrice!);
         double varX = Dtotal_price - cartItems[index]['price'];

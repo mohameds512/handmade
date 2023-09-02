@@ -50,6 +50,7 @@ class Home extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const CustomCardHome(titletext: "Month Offer", bodytext: "CashBack 5%"),
+                          const CustomTitleHome(texttitle: "Categories"),
                           CustomListCategory(
                             Categories: controller.categories,
                           ),

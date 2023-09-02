@@ -112,7 +112,9 @@ flutter:
      - assets/images/onboardingone.PNG
      - assets/images/onboardingtwo.PNG
      - assets/images/onboardingthree.PNG
+     - assets/images/sale1.PNG
      - assets/images/onboardingfour.PNG
+     - assets/images/sale2.PNG
      - assets/lottie/loading.JSON
      - assets/lottie/loading1.JSON
      - assets/lottie/offline.JSON

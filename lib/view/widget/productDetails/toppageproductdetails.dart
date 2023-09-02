@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:handmade/controller/productDetails_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:handmade/core/constant/ImageAssets.dart';
 import 'package:handmade/core/constant/color.dart';
 class TopPageProductDetails extends GetView<ProductDetailsControllerImp> {
   const TopPageProductDetails({Key? key}) : super(key: key);
@@ -32,7 +33,13 @@ class TopPageProductDetails extends GetView<ProductDetailsControllerImp> {
                 fit: BoxFit.fill,
               ),
             ),
-          ),)
+          ),
+        ),
+        if(controllerImp.Item?["discount"] != 0) Positioned(
+            top: 4,
+            left: 4,
+            child: Image.asset(AppImageAssets.sale1,height: 40,)
+        )
       ],
     );
   }

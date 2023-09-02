@@ -28,6 +28,11 @@
   // ========================search===============================
   static const String search_item = "$server/flutter/item/searchItems";
 
+ // ========================address===============================
+  static const String view_adsress = "$server/flutter/address/IndexAddress";
+  static const String add_address = "$server/flutter/address/AddAddress";
+
+
 
 
  }
