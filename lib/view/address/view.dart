@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:handmade/core/constant/routes.dart';
 class addressView extends StatelessWidget {
   const addressView({Key? key}) : super(key: key);
 
@@ -12,7 +13,7 @@ class addressView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-
+          Get.toNamed(AppRoute.AddressAdd);
         },
         child: Icon(Icons.add),
       ),

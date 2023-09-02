@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/middleware/mymiddleware.dart';
 import 'package:handmade/test.dart';
+import 'package:handmade/view/address/add.dart';
 import 'package:handmade/view/address/view.dart';
 import 'package:handmade/view/screen/auth/checkemail.dart';
 import 'package:handmade/view/screen/auth/forgetpasswoed.dart';
@@ -52,5 +53,6 @@ List<GetPage<dynamic>> ? routes = [
 
 
   GetPage(name:AppRoute.AddressView,page: () => const addressView(),),
+  GetPage(name:AppRoute.AddressAdd,page: () => const addressAdd(),),
 
 ];
