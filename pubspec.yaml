@@ -64,7 +64,7 @@ dev_dependencies:
   # Google Map
   flutter_polyline_points: ^1.0.0
   google_maps_flutter: ^2.5.0
-  geolocator: ^8.0.5
+  geolocator: ^10.0.0
   geocoding: ^2.0.4
   # Firebase And Notification
   firebase_messaging: ^14.6.3

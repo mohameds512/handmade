@@ -30,7 +30,8 @@
 
  // ========================address===============================
   static const String view_adsress = "$server/flutter/address/IndexAddress";
-  static const String add_address = "$server/flutter/address/AddAddress";
+  static const String add_address = "$server/flutter/address/addAddress";
+  static const String delete_adsress = "$server/flutter/address/deleteAddress";
 
 
 
