@@ -40,4 +40,12 @@ class CartData {
     return response.fold((l) => l, (r) => r);
 
   }
+  checkCoupon(name) async{
+    var response = await crud.postDate(AppLink.checkCuopon, {
+      "name":name,
+    });
+
+    return response.fold((l) => l, (r) => r);
+
+  }
 }

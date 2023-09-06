@@ -34,6 +34,9 @@
   static const String delete_adsress = "$server/flutter/address/deleteAddress";
 
 
+ // ========================coupon===============================
+
+  static const String checkCuopon = "$server/flutter/coupon/CheckCoupon";
 
 
  }

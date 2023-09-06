@@ -18,15 +18,29 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartController  = Get.put(CartController());
     return Scaffold(
+      appBar: AppBar(
+
+        title: Text("My Cart"),
+
+      ),
       bottomNavigationBar: GetBuilder<CartController>(builder: (controller) =>
-          CustomBottomNavigationBarCart(price: "${cartController.totalPrice}", shipping: "568 \$", TotalPrice: "135453 \$"),
+          CustomBottomNavigationBarCart(price: "${cartController.Price}",
+              // discount: "568 %",
+            shipping: "10 \$",
+            TotalPrice: "${controller.getTotalPrice()} \$",
+            controllerCoupon: controller.controllerCoupon,
+            onApplyCoupon: (){
+              controller.checkCoupon();
+            },
+            couponDiscount: controller.couponDiscount,
+            couponName: controller.couponName,
+          ),
       ),
 
       body: GetBuilder<CartController>(builder: ((controller)=>
       HandlingDataView(statusRequest: controller.statusRequest,
           widget:ListView(
             children: [
-              const TopAppBarCart(title: "My Cart"),
               const SizedBox(height: 10,),
               TopCardCart(desc: "You have ${controller.totalCount} items in your cart"),
               Container(
