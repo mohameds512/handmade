@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/cart/buttonorder.dart';
 import 'package:handmade/view/widget/cart/custombottomcoupon.dart';
+import 'package:get/get.dart';
 class CustomBottomNavigationBarCart extends StatelessWidget {
   final String price;
   // final String discount;
@@ -148,7 +150,9 @@ class CustomBottomNavigationBarCart extends StatelessWidget {
             ],
           ),
         ),
-        CustomButtonOrderCart(textbutton: "Add To Cart",onPressed: (){})
+        CustomButtonOrderCart(textbutton: "Order",onPressed: (){
+          Get.toNamed(AppRoute.checkout);
+        })
       ],
     ),);
   }

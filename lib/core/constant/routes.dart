@@ -20,6 +20,9 @@ class AppRoute {
   static const String  AddressAdd = "/addressAdd";
   static const String  addressAddContinue = "/addressAddContinue";
 
+  static const String  checkout = "/checkout";
+
+
 
 
 }
