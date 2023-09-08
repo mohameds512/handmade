@@ -38,5 +38,7 @@
 
   static const String checkCuopon = "$server/flutter/coupon/CheckCoupon";
 
+ // ========================orde===============================
+  static const String addOrder = "$server/flutter/order/AddOrder";
 
  }

@@ -19,9 +19,7 @@ class Cart extends StatelessWidget {
     CartController cartController  = Get.put(CartController());
     return Scaffold(
       appBar: AppBar(
-
         title: Text("My Cart"),
-
       ),
       bottomNavigationBar: GetBuilder<CartController>(builder: (controller) =>
           CustomBottomNavigationBarCart(price: "${cartController.Price}",

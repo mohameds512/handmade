@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/cart/cart_data.dart';
 import 'package:handmade/services/services.dart';
+
 
 class CartController extends GetxController{
   TextEditingController? controllerCoupon;
@@ -19,6 +21,7 @@ class CartController extends GetxController{
   String totalPrice = '0' ;
   String Price = '0' ;
   String totalCount = '0' ;
+  int? coupon_id;
   MyServices myServices = Get.find();
 
 
@@ -34,7 +37,7 @@ class CartController extends GetxController{
           couponData = response['coupon'];
           couponDiscount = couponData!["discount"];
           couponName = couponData!["name"];
-
+          coupon_id =  couponData!["id"];
           update();
           Get.snackbar("Coupon", "Coupon Used Successfully",backgroundColor: AppColor.thirdColor);
         }else{
@@ -43,11 +46,27 @@ class CartController extends GetxController{
     }
   }
   getTotalPrice(){
-    double Dtotal_price = double.parse(totalPrice!);
-    double DPrice = double.parse(Price);
-    Dtotal_price = DPrice - (Dtotal_price *couponDiscount/100 );
-    totalPrice = Dtotal_price.toStringAsFixed(2);
-    return totalPrice;
+    if( Price != "0") {
+      double Dtotal_price = double.parse(totalPrice!);
+      double DPrice = double.parse(Price!);
+      Dtotal_price = DPrice - (Dtotal_price *couponDiscount/100 );
+      totalPrice = Dtotal_price.toStringAsFixed(2);
+      return totalPrice;
+    }else{
+      return 0;
+    }
+  }
+
+  goToCheckoutPage(){
+    if(cartItems.isEmpty) {
+      Get.snackbar("Notification", "Cart is Impty");
+    }else{
+      Get.toNamed(AppRoute.checkout,arguments: {
+        "coupon_id" : coupon_id ?? "0",
+        "totalPrice" : totalPrice,
+      });
+    }
+
   }
   addToCart(item_id) async {
 
@@ -171,9 +190,11 @@ class CartController extends GetxController{
     var response = await cartData.indexCart(myServices.sharedPreference.getInt("id"));
     statusRequest = handlingData(response);
     cartItems = response['carts'];
-    Price =   response['totalPrice'].toString();
+    if(cartItems.isNotEmpty){
+      Price =   response['totalPrice'].toString();
+      totalCount =   response['total_count'].toString();
+    }
 
-    totalCount =   response['total_count'].toString();
     update();
 
   }
