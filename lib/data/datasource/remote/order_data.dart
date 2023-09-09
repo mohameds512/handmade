@@ -11,4 +11,13 @@ class OrderData {
 
   }
 
+  getOrders(user_id) async{
+    var response = await crud.postDate(AppLink.indexOrder, {"user_id":user_id});
+
+    return response.fold((l) => l, (r) => r);
+
+  }
+
+
+
 }

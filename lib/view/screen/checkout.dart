@@ -42,20 +42,20 @@ class CheckOut extends StatelessWidget {
 
                 InkWell(
                     onTap: (){
-                      controller.choosePaymentMethod("Cash");
+                      controller.choosePaymentMethod("0"); // 0 => Cash
                     },
                     child: CardPaymentMethodCheckOut(
                         title: "Cash",
-                        isActive: controller.paymentMethod == "Cash" ? true : false
+                        isActive: controller.paymentMethod == "0" ? true : false
                     )
                 ),
                 InkWell(
                     onTap: (){
-                      controller.choosePaymentMethod("VISA or Card");
+                      controller.choosePaymentMethod("1"); // 1 => Card
                     },
                     child: CardPaymentMethodCheckOut(
                         title: "VISA or Card",
-                        isActive: controller.paymentMethod == "VISA or Card" ? true : false
+                        isActive: controller.paymentMethod == "1" ? true : false
                     )
                 ),
 
@@ -68,30 +68,30 @@ class CheckOut extends StatelessWidget {
                   children: [
                     InkWell(
                         onTap: (){
-                          controller.chooseDeliveryType("Delivery");
+                          controller.chooseDeliveryType("0"); // 0=> Delivery
                         },
                         child: CardDeliveryTypeCheckout(
                             imgName: AppImageAssets.logo,
                             title: "Delivery",
-                            isActive: controller.deliveryType == "Delivery" ? true : false
+                            isActive: controller.deliveryType == "0" ? true : false
                         )
                     ),
                     const SizedBox(width: 20,),
                     InkWell(
                         onTap: (){
-                          controller.chooseDeliveryType("Drive Thru");
+                          controller.chooseDeliveryType("1"); // 1 => Receive
                         },
                         child: CardDeliveryTypeCheckout(
                             imgName: AppImageAssets.logo,
-                            title: "Drive Thru",
-                            isActive: controller.deliveryType == "Drive Thru" ? true : false
+                            title: "Receive",
+                            isActive: controller.deliveryType == "1" ? true : false
                         )
                     ),
 
                   ],
                 ),
                 const SizedBox(height: 20,),
-                if(controller.deliveryType == "Delivery")
+                if(controller.deliveryType == "0")
                   HandlingDataView(
                       statusRequest: controller.statusRequest,
                       widget:Column(

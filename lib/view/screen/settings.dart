@@ -44,6 +44,22 @@ class Settings extends StatelessWidget {
                 Divider(),
                 ListTile(
                   onTap: (){
+                    Get.toNamed(AppRoute.pendingOrder);
+                  },
+                  trailing: Icon(Icons.countertops_outlined),
+                  title: Text("Orders"),
+                ),
+                Divider(),
+                ListTile(
+                  onTap: (){
+                    Get.toNamed(AppRoute.archivedOrder);
+                  },
+                  trailing: Icon(Icons.location_on_outlined),
+                  title: Text("Archive"),
+                ),
+                Divider(),
+                ListTile(
+                  onTap: (){
                     Get.toNamed(AppRoute.AddressView);
                   },
                   trailing: Icon(Icons.location_on_outlined),

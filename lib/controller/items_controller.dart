@@ -121,6 +121,7 @@ class ItemControllerImp extends ItemController{
     favoriteData.getData(id,myServices.sharedPreference.getInt("id"));
 
   }
+
  @override
   void onInit() {
     intialData();

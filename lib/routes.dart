@@ -24,6 +24,8 @@ import 'package:handmade/view/screen/items/items.dart';
 import 'package:handmade/view/screen/language.dart';
 import 'package:handmade/view/screen/onboarding.dart';
 import 'package:get/get.dart';
+import 'package:handmade/view/screen/order/archiveorder.dart';
+import 'package:handmade/view/screen/order/pendingorder.dart';
 import 'package:handmade/view/screen/products/productdetails.dart';
 import 'package:handmade/view/test_view.dart';
 
@@ -59,5 +61,8 @@ List<GetPage<dynamic>> ? routes = [
   GetPage(name:AppRoute.addressAddContinue,page: () => const addressAddContinue(),),
 
   GetPage(name:AppRoute.checkout,page: () => const CheckOut(),),
+
+  GetPage(name:AppRoute.pendingOrder,page: () => const PendingOrder(),),
+  GetPage(name:AppRoute.archivedOrder,page: () => const ArchivedOrder(),),
 
 ];

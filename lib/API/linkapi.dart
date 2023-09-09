@@ -40,5 +40,6 @@
 
  // ========================orde===============================
   static const String addOrder = "$server/flutter/order/AddOrder";
+  static const String indexOrder = "$server/flutter/order/IndexOrders";
 
  }

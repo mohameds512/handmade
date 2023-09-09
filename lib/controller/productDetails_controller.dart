@@ -18,6 +18,7 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
   late StatusRequest statusRequest;
   Map? Item;
   int coutItemCart = 0;
+
   intialData() async {
     statusRequest = StatusRequest.loading;
     Item = Get.arguments["selectedItem"];
@@ -55,9 +56,9 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
 
     statusRequest = handlingData(response);
     if(StatusRequest.success == statusRequest){
-      Get.rawSnackbar(
-          title: "Notificstion",
-          messageText: Text("Added to cart")
+      Get.snackbar(
+          "Notificstion",
+           "Added to cart"
       );
     }else{
       statusRequest = StatusRequest.failure;
@@ -70,9 +71,9 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
     statusRequest = handlingData(response);
 
     if(StatusRequest.success == statusRequest){
-      Get.rawSnackbar(
-          title: "Notificstion",
-          messageText: Text("Added to cart")
+      Get.snackbar(
+          "Notificstion",
+          "Added to cart"
       );
     }else{
       statusRequest = StatusRequest.failure;
@@ -87,6 +88,7 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
     }
     update();
   }
+
   @override
   void onInit() {
      intialData();
