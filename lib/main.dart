@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:handmade/API/firebase_api.dart';
 import 'package:handmade/binding/initial_binding.dart';
 import 'package:handmade/localization/changelocal.dart';
 import 'package:handmade/localization/translation.dart';
@@ -13,6 +15,8 @@ import 'core/constant/color.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await FirebaseApi().initNotification();
   await initialServices();
   runApp(const MyApp());
 }

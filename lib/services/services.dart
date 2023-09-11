@@ -11,7 +11,7 @@ class MyServices extends GetxService {
     //   projectId: 'handmade-3c0cf',
     //   messagingSenderId: '229093272989',
     // );
-    // await Firebase.initializeApp(options: options);
+    await Firebase.initializeApp();
     sharedPreference = await SharedPreferences.getInstance();
     return this;
   }

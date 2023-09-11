@@ -1,4 +1,5 @@
-  import 'package:flutter/cupertino.dart';
+  import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
   import 'package:get/get.dart';
   import 'package:handmade/core/class/statusrequest.dart';
   import 'package:handmade/core/constant/color.dart';
@@ -192,6 +193,7 @@
 
     @override
     void viewCart() async {
+
       statusRequest = StatusRequest.loading;
       cartItems.clear();
       update();
@@ -211,6 +213,12 @@
       viewCart();
     }
     void onInit() {
+      FirebaseMessaging.instance.getToken().then((value){
+        print("token");
+        print(value) ;
+        String? token = value;
+      }
+      );
       viewCart();
       controllerCoupon = TextEditingController() ;
       super.onInit();

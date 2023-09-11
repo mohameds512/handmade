@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "924552879428",
-    "project_id": "antika-397819",
-    "storage_bucket": "antika-397819.appspot.com"
+    "project_number": "943515890689",
+    "project_id": "antika-3c76f",
+    "storage_bucket": "antika-3c76f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:924552879428:android:0fb39b56af33a3a0db8b11",
+        "mobilesdk_app_id": "1:943515890689:android:0bb9a71b27f7d69cc4bc00",
         "android_client_info": {
           "package_name": "com.example.handmade"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAb5HYNs1OrdiiHnGpylpPRrVkL9m-Kmlg"
+          "current_key": "AIzaSyCYb1Eu7zEYMGmaS6dswa39cVDPxCRT2xA"
         }
       ],
       "services": {
