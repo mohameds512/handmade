@@ -29,6 +29,9 @@ class CheckoutController extends GetxController{
   }
   chooseDeliveryType(String val){
     deliveryType = val;
+    if(addresses.length == 0 && val == "0"){
+      Get.snackbar('Alert', 'PLZ add address to continue');
+    }
     update();
   }
   chooseShippingAddressId(int val){

@@ -13,6 +13,7 @@ abstract class LoginController extends GetxController {
   MyServices myServices = Get.find();
   StatusRequest? statusRequest = StatusRequest.none;
   String? status = 'success';
+  late String token;
   bool isShowPassword = true;
   login();
   goSignUp();
@@ -30,12 +31,12 @@ class LoginControllerImp extends LoginController{
   @override
   login() async{
     var formdata = formstate.currentState;
+
     if(formdata!.validate() ){
       statusRequest = StatusRequest.loading;
       update();
-      var response = await loginData.postData(email.text,password.text);
+      var response = await loginData.postData(email.text,password.text,token );
       statusRequest = handlingData(response);
-
 
       if(response["status"] == "success"){
 
@@ -73,11 +74,13 @@ class LoginControllerImp extends LoginController{
 
   @override
   void onInit() {
-    // FirebaseMessaging.instance.getToken().then((value) {
-    //   print('value');
-    //   print(value);
-    //   String? token = value;
-    // });
+    FirebaseMessaging.instance.getToken().then((value){
+      print("token");
+      print(value) ;
+      token = value!;
+      print("token");
+    }
+    );
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();

@@ -4,10 +4,11 @@ import 'package:handmade/core/class/crud.dart';
 class LoginData {
   Crud crud ;
   LoginData(this.crud);
-  postData(String email,String password) async{
+  postData(String email,String password ,String token) async{
     var response = await crud.postDate(AppLink.login, {
       "email" : email,
       "password" : password,
+      "device_token" : token
     });
     print('response');
     print(response);

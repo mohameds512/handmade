@@ -4,10 +4,12 @@ import 'package:handmade/controller/checkout/checkout_controller.dart';
 import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/ImageAssets.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/checkout/cardAddress.dart';
 import 'package:handmade/view/widget/checkout/cardDeliverytype.dart';
 import 'package:handmade/view/widget/checkout/cardpaymentmethod.dart';
 import 'package:get/get.dart';
+
 class CheckOut extends StatelessWidget {
   const CheckOut({Key? key}) : super(key: key);
 
@@ -99,20 +101,32 @@ class CheckOut extends StatelessWidget {
                         children: [
                           const Text("Shipping Address",style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold),),
                           const SizedBox(height: 10,),
-                          ...List.generate(
+                          if(controller.addresses.length == 0 && controller.deliveryType=="0")
+                            MaterialButton(
+                                onPressed: (){
+                                  Get.toNamed(AppRoute.AddressView);
+                                },
+                              child:Text("Add Address"),
+                              color: AppColor.primaryColor,
+
+
+                            ),
+                            ...List.generate(
                               controller.addresses.length,
                                   (index) => InkWell(
-                                    onTap: (){
-                                      controller.chooseShippingAddressId(controller.addresses[index]["id"]);
-                                    },
-                                    child: CardAddressCheckOut(
-                                        title: controller.addresses[index]["name"],
-                                        subTitle: "${controller.addresses[index]["city"]} ${controller.addresses[index]["street"]}",
-                                        isActive: controller.addressId == controller.addresses[index]["id"] ? true : false
-                                    ),
-                                  ),
+                                onTap: (){
+                                  controller.chooseShippingAddressId(controller.addresses[index]["id"]);
+                                },
+                                child: CardAddressCheckOut(
+                                    title: controller.addresses[index]["name"],
+                                    subTitle: "${controller.addresses[index]["city"]} ${controller.addresses[index]["street"]}",
+                                    isActive: controller.addressId == controller.addresses[index]["id"] ? true : false
+                                ),
+                              ),
 
-                          ),
+                            ),
+
+
 
                         ],
                       ),
