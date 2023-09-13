@@ -1,6 +1,8 @@
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:handmade/API/firebase_api.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
@@ -67,7 +69,7 @@ class HomeControllerImp extends HomeController {
       items.addAll(response["data"]["data"]["items"]);
     }
     update();
-
+    await FirebaseApi().initNotification();
   }
 
 
@@ -101,6 +103,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   void onInit() {
+
     getData();
     initialDAta();
     search = TextEditingController();

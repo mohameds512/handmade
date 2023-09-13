@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:handmade/core/functions/fcmcongig.dart';
 import 'package:handmade/services/services.dart';
 
 import '../core/constant/apptheme.dart';
@@ -42,6 +43,8 @@ class LocaleController extends GetxController {
 
   @override
   void onInit() {
+    requestNotificationPermission();
+    fcmConfig();
     getLocationPermission();
     String? sharedPrefLang = myServices.sharedPreference.getString("lang");
     if (sharedPrefLang == "ar") {

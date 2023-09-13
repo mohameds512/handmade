@@ -32,6 +32,7 @@ class LoginControllerImp extends LoginController{
   login() async{
     var formdata = formstate.currentState;
 
+
     if(formdata!.validate() ){
       statusRequest = StatusRequest.loading;
       update();
@@ -48,6 +49,10 @@ class LoginControllerImp extends LoginController{
 
         Get.offNamed(AppRoute.home);
         update();
+
+        FirebaseMessaging.instance.subscribeToTopic("users");
+        FirebaseMessaging.instance.subscribeToTopic("user_${myServices.sharedPreference.getInt("id").toString()}");
+
       }else if(response["status"] =='verify_email'){
         Get.defaultDialog(title: "Warning",middleText:  "You must Verify Email First ");
         update();

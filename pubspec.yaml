@@ -39,6 +39,7 @@ dependencies:
   firebase_remote_config: ^4.2.4
   firebase_analytics: ^10.4.4
   firebase_messaging: ^14.6.7
+  flutter_ringtone_player: ^3.2.0
 
 
 dev_dependencies:
