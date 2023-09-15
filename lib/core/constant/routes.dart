@@ -24,6 +24,9 @@ class AppRoute {
 
   static const String  pendingOrder = "/pendingorder";
   static const String  archivedOrder = "/archivedorder";
+  static const String  detailsOrder = "/detailsOrder";
+
+  static const String notification = "/notification";
 
 
 

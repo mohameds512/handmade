@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:handmade/controller/order/order_controller.dart';
 import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/order/cardorderlist.dart';
 class PendingOrder extends StatelessWidget {
   const PendingOrder({Key? key}) : super(key: key);
@@ -26,13 +27,22 @@ class PendingOrder extends StatelessWidget {
                 itemCount: controller.ordersList.length,
                 itemBuilder: ((context, index)=>
                 CardOrderList(
-                  orderNum: controller.ordersList[index]["id"].toString(),
+                  added_ago:controller.ordersList[index]["added_ago"] ,
+                  orderNum: controller.ordersList[index]["order_code"].toString(),
                   DeliveryPrice:controller.ordersList[index]["shipping_price"].toString(),
                   DeliveryType: controller.ordersList[index]["shipping_type"],
                   orderPrice: controller.ordersList[index]["orders_price"].toString(),
                   totalPrice: controller.ordersList[index]["order_total_price"].toString(),
                   paymentMethod: controller.ordersList[index]["payment_method"],
                   status: controller.ordersList[index]["status"],
+                  onPressedDetails: (){
+                    Get.toNamed(
+                      AppRoute.detailsOrder,
+                      arguments: {
+                        "orderDetails" : controller.ordersList[index]
+                      }
+                    );
+                  },
                 )
               )
             )

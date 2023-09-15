@@ -22,9 +22,11 @@ import 'package:handmade/view/screen/home.dart';
 import 'package:handmade/view/screen/homescreen.dart';
 import 'package:handmade/view/screen/items/items.dart';
 import 'package:handmade/view/screen/language.dart';
+import 'package:handmade/view/screen/notification/notification.dart';
 import 'package:handmade/view/screen/onboarding.dart';
 import 'package:get/get.dart';
 import 'package:handmade/view/screen/order/archiveorder.dart';
+import 'package:handmade/view/screen/order/order_details.dart';
 import 'package:handmade/view/screen/order/pendingorder.dart';
 import 'package:handmade/view/screen/products/productdetails.dart';
 import 'package:handmade/view/test_view.dart';
@@ -64,5 +66,8 @@ List<GetPage<dynamic>> ? routes = [
 
   GetPage(name:AppRoute.pendingOrder,page: () => const PendingOrder(),),
   GetPage(name:AppRoute.archivedOrder,page: () => const ArchivedOrder(),),
+  GetPage(name:AppRoute.detailsOrder,page: () => const OrderDetails(),),
+
+  GetPage(name:AppRoute.notification,page: () => const NotificationView(),),
 
 ];

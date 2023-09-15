@@ -28,6 +28,21 @@ class OrderController extends GetxController{
     update();
   }
 
+  refreshOrders() async{
+    // statusRequest = StatusRequest.loading;
+    ordersList.clear();
+    // update();
+    var response = await orderData.getOrders(myServices.sharedPreference.getInt("id").toString());
+    print("response");
+    print(response);
+    statusRequest = handlingData(response);
+    print("statusRequest");
+    print(statusRequest);
+    if(StatusRequest.success == statusRequest ){
+      ordersList = response["orders"];
+    }
+    update();
+  }
   @override
   void onInit() {
     getPendingOrder();

@@ -11,7 +11,9 @@ class CardOrderList extends StatelessWidget {
   final String? paymentMethod;
   final String? totalPrice;
   final String? status;
-  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status}) : super(key: key);
+  final String? added_ago;
+  final void Function()? onPressedDetails;
+  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status, this.added_ago, this.onPressedDetails}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,11 @@ class CardOrderList extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Order Number : $orderNum" ,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+          Row(children: [
+            Text("Order Number : $orderNum" ,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            Spacer(),
+            Text("$added_ago",style: TextStyle(fontFamily: "sans",color: AppColor.primaryColor),),
+          ]),
           Divider(),
           Text("Order Type : $DeliveryType"),
           Text("Order Price : $orderPrice \$"),
@@ -33,12 +39,13 @@ class CardOrderList extends StatelessWidget {
               Text("Total Price : $totalPrice" ,style: TextStyle(color: AppColor.shadowPrimaryColor,fontSize: 18,fontWeight: FontWeight.bold),),
               Spacer(),
               MaterialButton(
-                onPressed: (){},
+                onPressed: onPressedDetails,
                 child: Text("Details",style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
                 color: AppColor.grey,
               )
             ],
           ),
+          Divider(),
         ],
       ),
     );

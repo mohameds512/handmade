@@ -21,12 +21,14 @@ class AddressAddController extends GetxController{
 
 
   CameraPosition? kGooglePlex ;
+
   static const CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414
   );
+
   goToAddContinue(){
     Get.toNamed(
         AppRoute.addressAddContinue,
@@ -52,10 +54,12 @@ class AddressAddController extends GetxController{
     update();
     print(marker);
 
+
   }
   getCourentPosition() async {
     currentPosition = await Geolocator.getCurrentPosition();
     kGooglePlex = CameraPosition(
+        // target:  LatLng(37.42796133580664, -122.085749655962),
         target: LatLng(currentPosition!.latitude , currentPosition!.longitude),
         zoom: 15
     );

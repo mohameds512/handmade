@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:handmade/view/screen/notification/notification.dart';
 import 'package:handmade/view/screen/settings.dart';
 
 import '../view/screen/home.dart';
@@ -30,18 +31,20 @@ class HomeScreenControllerImp extends HomeScreenController {
   ];
   List<Widget> listPage = [
     const Home(),
+
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(child: Text("setting"),)
       ],
     ),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(child: Text("Profile"),)
-      ],
-    ),
+    // Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   children: [
+    //     Center(child: Text("Profile"),)
+    //   ],
+    // ),
+    NotificationView(),
     Settings()
 
   ];
