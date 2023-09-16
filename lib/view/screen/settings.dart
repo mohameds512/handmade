@@ -76,7 +76,7 @@ class Settings extends StatelessWidget {
                 Divider(),
                 ListTile(
                   onTap: (){
-
+                    Get.toNamed(AppRoute.contactUs);
                   },
                   trailing: Icon(Icons.contact_mail_outlined),
                   title: Text("Contact us"),

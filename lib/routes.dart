@@ -17,6 +17,7 @@ import 'package:handmade/view/screen/auth/verifycode.dart';
 import 'package:handmade/view/screen/auth/verifycode_resetPassword.dart';
 import 'package:handmade/view/screen/cart/cart.dart';
 import 'package:handmade/view/screen/checkout.dart';
+import 'package:handmade/view/screen/contact_us.dart';
 import 'package:handmade/view/screen/favoritesitems.dart';
 import 'package:handmade/view/screen/home.dart';
 import 'package:handmade/view/screen/homescreen.dart';
@@ -69,5 +70,6 @@ List<GetPage<dynamic>> ? routes = [
   GetPage(name:AppRoute.detailsOrder,page: () => const OrderDetails(),),
 
   GetPage(name:AppRoute.notification,page: () => const NotificationView(),),
+  GetPage(name:AppRoute.contactUs,page: () => const ContactUs(),),
 
 ];
