@@ -25,4 +25,12 @@ class OrderData {
 
   }
 
+
+  deleteOrder(order_id) async{
+    var response = await crud.postDate(AppLink.deleteOrder, {"order_id":order_id});
+
+    return response.fold((l) => l, (r) => r);
+
+  }
+
 }

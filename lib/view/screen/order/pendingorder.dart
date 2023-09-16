@@ -43,6 +43,9 @@ class PendingOrder extends StatelessWidget {
                       }
                     );
                   },
+                  onPressedDelete: (){
+                    controller.DeleteOrder(controller.ordersList[index]["id"].toString());
+                  },
                 )
               )
             )

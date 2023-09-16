@@ -42,6 +42,8 @@
   static const String addOrder = "$server/flutter/order/AddOrder";
   static const String indexOrder = "$server/flutter/order/IndexOrders";
   static const String detailOrder = "$server/flutter/order/OrderDetails";
+  static const String deleteOrder = "$server/flutter/order/deleteOrder";
+  static const String ArchivedOrders = "$server/flutter/order/ArchivedOrders";
 
  // ========================notification===============================
   static const String getNotification = "$server/flutter/notification/getNotif";

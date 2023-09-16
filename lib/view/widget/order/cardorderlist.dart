@@ -13,7 +13,8 @@ class CardOrderList extends StatelessWidget {
   final String? status;
   final String? added_ago;
   final void Function()? onPressedDetails;
-  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status, this.added_ago, this.onPressedDetails}) : super(key: key);
+  final void Function()? onPressedDelete;
+  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status, this.added_ago, this.onPressedDetails, this.onPressedDelete}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,14 @@ class CardOrderList extends StatelessWidget {
                 onPressed: onPressedDetails,
                 child: Text("Details",style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
                 color: AppColor.grey,
-              )
+              ),
+              SizedBox(width: 10,),
+              if(status == "Pending")
+              MaterialButton(
+                onPressed: onPressedDelete,
+                child: Text("Delete",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                color: AppColor.redColor,
+              ),
             ],
           ),
           Divider(),

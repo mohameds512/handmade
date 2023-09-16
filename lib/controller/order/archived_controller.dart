@@ -1,22 +1,23 @@
 import 'package:get/get.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
+import 'package:handmade/data/datasource/remote/archive_data.dart';
 import 'package:handmade/data/datasource/remote/order_data.dart';
 import 'package:handmade/services/services.dart';
 
-class OrderController extends GetxController{
+class ArchivedController extends GetxController{
 
   List ordersList = [];
 
   MyServices myServices = Get.find();
   StatusRequest statusRequest = StatusRequest.none;
-  OrderData orderData = Get.put(OrderData(Get.find()));
+  ArchiveData archiveData = Get.put(ArchiveData(Get.find()));
 
-  getPendingOrder() async{
+  getArchivedOrder() async{
     statusRequest = StatusRequest.loading;
     ordersList.clear();
     update();
-    var response = await orderData.getOrders(myServices.sharedPreference.getInt("id").toString());
+    var response = await archiveData.getArchivedOrders(myServices.sharedPreference.getInt("id").toString());
     print("response");
     print(response);
     statusRequest = handlingData(response);
@@ -28,16 +29,13 @@ class OrderController extends GetxController{
     update();
   }
 
-  DeleteOrder(order_id) async{
-    var response = await orderData.deleteOrder(order_id);
-    refreshOrders();
-  }
 
   refreshOrders() async{
     // statusRequest = StatusRequest.loading;
     // ordersList.clear();
     // update();
-    var response = await orderData.getOrders(myServices.sharedPreference.getInt("id").toString());
+    var response = await archiveData.getArchivedOrders(myServices.sharedPreference.getInt("id").toString());
+
 
     statusRequest = handlingData(response);
 
@@ -48,7 +46,7 @@ class OrderController extends GetxController{
   }
   @override
   void onInit() {
-    getPendingOrder();
+    getArchivedOrder();
     super.onInit();
   }
 
