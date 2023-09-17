@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/controller/homescreen_controller.dart';
@@ -25,7 +27,27 @@ class HomeScreen extends StatelessWidget {
               floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar:
               CustomButtomAppBarHome(),
-              body: controller.listPage.elementAt(controller.selectedPage)
+              body: controller.listPage.elementAt(controller.selectedPage),
+              // body:
+              // WillPopScope(
+              //   child: controller.listPage.elementAt(controller.selectedPage),
+              //   onWillPop: (){
+              //     Get.defaultDialog(
+              //       title: "Warning",
+              //       titleStyle: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),
+              //       middleText: "Are you sure ?",
+              //       onConfirm: (){
+              //         exit(0);
+              //       },
+              //       onCancel: (){
+              //       },
+              //       buttonColor: AppColor.thirdColor,
+              //       confirmTextColor: AppColor.primaryColor,
+              //       cancelTextColor: AppColor.primaryColor,
+              //     );
+              //     return Future.value(false);
+              //   },
+              // )
             )
     )
       ;

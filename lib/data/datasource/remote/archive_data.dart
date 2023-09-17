@@ -11,6 +11,19 @@ class ArchiveData {
 
   }
 
+  submitRating(order_id,rating,notes) async{
+    var response = await crud.postDate(AppLink.ratingOrder,
+        {
+          "order_id":order_id,
+          "rating":rating.toString(),
+          "notes":notes
+        }
+        );
+
+    return response.fold((l) => l, (r) => r);
+
+  }
+
 
 
 }

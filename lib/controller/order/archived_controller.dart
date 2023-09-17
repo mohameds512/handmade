@@ -29,13 +29,16 @@ class ArchivedController extends GetxController{
     update();
   }
 
+  submitRating(order_id,rating,notes) async{
 
+    var response = await archiveData.submitRating(order_id,rating,notes);
+    refreshOrders();
+  }
   refreshOrders() async{
     // statusRequest = StatusRequest.loading;
     // ordersList.clear();
     // update();
     var response = await archiveData.getArchivedOrders(myServices.sharedPreference.getInt("id").toString());
-
 
     statusRequest = handlingData(response);
 

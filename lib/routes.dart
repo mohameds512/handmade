@@ -24,6 +24,7 @@ import 'package:handmade/view/screen/homescreen.dart';
 import 'package:handmade/view/screen/items/items.dart';
 import 'package:handmade/view/screen/language.dart';
 import 'package:handmade/view/screen/notification/notification.dart';
+import 'package:handmade/view/screen/offers.dart';
 import 'package:handmade/view/screen/onboarding.dart';
 import 'package:get/get.dart';
 import 'package:handmade/view/screen/order/archiveorder.dart';
@@ -71,5 +72,7 @@ List<GetPage<dynamic>> ? routes = [
 
   GetPage(name:AppRoute.notification,page: () => const NotificationView(),),
   GetPage(name:AppRoute.contactUs,page: () => const ContactUs(),),
+
+  GetPage(name:AppRoute.Offers,page: () => const Offers(),),
 
 ];

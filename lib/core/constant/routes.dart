@@ -29,6 +29,8 @@ class AppRoute {
   static const String notification = "/notification";
   static const String contactUs = "/contactUs";
 
+  static const String Offers = "/Offers";
+
 
 
 

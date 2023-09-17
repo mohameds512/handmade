@@ -27,6 +27,7 @@ class PendingOrder extends StatelessWidget {
                 itemCount: controller.ordersList.length,
                 itemBuilder: ((context, index)=>
                 CardOrderList(
+                  order_id:controller.ordersList[index]["id"].toString() ,
                   added_ago:controller.ordersList[index]["added_ago"] ,
                   orderNum: controller.ordersList[index]["order_code"].toString(),
                   DeliveryPrice:controller.ordersList[index]["shipping_price"].toString(),

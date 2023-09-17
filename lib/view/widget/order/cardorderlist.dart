@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/view/screen/order/ratingdialog.dart';
 
 class CardOrderList extends StatelessWidget {
   final String? orderNum;
@@ -11,10 +12,11 @@ class CardOrderList extends StatelessWidget {
   final String? paymentMethod;
   final String? totalPrice;
   final String? status;
+  final String? order_id;
   final String? added_ago;
   final void Function()? onPressedDetails;
   final void Function()? onPressedDelete;
-  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status, this.added_ago, this.onPressedDetails, this.onPressedDelete}) : super(key: key);
+  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status, this.added_ago, this.onPressedDetails, this.onPressedDelete, this.order_id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +41,21 @@ class CardOrderList extends StatelessWidget {
             children: [
               Text("Total Price : $totalPrice" ,style: TextStyle(color: AppColor.shadowPrimaryColor,fontSize: 18,fontWeight: FontWeight.bold),),
               Spacer(),
+            ]
+          ),
+          Row(
+            children: [
               MaterialButton(
                 onPressed: onPressedDetails,
                 child: Text("Details",style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
+                color: AppColor.grey,
+              ),
+              SizedBox(width: 10,),
+              MaterialButton(
+                onPressed: (){
+                  showRatingDialog(context,order_id!);
+                },
+                child: Text("Rating",style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
                 color: AppColor.grey,
               ),
               SizedBox(width: 10,),

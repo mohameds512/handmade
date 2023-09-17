@@ -44,8 +44,11 @@
   static const String detailOrder = "$server/flutter/order/OrderDetails";
   static const String deleteOrder = "$server/flutter/order/deleteOrder";
   static const String ArchivedOrders = "$server/flutter/order/ArchivedOrders";
+  static const String ratingOrder = "$server/flutter/order/ratingOrder";
 
  // ========================notification===============================
   static const String getNotification = "$server/flutter/notification/getNotif";
 
+  // ========================notification===============================
+  static const String offers = "$server/flutter/offer/offersData";
  }

@@ -30,6 +30,7 @@ class addressAdd extends StatelessWidget {
                               alignment: Alignment.center,
                               children: [
                                 GoogleMap(
+                                  // mapType: MapType.terrain,
                                   mapType: MapType.normal,
                                   markers: controllerMap.marker.toSet(),
                                   onTap: (latLong){
