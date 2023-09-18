@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:handmade/API/firebase_api.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/constant/routes.dart';
+import 'package:handmade/core/functions/DBtranslation.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/homedata.dart';
 import 'package:handmade/services/services.dart';
@@ -25,13 +26,14 @@ class HomeControllerImp extends HomeController {
   String? phone ;
   String? img_route ;
   int? id;
-
+  Map SettingData = {};
   String? Lang;
   HomeData homeData = HomeData(Get.find());
   StatusRequest? statusRequest;
   List data = [];
   List categories = [];
   List items = [];
+  List top_sealing_items = [];
   List searchItems = [];
   bool searchResolute = true;
   bool isSearch = false;
@@ -67,6 +69,10 @@ class HomeControllerImp extends HomeController {
     if(StatusRequest.success == statusRequest){
       categories.addAll(response["data"]["data"]["categories"]);
       items.addAll(response["data"]["data"]["items"]);
+      top_sealing_items.addAll(response["data"]["data"]["top_sealing"]);
+      if(response["data"]["data"]["setting"] != null){
+        SettingData = response["data"]["data"]["setting"];
+      }
     }
     update();
     await FirebaseApi().initNotification();

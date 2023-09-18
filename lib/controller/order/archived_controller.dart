@@ -25,6 +25,7 @@ class ArchivedController extends GetxController{
     print(statusRequest);
     if(StatusRequest.success == statusRequest ){
       ordersList = response["orders"];
+
     }
     update();
   }
@@ -33,6 +34,7 @@ class ArchivedController extends GetxController{
 
     var response = await archiveData.submitRating(order_id,rating,notes);
     refreshOrders();
+    print("ddddddd");
   }
   refreshOrders() async{
     // statusRequest = StatusRequest.loading;

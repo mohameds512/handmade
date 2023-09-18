@@ -5,8 +5,8 @@ import 'package:handmade/controller/home_controller.dart';
 import '../../../core/constant/color.dart';
 import 'package:get/get.dart';
 class CustomCardHome extends GetView<HomeControllerImp> {
-  final String titletext;
-  final String bodytext;
+  final String? titletext;
+  final String? bodytext;
   const CustomCardHome({Key? key, required this.titletext, required this.bodytext}) : super(key: key);
 
   @override
@@ -22,8 +22,8 @@ class CustomCardHome extends GetView<HomeControllerImp> {
             color: Colors.red,
           ),
           child:  ListTile(
-            title: Text(titletext,style: TextStyle(color: Colors.white,fontSize: 20)),
-            subtitle: Text(bodytext,style: TextStyle(color: Colors.white,fontSize: 40)),
+            title: Text(titletext!,style: TextStyle(color: Colors.white,fontSize: 20)),
+            subtitle: Text(bodytext!,style: TextStyle(color: Colors.white,fontSize: 30)),
           ),
         ),
         Positioned(

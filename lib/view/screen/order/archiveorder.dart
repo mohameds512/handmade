@@ -29,6 +29,7 @@ class ArchivedOrder extends StatelessWidget {
                     itemBuilder: ((context, index)=>
                         CardOrderList(
                           order_id:controller.ordersList[index]["id"].toString() ,
+                          rating:controller.ordersList[index]["rating"].toString() ,
                           added_ago:controller.ordersList[index]["added_ago"] ,
                           orderNum: controller.ordersList[index]["order_code"].toString(),
                           DeliveryPrice:controller.ordersList[index]["shipping_price"].toString(),

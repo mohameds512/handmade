@@ -14,9 +14,10 @@ class CardOrderList extends StatelessWidget {
   final String? status;
   final String? order_id;
   final String? added_ago;
+  final String? rating;
   final void Function()? onPressedDetails;
   final void Function()? onPressedDelete;
-  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status, this.added_ago, this.onPressedDetails, this.onPressedDelete, this.order_id}) : super(key: key);
+  const CardOrderList({Key? key, this.orderNum, this.DeliveryType, this.orderPrice, this.DeliveryPrice, this.paymentMethod, this.totalPrice, this.status, this.added_ago, this.onPressedDetails, this.onPressedDelete, this.order_id, this.rating}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +27,11 @@ class CardOrderList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            Text("Order Number : $orderNum" ,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            Text("Number : $orderNum" ,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
             Spacer(),
             Text("$added_ago",style: TextStyle(fontFamily: "sans",color: AppColor.primaryColor),),
+            if(status == "Pending")
+            IconButton(onPressed: onPressedDelete, icon: Icon(CupertinoIcons.trash,color: Colors.red,))
           ]),
           Divider(),
           Text("Order Type : $DeliveryType"),
@@ -51,6 +54,7 @@ class CardOrderList extends StatelessWidget {
                 color: AppColor.grey,
               ),
               SizedBox(width: 10,),
+              if(rating == "0")
               MaterialButton(
                 onPressed: (){
                   showRatingDialog(context,order_id!);
@@ -59,12 +63,7 @@ class CardOrderList extends StatelessWidget {
                 color: AppColor.grey,
               ),
               SizedBox(width: 10,),
-              if(status == "Pending")
-              MaterialButton(
-                onPressed: onPressedDelete,
-                child: Text("Delete",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                color: AppColor.redColor,
-              ),
+
             ],
           ),
           Divider(),

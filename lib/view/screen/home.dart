@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Get.put(HomeControllerImp());
+     HomeControllerImp controllerImp = Get.put(HomeControllerImp());
     return  GetBuilder<HomeControllerImp>(builder: (controller)=>
 
               Container(
@@ -49,14 +49,15 @@ class Home extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const CustomCardHome(titletext: "Month Offer", bodytext: "CashBack 5%"),
+                          if(controller.SettingData.isNotEmpty)
+                          CustomCardHome(titletext: TransDB(controller.SettingData?["name"]), bodytext: TransDB(controller.SettingData?["body"])),
                           const CustomTitleHome(texttitle: "Categories"),
                           CustomListCategory(
                             Categories: controller.categories,
                           ),
                           const SizedBox(height: 10,),
-                          const CustomTitleHome(texttitle: "Offers"),
-                          CustomListItem(Items: controller.items),
+                          const CustomTitleHome(texttitle: "Top Selling"),
+                          CustomListItem(Items: controller.top_sealing_items),
                           const CustomTitleHome(texttitle: "All Products"),
                           CustomListItem(Items: controller.items),
                         ],
