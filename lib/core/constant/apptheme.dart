@@ -14,7 +14,7 @@ ThemeData themeEnglish  = ThemeData(
     floatingActionButtonTheme:const FloatingActionButtonThemeData(
           backgroundColor: AppColor.primaryColor,
     ),
-    fontFamily: "PlayfairDisplay",
+    fontFamily: "sans",
     textTheme:  const TextTheme(
       displayLarge: TextStyle(
 

@@ -29,6 +29,9 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
         ),
         Spacer(),
         Text("${controllerImp.Item?["discount_price"]} \$",style: TextStyle(color: AppColor.primaryColor,fontFamily: "sans"),),
+        SizedBox(width: 10,),
+        if(controllerImp.Item?["discount"] != 0)
+        Text("${controllerImp.Item?["price"]} \$",style: TextStyle(decorationColor: AppColor.primaryColor, decorationThickness: 2.0,decoration: TextDecoration.lineThrough, fontFamily: "sans"),),
       ],
     );
   }

@@ -62,7 +62,7 @@ class ItemsCustomListItemsOffer extends GetView<OfferController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("${Items[index]["discount_price"]} \$",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "sans",color: AppColor.primaryColor)),
-                            Text("${Items[index]["price"]} \$",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "sans",decorationColor: AppColor.primaryColor, decorationThickness: 2.0,decoration: TextDecoration.lineThrough)),
+                            Text("${Items[index]["price"]} \$",style: TextStyle( fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "sans",decorationColor: AppColor.primaryColor, decorationThickness: 2.0,decoration: TextDecoration.lineThrough)),
                             IconButton(
                                 onPressed: (){
                                   if(controller.checkFavorite(Items[index]["id"])  == '1'){

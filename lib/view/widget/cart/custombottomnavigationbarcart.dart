@@ -34,6 +34,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
             Expanded(
               flex: 2,
                 child: TextFormField(
+                  onTapOutside: (event)=>FocusScope.of(context).unfocus(),
                   controller: controllerCoupon,
                   decoration: InputDecoration(
                     isDense: true,

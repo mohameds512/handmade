@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:handmade/controller/items_controller.dart';
 import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/screen/search/listitemsearch.dart';
 import 'package:handmade/view/widget/items/customlistitems.dart';
 import 'package:handmade/view/widget/items/listcategoriesitems.dart';
@@ -33,6 +34,9 @@ class Items extends StatelessWidget {
                     titlehinttext: "search",
                     // onPressedIcon: (){},
                     onPressedSearch: (){},
+                    onPressedIconFavorite: (){
+                      Get.toNamed(AppRoute.favoritesItems);
+                    },
                   ),
                   const ListCategoriesItems(),
                   GetBuilder<ItemControllerImp>(builder: (controllerImp)=>

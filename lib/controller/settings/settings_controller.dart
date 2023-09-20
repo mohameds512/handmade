@@ -9,6 +9,7 @@ abstract class SettingsController extends GetxController{
 
 class SettingsControllerImp extends SettingsController {
   MyServices myServices = Get.find();
+  bool? switchValue ;
   @override
   LogOut() {
     FirebaseMessaging.instance.unsubscribeFromTopic("users");
@@ -22,4 +23,27 @@ class SettingsControllerImp extends SettingsController {
     // throw UnimplementedError();
   }
 
+  @override
+  muteNotification(){
+
+     switchValue = !switchValue!;
+     myServices.sharedPreference.setBool("Notification",switchValue!);
+
+     if(switchValue == true){
+
+       FirebaseMessaging.instance.unsubscribeFromTopic("users");
+       FirebaseMessaging.instance.unsubscribeFromTopic("user_${myServices.sharedPreference.getInt("id").toString()}");
+     }else{
+       FirebaseMessaging.instance.subscribeToTopic("users");
+       FirebaseMessaging.instance.subscribeToTopic("user_${myServices.sharedPreference.getInt("id").toString()}");
+     }
+
+     update();
+
+  }
+  @override
+  void onInit() {
+    switchValue = myServices.sharedPreference.getBool("Notification");
+    super.onInit();
+  }
 }

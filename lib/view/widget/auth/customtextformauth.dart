@@ -30,6 +30,7 @@ class CustomTextFormAuth extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom:22),
       child: TextFormField(
+        onTapOutside: (event)=>FocusScope.of(context).unfocus(),
         keyboardType: isNumber? TextInputType.number : TextInputType.text,
         validator: valid,
         controller: myController,
