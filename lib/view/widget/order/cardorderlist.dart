@@ -21,7 +21,8 @@ class CardOrderList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return
+      Container(
       padding: EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,15 +55,15 @@ class CardOrderList extends StatelessWidget {
                 color: AppColor.grey,
               ),
               SizedBox(width: 10,),
-              if(rating == "0")
-              MaterialButton(
-                onPressed: (){
-                  showRatingDialog(context,order_id!);
-                },
-                child: Text("Rating",style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
-                color: AppColor.grey,
-              ),
-              SizedBox(width: 10,),
+              // if(rating == "0")
+              // MaterialButton(
+              //   onPressed: (){
+              //     showRatingDialog(context,order_id!,22);
+              //   },
+              //   child: Text("Rating",style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
+              //   color: AppColor.grey,
+              // ),
+              // SizedBox(width: 10,),
 
             ],
           ),

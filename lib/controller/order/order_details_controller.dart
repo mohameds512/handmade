@@ -22,19 +22,31 @@ class OrderDetailsController extends GetxController{
   StatusRequest statusRequest = StatusRequest.none;
   CameraPosition? kGooglePlex ;
 
-
+  refreshOrderDetails()async{
+    print("case 1");
+    var response = await orderData.getOrderDetails(orderDetail["id"].toString());
+    statusRequest = handlingData(response);
+    if(StatusRequest.success == statusRequest){
+      orderItems = response["data"]["items"];
+      update();
+    }
+    print("case 2");
+  }
   getOrderDetails() async {
 
     orderItems.clear();
     address = null;
     statusRequest = StatusRequest.loading;
     update();
+    // print("object_id : $orderDetail['id'] ");
     var response = await orderData.getOrderDetails(orderDetail["id"].toString());
 
     statusRequest = handlingData(response);
     if(StatusRequest.success == statusRequest){
       address = response["data"]["address"];
+
       orderItems = response["data"]["items"];
+
       targetPos = LatLng(address!["address_lat"],address!["address_long"]);
 
     }

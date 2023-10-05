@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:handmade/controller/order/order_details_controller.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/archive_data.dart';
@@ -30,11 +31,15 @@ class ArchivedController extends GetxController{
     update();
   }
 
-  submitRating(order_id,rating,notes) async{
+  submitRating(order_id,item_id,rating,notes) async{
 
-    var response = await archiveData.submitRating(order_id,rating,notes);
-    refreshOrders();
-    print("ddddddd");
+    print("order_id : $order_id");
+    print("item_id : $item_id");
+    var response = await archiveData.submitRating(order_id,item_id,rating,notes);
+    print("case 3");
+    OrderDetailsController orderDetailsController = Get.put(OrderDetailsController());
+    orderDetailsController.refreshOrderDetails();
+    print("case 4");
   }
   refreshOrders() async{
     // statusRequest = StatusRequest.loading;

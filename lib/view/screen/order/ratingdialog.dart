@@ -7,7 +7,7 @@ import 'package:handmade/core/constant/color.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 
 // show the dialog
-void showRatingDialog(BuildContext context ,String? order_id){
+void showRatingDialog(BuildContext context ,String? order_id,item_id){
   showDialog(
     context: context,
     barrierDismissible: true, // set to false if you want to force a rating
@@ -38,7 +38,7 @@ void showRatingDialog(BuildContext context ,String? order_id){
       onSubmitted: (response) {
           ArchivedController controller = Get.put(ArchivedController());
         print('rating: ${response.rating}, comment: ${response.comment}');
-          controller.submitRating(order_id,response.rating,response.comment);
+          controller.submitRating(order_id,item_id,response.rating,response.comment);
 
         // TODO: add your own logic
         // if (response.rating < 3.0) {

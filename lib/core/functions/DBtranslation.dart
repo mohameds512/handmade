@@ -6,7 +6,7 @@ TransDB(data){
   // return data[myServices.sharedPreference.getString("lang")];
 
   String? lang = myServices.sharedPreference.getString("lang");
-  return data['en'];
+  // return data['en'];
   if (lang != null && data.containsKey(lang)) {
     return data[lang];
   } else {

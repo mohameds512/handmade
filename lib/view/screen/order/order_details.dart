@@ -6,6 +6,8 @@ import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
+import 'package:handmade/view/screen/order/ratingdialog.dart';
+import 'package:handmade/view/widget/order/listorderitemsdetails.dart';
 
 class OrderDetails extends StatelessWidget {
   const OrderDetails({Key? key}) : super(key: key);
@@ -22,47 +24,18 @@ class OrderDetails extends StatelessWidget {
       GetBuilder<OrderDetailsController>(builder:
           (controller) => HandlingDataView(
               statusRequest: controller.statusRequest,
-              widget:Container(
+              widget:
+              Container(
                 padding: EdgeInsets.all(10),
                 child: ListView(
                   children: [
-                    Card(
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Column(
-                          children: [
-                            Table(
-                              children: [
-                                TableRow(
-                                    children: [
-                                      Text("Product",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold),),
-                                      Text("Count",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
-                                      Text("Price",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
-                                    ]
-                                ),
-                                ...List.generate(
-                                      controller.orderItems.length,
-                                       (index) => TableRow(
-                                           children: [
-                                             Text(TransDB(controller.orderItems[index]["name"]),textAlign: TextAlign.center,),
-                                             Text(controller.orderItems[index]["item_count"].toString(),textAlign: TextAlign.center),
-                                             Text(controller.orderItems[index]["all_price"].toStringAsFixed(2),textAlign: TextAlign.center,),
-                                           ]
-                                       )
-                                )
+                    ...List.generate(
+                      controller.orderItems.length,
+                        (index) => 
+                          ListOrderItemDetail(orderItem: controller.orderItems[index])
 
-                              ],
-                            ),
-                            SizedBox(height: 10,),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
-                              child: Text("Total Price : 1564 \$" ,style: TextStyle(fontFamily: "sans",color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold ),textAlign: TextAlign.center,),
-
-                            ),
-                          ],
-                        ),
-                      ),
                     ),
+
                     if(controller.address != null)
                       Card(
                         child: Container(
