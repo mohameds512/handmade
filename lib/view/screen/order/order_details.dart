@@ -20,7 +20,6 @@ class OrderDetails extends StatelessWidget {
         title: Text("Order Details"),
       ),
       body:
-
       GetBuilder<OrderDetailsController>(builder:
           (controller) => HandlingDataView(
               statusRequest: controller.statusRequest,

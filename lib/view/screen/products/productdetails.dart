@@ -37,7 +37,7 @@ class ProductDetails extends GetView<ProductDetailsControllerImp> {
           child:ListView(
             children: [
               TopPageProductDetails(),
-              const SizedBox(height: 20,),
+              const SizedBox(height: 30,),
               Container(
                 padding: const EdgeInsets.all(20),
                 child: Column(
