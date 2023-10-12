@@ -15,9 +15,13 @@ class SettingsControllerImp extends SettingsController {
     FirebaseMessaging.instance.unsubscribeFromTopic("users");
     FirebaseMessaging.instance.unsubscribeFromTopic("user_${myServices.sharedPreference.getInt("id").toString()}");
     String? currentLanguage = myServices.sharedPreference.getString("lang");
-    print(currentLanguage);
+
     myServices.sharedPreference.clear();
-    myServices.sharedPreference.setString("lang", currentLanguage!);
+    if(currentLanguage==null){
+      myServices.sharedPreference.setString("lang", 'en');
+    }else{
+      myServices.sharedPreference.setString("lang", currentLanguage!);
+    }
 
     Get.offAllNamed(AppRoute.login);
     // throw UnimplementedError();
@@ -27,7 +31,8 @@ class SettingsControllerImp extends SettingsController {
   muteNotification(){
 
      switchValue = !switchValue!;
-     myServices.sharedPreference.setBool("Notification",switchValue!);
+
+     myServices.sharedPreference.setBool("disable_notification",switchValue!);
 
      if(switchValue == true){
 
@@ -43,7 +48,7 @@ class SettingsControllerImp extends SettingsController {
   }
   @override
   void onInit() {
-    switchValue = myServices.sharedPreference.getBool("Notification");
+    switchValue = myServices.sharedPreference.getBool("disable_notification");
     super.onInit();
   }
 }

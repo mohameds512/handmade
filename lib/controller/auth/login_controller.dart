@@ -41,7 +41,7 @@ class LoginControllerImp extends LoginController{
 
       if(response["status"] == "success"){
         // notFications
-        myServices.sharedPreference.setBool("Notification", true);
+        myServices.sharedPreference.setBool("disable_notification", false);
         myServices.sharedPreference.setInt("id", response["data"]["id"]);
         myServices.sharedPreference.setString("username", response["data"]["name"]);
         myServices.sharedPreference.setString("email", response["data"]["email"]);

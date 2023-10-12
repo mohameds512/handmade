@@ -24,7 +24,7 @@ class CheckEmailControllerImp extends CheckEmailController{
       update();
       var response = await checkEmailData.postData(email.text);
       statusRequest = handlingData(response);
-      print("success");
+      print("response");
       print(response);
       if(response["status"] == "success"){
         Get.offNamed(AppRoute.verifycode_resetpassword,arguments: {

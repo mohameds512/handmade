@@ -8,8 +8,6 @@ class CheckEmailData {
     var response = await crud.postDate(AppLink.checkEmail, {
       "email" : email,
     });
-    print('response');
-    print(response);
     return response.fold((l) => l, (r) => r);
 
   }

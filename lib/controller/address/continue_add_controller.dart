@@ -19,7 +19,9 @@ class ContinueAddressAddController extends GetxController{
 
   String? lat;
   String? long;
+
   late TextEditingController name ;
+  late TextEditingController phone ;
   late TextEditingController city ;
   late TextEditingController street;
   MyServices myServices = Get.find();
@@ -27,6 +29,7 @@ class ContinueAddressAddController extends GetxController{
     name = TextEditingController();
     city = TextEditingController();
     street = TextEditingController();
+    phone = TextEditingController() ;
     lat = Get.arguments['lat'].toString();
     long = Get.arguments['long'].toString();
     statusRequest = StatusRequest.none;
@@ -43,7 +46,7 @@ class ContinueAddressAddController extends GetxController{
       statusRequest = StatusRequest.loading;
       update();
       var response = await addressData.addData(
-          myServices.sharedPreference.getInt("id").toString()!, name!.text, city!.text,
+          myServices.sharedPreference.getInt("id").toString()!, name!.text,phone!.text, city!.text,
           street!.text, lat!, long!);
       statusRequest = handlingData(response);
       update();

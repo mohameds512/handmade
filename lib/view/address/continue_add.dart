@@ -58,6 +58,16 @@ class addressAddContinue extends StatelessWidget {
                               },
                               isNumber: false
                           ),
+                          CustomTextFormAuth(
+                            isNumber: true,
+                            valid: (val){
+                              return validInput(val!, 11,11, "phone");
+                            },
+                            hinttext: "Enter Your Phone",
+                            labeltext: "Phone",
+                            iconData: Icons.phone_android_sharp,
+                            myController: controllerMap.phone ,
+                          ),
                           CustomButtonAuth(
                             text: "Add",
                             onPressed: (){

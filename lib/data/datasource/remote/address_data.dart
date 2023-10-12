@@ -4,9 +4,10 @@ import 'package:handmade/core/class/crud.dart';
 class AddressData {
   Crud crud ;
   AddressData(this.crud);
-  addData(String user_id,String name,String city,String street,String lat,String long) async{
+  addData(String user_id,String name,String phone,String city,String street,String lat,String long) async{
     var response = await crud.postDate(AppLink.add_address, {
       "name":name,
+      "phone":phone,
       "user_id":user_id,
       "city":city,
       "street":street,
