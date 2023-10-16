@@ -22,36 +22,77 @@ class Items extends StatelessWidget {
     return
       Scaffold(
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.symmetric(vertical:25,horizontal: 15),
+
         child:
-        ListView(
-                children: [
-                  CustomAppBar(
-                    myController: controller.search!,
-                    onChanged: (val){
-                      controller.checkSearch(val);
-                    },
-                    titlehinttext: "search",
-                    // onPressedIcon: (){},
-                    onPressedSearch: (){},
-                    onPressedIconFavorite: (){
-                      Get.toNamed(AppRoute.favoritesItems);
-                    },
-                  ),
+        CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              pinned: true,
+              floating: false,
+              automaticallyImplyLeading: false,
+              backgroundColor: AppColor.whiteColor,
+              flexibleSpace: CustomAppBar(
+                myController: controller.search!,
+                onChanged: (val){
+                  controller.checkSearch(val);
+                },
+                titlehinttext: "search",
+                // onPressedIcon: (){},
+                onPressedSearch: (){},
+                onPressedIconFavorite: (){
+                  Get.toNamed(AppRoute.favoritesItems);
+                },
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
                   const ListCategoriesItems(),
                   GetBuilder<ItemControllerImp>(builder: (controllerImp)=>
-                    HandlingDataView(
-                    statusRequest: controllerImp.statusRequest,
-                    widget:
+                      HandlingDataView(
+                        statusRequest: controllerImp.statusRequest,
+                        widget:
                         controller.isSearch == false ?
-                    ItemsCustomListItems(Items: controllerImp.items)
-                      :
+                        ItemsCustomListItems(Items: controllerImp.items)
+                            :
                         ListItemsSearch(ItemsSearch: controller.searchItems,searchResolute: controller.searchResolute!,)
-                      ,
+                        ,
+                      )
                   )
-                  )
-                ],
+                ]
               ),
+            )
+          ],
+        ),
+        // ListView(
+        //         children: [
+        //           CustomAppBar(
+        //             myController: controller.search!,
+        //             onChanged: (val){
+        //               controller.checkSearch(val);
+        //             },
+        //             titlehinttext: "search",
+        //             // onPressedIcon: (){},
+        //             onPressedSearch: (){},
+        //             onPressedIconFavorite: (){
+        //               Get.toNamed(AppRoute.favoritesItems);
+        //             },
+        //           ),
+        //           const ListCategoriesItems(),
+        //           GetBuilder<ItemControllerImp>(builder: (controllerImp)=>
+        //             HandlingDataView(
+        //             statusRequest: controllerImp.statusRequest,
+        //             widget:
+        //                 controller.isSearch == false ?
+        //             ItemsCustomListItems(Items: controllerImp.items)
+        //               :
+        //                 ListItemsSearch(ItemsSearch: controller.searchItems,searchResolute: controller.searchResolute!,)
+        //               ,
+        //           )
+        //           )
+        //         ],
+        //       ),
           )
 
 

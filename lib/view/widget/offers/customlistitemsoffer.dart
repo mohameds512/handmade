@@ -42,6 +42,7 @@ class ItemsCustomListItemsOffer extends GetView<OfferController> {
                           child: CachedNetworkImage(
                             imageUrl: Items[index]["img_route"]!,
                             height: 100,
+                            width: 120,
                             fit: BoxFit.fill,
                           ),
                         ),

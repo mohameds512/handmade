@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/controller/home_controller.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../../core/constant/color.dart';
 import 'package:get/get.dart';
@@ -27,14 +28,18 @@ class CustomListCategory extends GetView<HomeControllerImp> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: AppColor.secondColor,
-                        borderRadius: BorderRadius.circular(10)
+                        shape: BoxShape.circle,
+                        // borderRadius: BorderRadius.circular(5),
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: CachedNetworkImageProvider(Categories[index]["img_route"]),
+                        )
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     height: 70,
                     width: 70,
-                    child:
-                    Image.network(Categories[index]["img_route"] ??'',color: AppColor.shadowPrimaryColor),
+                    // child:
+                    // CachedNetworkImage(imageUrl: Categories[index]["img_route"],fit: BoxFit.fill,)
+                    // Image.network(Categories[index]["img_route"] ??'',fit: BoxFit.cover,),
 
                   ),
                   Text(TransDB(Categories[index]["name"]?? ''),style: TextStyle(color: AppColor.black,fontSize: 13),)

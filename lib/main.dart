@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,
-      title: 'Handmade',
+      title: 'Antika',
       locale: controller.language,
       theme: controller.appTheme ,
       initialBinding: InitialBindings(),

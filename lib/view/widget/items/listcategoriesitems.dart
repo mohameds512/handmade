@@ -51,9 +51,10 @@ class Categories extends GetView<ItemControllerImp> {
           GetBuilder<ItemControllerImp>(
               builder: (controller) => Container(
 
-                padding: EdgeInsets.only(right: 10 , left: 10 , bottom: 5),
+                padding: EdgeInsets.only(right: 10 , left: 10 , bottom: 5,top: 10),
                 decoration: categoriesModel.id == controller.cat_id
                     ? BoxDecoration(
+
                     border: Border(
                         bottom: BorderSide(
                             width: 3, color: AppColor.primaryColor)))
@@ -61,7 +62,9 @@ class Categories extends GetView<ItemControllerImp> {
                 child: Text(
                   TransDB(controller.categories[Index]["name"]),
                   style:
-                  const TextStyle(fontSize: 20, color: AppColor.grey_2),
+                  const TextStyle(
+                      fontSize: 20, color: AppColor.grey_2,
+                    ),
                 ),
               ))
         ],

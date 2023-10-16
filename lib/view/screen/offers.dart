@@ -14,32 +14,43 @@ class Offers extends StatelessWidget {
     OfferController controller = Get.put(OfferController());
     return GetBuilder<OfferController>(builder: (controller) =>
         Container(
-          padding: EdgeInsets.all(10),
-          child: ListView(
-            // physics: NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.symmetric(vertical:25,horizontal: 15),
 
-            children: [
-
-            CustomAppBar(
-              myController: controller.search!,
-              onChanged: (val){
-                controller.checkSearch(val);
-              },
-              titlehinttext: "search",
-              // onPressedIcon: (){},
-              onPressedSearch: (){},
-              onPressedIconFavorite: (){
-                // Get.toNamed(AppRoute.favoritesItems);
-              },
-            ),
-            SizedBox(height:10 ,),
-            controller.isSearch == false ?
-            HandlingDataView(
-                statusRequest: controller.statusRequest,
-                widget:ItemsCustomListItemsOffer(Items: controller.items,)
-            ) :
-            ListItemsSearch(ItemsSearch: controller.searchItems,searchResolute: controller.searchResolute!,)
-          ],),
+            child:
+          CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                pinned: true,
+                floating: false,
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.white12,
+                flexibleSpace: CustomAppBar(
+                  myController: controller.search!,
+                  onChanged: (val){
+                    controller.checkSearch(val);
+                  },
+                  titlehinttext: "search",
+                  // onPressedIcon: (){},
+                  onPressedSearch: (){},
+                  onPressedIconFavorite: (){
+                    // Get.toNamed(AppRoute.favoritesItems);
+                  },
+                ),
+              ),
+              SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      controller.isSearch == false ?
+                      HandlingDataView(
+                          statusRequest: controller.statusRequest,
+                          widget:ItemsCustomListItemsOffer(Items: controller.items,)
+                      ) :
+                      ListItemsSearch(ItemsSearch: controller.searchItems,searchResolute: controller.searchResolute!,)
+                    ]
+                  )
+              )
+            ],
+          )
         )
       ,);
   }

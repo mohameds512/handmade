@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/controller/favoriteitems_controller.dart';
 import 'package:handmade/core/class/handlingdata.dart';
+import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:get/get.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
@@ -19,36 +20,49 @@ class FavoriteItems extends StatelessWidget {
     Get.put(FavoriteItemsController());
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: GetBuilder<FavoriteItemsController>(
-          builder: ((controller) => ListView(
-            children: [
-              CustomAppBar(
-                myController: controller.search!,
-                  onChanged: (val){
-                    controller.checkSearch(val);
-                  },
-                  titlehinttext: "Find Product",
-                onPressedSearch: (){},
-                onPressedIconFavorite: (){
-                    Get.toNamed(AppRoute.favoritesItems);
-                },
-              ),
+          padding: const EdgeInsets.symmetric(vertical:25,horizontal: 15),
 
-              GetBuilder<FavoriteItemsController>(builder: (controllerImp)=>
-                  HandlingDataView(
-                    statusRequest: controllerImp.statusRequest,
-                    widget:
-                        controllerImp.isSearch == false ?
-                    CustomFavoriteItems(Items: controllerImp.items)
-                    :
-                        ListItemsSearch(ItemsSearch: controller.searchItems,searchResolute: controller.searchResolute!,)
-                    ,
-                  )
-              )
+          child: GetBuilder<FavoriteItemsController>(
+          builder: ((controller) =>
+            CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  pinned: true,
+                  floating: false,
+                  automaticallyImplyLeading: false,
+                  backgroundColor: Colors.white12,
+                  flexibleSpace: CustomAppBar(
+                    myController: controller.search!,
+                    onChanged: (val){
+                      controller.checkSearch(val);
+                    },
+                    titlehinttext: "Find Product",
+                    onPressedSearch: (){},
+                    onPressedIconFavorite: (){
+                      Get.toNamed(AppRoute.favoritesItems);
+                    },
+                  ),
+                ),
+                SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        GetBuilder<FavoriteItemsController>(builder: (controllerImp)=>
+                            HandlingDataView(
+                              statusRequest: controllerImp.statusRequest,
+                              widget:
+                              controllerImp.isSearch == false ?
+                              CustomFavoriteItems(Items: controllerImp.items)
+                                  :
+                              ListItemsSearch(ItemsSearch: controller.searchItems,searchResolute: controller.searchResolute!,)
+                              ,
+                            )
+                        )
+                      ]
+                    )
+                )
+              ],
+            )
 
-            ],
-          )
           ),
         )
       ),

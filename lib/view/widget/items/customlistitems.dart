@@ -36,20 +36,26 @@ class ItemsCustomListItems extends GetView<ItemControllerImp> {
 
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Hero(
-                          tag: Items[index]["id"]!,
-                          child: CachedNetworkImage(
-                              imageUrl: Items[index]["img_route"]!,
-                            height: 100,
-                            fit: BoxFit.fill,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Hero(
+                              tag: Items[index]["id"]!,
+                              child: CachedNetworkImage(
+                                imageUrl: Items[index]["img_route"]!,
+                                height: 100,
+                                width: 120,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 10,),
+
                         Text(TransDB(Items[index]["name"]!) ,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Rating 3.4",textAlign: TextAlign.left,style: TextStyle(fontSize: 12),),
+                            Text("Rating 3.3",textAlign: TextAlign.left,style: TextStyle(fontSize: 12),),
                             Row(
                               children: [
                                 ...List.generate(5, (index) => Icon(Icons.star,size: 10,))
