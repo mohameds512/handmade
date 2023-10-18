@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:handmade/controller/productDetails_controller.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:get/get.dart';
+import 'package:handmade/core/functions/validinput.dart';
 class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
   const PriceQuentityProduct({Key? key}) : super(key: key);
 
@@ -14,21 +15,56 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
         Row(
           children: [
             IconButton(onPressed: (){
-              controller.addCountItemCart(controllerImp.Item!["id"]);
+              controller.increamentCountItemCart();
+              // controller.addCountItemCart(controllerImp.Item!["id"]);
             } , icon: Icon(Icons.add)),
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(border: Border.all(color: Colors.black),borderRadius: BorderRadius.circular(3)),
-              child: Text(controllerImp.coutItemCart.toString(),style: TextStyle(fontFamily: "sans"),),
+            SizedBox(
+              width: 50,
+              height: 40,
+              child: TextFormField(
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                keyboardType: TextInputType.number,
+                // maxLength: 3,
+                // onChanged: (val){
+                //
+                // },
+                textAlign: TextAlign.center,
+                controller: controllerImp.count,
+                decoration: InputDecoration(
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                  suffixIconColor: AppColor.grey,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+              ),
             ),
             IconButton(onPressed: (){
-              controller.removeCountItemCart(controllerImp.Item!["id"]);
+              controller.decreamentCountItemCart();
+              // controller.removeCountItemCart(controllerImp.Item!["id"]);
 
             }, icon: Icon(Icons.remove)),
           ],
         ),
         Spacer(),
-        Text("${controllerImp.Item?["discount_price"]} \$",style: TextStyle(color: AppColor.primaryColor,fontFamily: "sans"),),
+        Column(
+          children: [
+            Text("${controllerImp.Item?["discount_price"]} \$",style: TextStyle(color: AppColor.primaryColor,fontFamily: "sans"),),
+            Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top:  BorderSide(width: 2,color: AppColor.primaryColor)
+                ),
+
+              ),
+              child: Text("${controllerImp.Item?["discount_price"]} \$",style: TextStyle(color: AppColor.primaryColor,),),
+            )
+
+
+          ],
+        ),
+
         SizedBox(width: 10,),
         if(controllerImp.Item?["discount"] != 0)
         Text("${controllerImp.Item?["price"]} \$",style: TextStyle(decorationColor: AppColor.primaryColor, decorationThickness: 2.0,decoration: TextDecoration.lineThrough, fontFamily: "sans"),),

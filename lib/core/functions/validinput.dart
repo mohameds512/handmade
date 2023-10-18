@@ -7,6 +7,11 @@ validInput(String val,int min,int max,String type){
     return "can't be empty".tr;
   }
 
+  if(type == "number") {
+    if(!GetUtils.isNumericOnly(val)){
+      return "Just accept numbers".tr;
+    }
+  }
  if(type == "username") {
   if(!GetUtils.isUsername(val)){
     return "not valid username".tr;

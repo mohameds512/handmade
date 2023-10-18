@@ -42,7 +42,7 @@ class CustomListCategory extends GetView<HomeControllerImp> {
                     // Image.network(Categories[index]["img_route"] ??'',fit: BoxFit.cover,),
 
                   ),
-                  Text(TransDB(Categories[index]["name"]?? ''),style: TextStyle(color: AppColor.black,fontSize: 13),)
+                  Text(TransDB(Categories[index]["name"]?? ''),style: TextStyle(color: AppColor.grey_2,fontSize: 13),)
                 ],
 
               ),

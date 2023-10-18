@@ -28,8 +28,10 @@ class CustomListItem extends GetView<HomeControllerImp> {
             child: Column(
               children: [
                 Container(
+                  // padding: EdgeInsets.all(50),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
+                    
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: CachedNetworkImageProvider(Items[i]["img_route"]),
@@ -41,7 +43,7 @@ class CustomListItem extends GetView<HomeControllerImp> {
                 ),
                 Text(
                   TransDB(Items[i]["name"] ?? ''),
-                  style: TextStyle(color: AppColor.black, fontSize: 13),
+                  style: TextStyle(color: AppColor.shadowPrimaryColor, fontSize: 13,),
                 ),
               ],
             ),
