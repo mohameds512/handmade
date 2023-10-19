@@ -4,12 +4,14 @@ import 'package:handmade/core/class/crud.dart';
 class CartData {
   Crud crud ;
   CartData(this.crud);
-  addToCart(item_id,user_id) async{
+  addToCart(item_id,user_id,item_info,cumulativePrice,count) async{
     var response = await crud.postDate(AppLink.add_to_cart, {
       "item_id":item_id.toString(),
       "user_id":user_id.toString(),
+      "item_info" : item_info,
+      "cumulativePrice" : cumulativePrice.toString(),
+      "count" : count.toString(),
     });
-
     return response.fold((l) => l, (r) => r);
 
   }

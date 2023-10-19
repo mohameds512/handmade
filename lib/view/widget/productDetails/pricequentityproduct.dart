@@ -24,13 +24,15 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
               child: TextFormField(
                 onTapOutside: (event) => FocusScope.of(context).unfocus(),
                 keyboardType: TextInputType.number,
-                // maxLength: 3,
-                // onChanged: (val){
-                //
-                // },
+                maxLength: 3,
+
+                onChanged: (val){
+
+                },
                 textAlign: TextAlign.center,
                 controller: controllerImp.count,
                 decoration: InputDecoration(
+                  counterText: "",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                   suffixIconColor: AppColor.grey,
@@ -51,6 +53,7 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
         Column(
           children: [
             Text("${controllerImp.Item?["discount_price"]} \$",style: TextStyle(color: AppColor.primaryColor,fontFamily: "sans"),),
+            controllerImp.cumulativePrice > 0 ?
             Container(
               decoration: BoxDecoration(
                 border: Border(
@@ -58,8 +61,8 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
                 ),
 
               ),
-              child: Text("${controllerImp.Item?["discount_price"]} \$",style: TextStyle(color: AppColor.primaryColor,),),
-            )
+              child: Text("${controllerImp.cumulativePrice} \$",style: TextStyle(color: AppColor.primaryColor,),),
+            ) : Text('')
 
 
           ],

@@ -77,7 +77,7 @@ import 'package:flutter/cupertino.dart';
     addToCart(item_id) async {
 
       statusRequest = StatusRequest.loading;
-      var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"));
+      var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"),'ff','ff','ff');
 
       statusRequest = handlingData(response);
       if(StatusRequest.success == statusRequest){
@@ -109,7 +109,7 @@ import 'package:flutter/cupertino.dart';
         update();
       }
 
-      var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"));
+      var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"),'ff','ff','ff');
 
       statusRequest = handlingData(response);
       if(StatusRequest.success == statusRequest){

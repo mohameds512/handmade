@@ -5,7 +5,7 @@ import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/cart/cart_data.dart';
 import 'package:handmade/services/services.dart';
-
+import 'dart:convert';
 abstract class ProductDetailsController extends GetxController{
 
 }
@@ -21,7 +21,7 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
   int coutItemCart = 0;
   List<TextEditingController> textControllers = [];
   late TextEditingController count;
-  late double cumulativePrice  = 0;
+  late int cumulativePrice  = 0;
 
   intialData() async {
     statusRequest = StatusRequest.loading;
@@ -57,12 +57,15 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
   }
 
   addToCart(item_id) async {
-    print('textControllers: $item_info ');
-    print( count.text );
-    return;
+
+    if(count.text == '' || count.text == '0'){
+      Get.snackbar('Error', 'PLZ select count ');
+      return;
+    }
     var formdata = formstate.currentState;
-    if(formdata!.validate() ){
-      var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"));
+    if(item_info.length == 0){
+      var str_item_info = jsonEncode(item_info) ;
+      var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"),str_item_info,cumulativePrice,count.text);
 
       statusRequest = handlingData(response);
       if(StatusRequest.success == statusRequest){
@@ -70,8 +73,41 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
             "Notificstion",
             "Added to cart"
         );
+        count.text = '0';
+        cumulativePrice = 0;
+        update();
       }else{
         statusRequest = StatusRequest.failure;
+      }
+    }else{
+      if(formdata!.validate() ){
+        var str_item_info = jsonEncode(item_info) ;
+        var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"),str_item_info,cumulativePrice,count);
+
+        statusRequest = handlingData(response);
+        if(StatusRequest.success == statusRequest){
+          Get.snackbar(
+              "Notificstion",
+              "Added to cart"
+          );
+          item_info = item_info.map((item)
+            {
+              return{
+                'name': item['name'],
+                'type': item['type'],
+                'value': null,
+              };
+            }
+          ).toList();
+          for(var controller in textControllers){
+            controller.text = '';
+          }
+          count.text = '0';
+          cumulativePrice = 0;
+          update();
+        }else{
+          statusRequest = StatusRequest.failure;
+        }
       }
     }
 
@@ -94,8 +130,14 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
 
   @override
   increamentCountItemCart(){
-    var numCount = int.parse(count.text);
+    print('count.text');
+    print(count.text);
+    var numCount = 0;
+    if(count.text != ''){
+      numCount = int.parse(count.text);
+    }
     numCount = numCount + 1;
+    cumulativePrice = Item?['discount_price'] * numCount;
     count.text = numCount.toString();
 
     update();
@@ -106,6 +148,7 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
     var numCount = int.parse(count.text);
     if(numCount >0){
       numCount = numCount - 1;
+      cumulativePrice = Item?['discount_price'] * numCount;
       count.text = numCount.toString();
       update();
     }
