@@ -21,7 +21,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 20),
       // padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(children: [
         Expanded(child: TextFormField(

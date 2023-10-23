@@ -40,6 +40,7 @@ class _HomeState extends State<Home> {
                   SliverAppBar(
                     pinned: true,
                     floating: false,
+
                     backgroundColor: AppColor.whiteColor,
                     flexibleSpace: CustomAppBar(
                       myController: controller.search!,
@@ -55,8 +56,10 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   SliverList(
+
                     delegate: SliverChildListDelegate(
                       [
+
                         HandlingDataView(
                           statusRequest: controller.statusRequest!,
                           widget: controller.isSearch == false

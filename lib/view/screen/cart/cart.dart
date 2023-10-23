@@ -46,19 +46,21 @@ class Cart extends StatelessWidget {
                 child: Column(
                   children: [
                     ...List.generate(
-                      cartController.cartItems.length
-                      , (index) =>
+                      cartController.cartItems.length,
+                       (index) =>
                         CustomCardList(
                             onAdd: (){
                               cartController.addToCartFromCart(cartController.cartItems[index]["id"]!);
                             },
                             onRemove: (){
-                              cartController.removeFromCartFromCart(cartController.cartItems[index]["id"]!);
+                              cartController.removeFromCartFromCart(cartController.cartItems[index]["cart_id"]!);
                             },
                             name: TransDB(cartController.cartItems[index]["name"]),
-                            price: "${cartController.cartItems[index]["all_price"].toStringAsFixed(2)} \$",
-                            count: cartController.cartItems[index]["item_count"].toString(),
+                            price: "${cartController.cartItems[index]["cumulativePrice"]} \$",
+                            count: cartController.cartItems[index]["quantity"].toString(),
                             imgLink: cartController.cartItems[index]["img_route"],
+                            status: cartController.cartItems[index]["status"],
+                            Item_info: cartController.cartItems[index]["item_info"],
                         ),
                       )
 

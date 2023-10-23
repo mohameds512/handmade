@@ -7,7 +7,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:handmade/core/constant/ImageAssets.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
+import 'package:handmade/core/functions/socialshare.dart';
 import 'package:handmade/view/screen/full_screen.dart';
+import 'package:share_plus/share_plus.dart';
 class TopPageProductDetails extends GetView<ProductDetailsControllerImp> {
   const TopPageProductDetails({Key? key}) : super(key: key);
 
@@ -47,13 +49,32 @@ class TopPageProductDetails extends GetView<ProductDetailsControllerImp> {
             ),
           ),
         ),
-        if(controllerImp.Item?["discount"] != 0) Positioned(
+        if(controllerImp.Item?["discount"] != 0)
+          Positioned(
             top: 4,
             left: 4,
             child: Image.asset(AppImageAssets.sale1,height: 40,)
-        )
+        ),
+        Positioned(
+            top: 15,
+            right: 15,
+            child: InkWell(
+              onTap: ()async{
+                Share.shareUri(Uri.parse( controllerImp.Item?["img_route"]!));
+
+              },
+              child: Icon(Icons.share,color: Colors.white70,),
+            )
+        ),
+
       ],
     );
   }
+}
+SharLink(link, Function()? onPressed  ){
+  return ElevatedButton(
+      onPressed: onPressed,
+      child: Text('sssss')
+  );
 }
 

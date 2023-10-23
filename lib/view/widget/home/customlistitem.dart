@@ -31,7 +31,6 @@ class CustomListItem extends GetView<HomeControllerImp> {
                   // padding: EdgeInsets.all(50),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: CachedNetworkImageProvider(Items[i]["img_route"]),

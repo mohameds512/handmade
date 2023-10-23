@@ -82,7 +82,7 @@ class   ProductDetailsControllerImp extends ProductDetailsController{
     }else{
       if(formdata!.validate() ){
         var str_item_info = jsonEncode(item_info) ;
-        var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"),str_item_info,cumulativePrice,count);
+        var response = await cartData.addToCart(item_id, myServices.sharedPreference.getInt("id"),str_item_info,cumulativePrice,count.text);
 
         statusRequest = handlingData(response);
         if(StatusRequest.success == statusRequest){

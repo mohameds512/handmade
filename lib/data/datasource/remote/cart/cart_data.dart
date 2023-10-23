@@ -15,9 +15,9 @@ class CartData {
     return response.fold((l) => l, (r) => r);
 
   }
-  removeFromCart(item_id,user_id) async{
+  removeFromCart(cart_id,user_id) async{
     var response = await crud.postDate(AppLink.remove_from_cart, {
-      "item_id":item_id.toString(),
+      "cart_id":cart_id.toString(),
       "user_id":user_id.toString(),
     });
 

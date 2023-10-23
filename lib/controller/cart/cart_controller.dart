@@ -55,6 +55,7 @@ import 'package:flutter/cupertino.dart';
         Dtotal_price = DPrice - (Dtotal_price *couponDiscount/100 );
         totalPrice = Dtotal_price.toStringAsFixed(2);
         return totalPrice;
+
       }else{
         return 0;
       }
@@ -101,7 +102,9 @@ import 'package:flutter/cupertino.dart';
           cartItems[index]['all_price'] = cartItems[index]['all_price'] + (cartItems[index]['price'] - (cartItems[index]['price']* cartItems[index]['discount']/100 ));
           double Dtotal_price = double.parse(Price!);
           double varX = Dtotal_price + cartItems[index]['price'];
-          Price = varX.toString();
+
+          Price = varX.toStringAsFixed(2);
+
 
         } else {
 
@@ -138,23 +141,24 @@ import 'package:flutter/cupertino.dart';
       }
     }
 
-    removeFromCartFromCart(item_id) async {
+    removeFromCartFromCart(cart_id) async {
+
       if (cartItems.isNotEmpty) {
-        int index = cartItems.indexWhere((cartItem) => cartItem['id'] == item_id);
-        print(index);
+        int index = cartItems.indexWhere((cartItem) => cartItem['cart_id'] == cart_id);
+
         if (index != -1) {
-          cartItems[index]['item_count']--;
+
           int varTotal = int.parse(totalCount!);
           varTotal--;
           totalCount = varTotal.toString();
-          cartItems[index]['all_price'] = cartItems[index]['all_price'] - (cartItems[index]['price'] - (cartItems[index]['price']* cartItems[index]['discount']/100 ));
 
           double Dtotal_price = double.parse(Price!);
-          double varX = Dtotal_price - cartItems[index]['price'];
-          Price = varX.toString();
+          double varX = Dtotal_price - cartItems[index]['cumulativePrice'];
+          Price = varX.toStringAsFixed(2);
 
-          if (cartItems[index]['item_count'] == 0) {
-            cartItems.removeWhere((element) => element["id"] == item_id);
+
+          if (cartItems.length > 0) {
+            cartItems.removeWhere((element) => element["cart_id"] == cart_id);
           }
         } else {
           // Handle the case when the item is not found in cartItems
@@ -162,15 +166,14 @@ import 'package:flutter/cupertino.dart';
         update();
       }
 
-
-      var response = await cartData.removeFromCart(item_id, myServices.sharedPreference.getInt("id"));
+      var response = await cartData.removeFromCart(cart_id, myServices.sharedPreference.getInt("id"));
 
       statusRequest = handlingData(response);
 
       if(StatusRequest.success == statusRequest){
         Get.snackbar(
             "Notificstion",
-            "Added to cart"
+            "Removed to cart"
         );
       }else{
         statusRequest = StatusRequest.failure;
@@ -198,11 +201,12 @@ import 'package:flutter/cupertino.dart';
       cartItems.clear();
       update();
       var response = await cartData.indexCart(myServices.sharedPreference.getInt("id"));
+
       statusRequest = handlingData(response);
       cartItems = response['carts'];
 
       if(cartItems.isNotEmpty){
-        Price =   response['totalPrice'].toString();
+        Price =   response['totalPrice'].toStringAsFixed(2);
         totalCount =   response['total_count'].toString();
       }
 
@@ -214,8 +218,6 @@ import 'package:flutter/cupertino.dart';
     }
     void onInit() {
       FirebaseMessaging.instance.getToken().then((value){
-        print("token");
-        print(value) ;
         String? token = value;
       }
       );
