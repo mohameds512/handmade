@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/middleware/mymiddleware.dart';
 import 'package:handmade/test.dart';
@@ -16,6 +17,8 @@ import 'package:handmade/view/screen/auth/success_signup.dart';
 import 'package:handmade/view/screen/auth/verifycode.dart';
 import 'package:handmade/view/screen/auth/verifycode_resetPassword.dart';
 import 'package:handmade/view/screen/cart/cart.dart';
+import 'package:handmade/view/screen/chats/chatlist.dart';
+import 'package:handmade/view/screen/chats/chats.dart';
 import 'package:handmade/view/screen/checkout.dart';
 import 'package:handmade/view/screen/contact_us.dart';
 import 'package:handmade/view/screen/favoritesitems.dart';
@@ -74,5 +77,7 @@ List<GetPage<dynamic>> ? routes = [
   GetPage(name:AppRoute.contactUs,page: () => const ContactUs(),),
 
   GetPage(name:AppRoute.Offers,page: () => const Offers(),),
+  GetPage(name:AppRoute.ChatList,page: () => const AppChatList(),),
+  GetPage(name:AppRoute.Chats,page: () => const AppChat(),),
 
 ];

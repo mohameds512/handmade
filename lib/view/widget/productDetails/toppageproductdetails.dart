@@ -61,7 +61,6 @@ class TopPageProductDetails extends GetView<ProductDetailsControllerImp> {
             child: InkWell(
               onTap: ()async{
                 Share.shareUri(Uri.parse( controllerImp.Item?["img_route"]!));
-
               },
               child: Icon(Icons.share,color: Colors.white70,),
             )

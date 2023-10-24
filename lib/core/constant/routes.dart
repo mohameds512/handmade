@@ -31,6 +31,9 @@ class AppRoute {
 
   static const String Offers = "/Offers";
 
+  static const String ChatList = "/ChatList";
+  static const String Chats = "/Chats";
+
 
 
 

@@ -51,4 +51,7 @@
 
   // ========================notification===============================
   static const String offers = "$server/flutter/offer/offersData";
+
+  // ========================chat===============================
+  static const String listChat = "$server/flutter/chat/ListChats";
  }

@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:handmade/core/constant/routes.dart';
 
 import '../../core/constant/color.dart';
-
+import 'package:get/get.dart';
 class CustomAppBar extends StatelessWidget {
   final String titlehinttext;
   // final void Function()? onPressedIcon;
@@ -22,6 +23,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 20),
+      height: 50,
       // padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(children: [
         Expanded(child: TextFormField(
@@ -41,7 +43,7 @@ class CustomAppBar extends StatelessWidget {
               fillColor: AppColor.backgroundColor
           ),
         )),
-        const SizedBox(width:15),
+        // const SizedBox(width:15),
         // Container(
         //   decoration: BoxDecoration(
         //       color: AppColor.backgroundColor,
@@ -56,23 +58,58 @@ class CustomAppBar extends StatelessWidget {
         //   ),
         // ),
         // const SizedBox(width:15),
-        Container(
-          // height: 55,
-          decoration: BoxDecoration(
-              color: AppColor.backgroundColor,
-              borderRadius: BorderRadius.circular(10),
+        // Container(
+        //   // height: 55,
+        //   decoration: BoxDecoration(
+        //       color: AppColor.backgroundColor,
+        //       borderRadius: BorderRadius.circular(10),
+        //
+        //   ),
+        //   padding: EdgeInsets.symmetric(vertical: 8),
+        //   width: 60,
+        //   child: IconButton(
+        //     onPressed: onPressedIconFavorite,
+        //
+        //     icon: const Icon(
+        //         Icons.favorite,color: AppColor.primaryColor,size: 34,),
+        //     iconSize: 30 ,color: Colors.grey[600],
+        //   ),
+        // ),
+        IconButton(
+          onPressed: onPressedIconFavorite,
 
-          ),
-          padding: EdgeInsets.symmetric(vertical: 8),
-          width: 60,
-          child: IconButton(
-            onPressed: onPressedIconFavorite,
-
-            icon: const Icon(
-                Icons.favorite,color: AppColor.primaryColor,size: 34,),
-            iconSize: 30 ,color: Colors.grey[600],
-          ),
+          icon: const Icon(
+            Icons.favorite,color: AppColor.primaryColor,size: 34,),
+          iconSize: 30 ,color: Colors.grey[600],
         ),
+        IconButton(
+          onPressed: (){
+
+            Get.toNamed(AppRoute.ChatList);
+          },
+
+          icon: const Icon(
+            Icons.chat_outlined,color: AppColor.primaryColor,size: 34,),
+          iconSize: 30 ,color: Colors.grey[600],
+        ),
+        // Container(
+        //   // height: 55,
+        //   decoration: BoxDecoration(kkkk
+
+        //     color: AppColor.backgroundColor,
+        //     borderRadius: BorderRadius.circular(10),
+        //
+        //   ),
+        //   padding: EdgeInsets.symmetric(vertical: 8),
+        //   width: 60,
+        //   child: IconButton(
+        //     onPressed: onPressedIconFavorite,
+        //
+        //     icon: const Icon(
+        //       Icons.favorite,color: AppColor.primaryColor,size: 34,),
+        //     iconSize: 30 ,color: Colors.grey[600],
+        //   ),
+        // ),
 
       ],
       ),
