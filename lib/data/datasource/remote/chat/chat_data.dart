@@ -14,4 +14,15 @@ class ChatData{
     return response.fold((l) => l, (r) => r);
 
   }
+  SendMessage(sender_id,receiver_id,message) async{
+    var response = await crud.postDate(AppLink.sendMessage, {
+      "sender_id":sender_id.toString(),
+      "receiver_id":receiver_id.toString(),
+      "message":message,
+    }
+    );
+    return response.fold((l) => l, (r) => r);
+
+  }
+
 }
