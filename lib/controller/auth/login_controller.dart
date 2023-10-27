@@ -53,6 +53,7 @@ class LoginControllerImp extends LoginController{
 
         FirebaseMessaging.instance.subscribeToTopic("users");
         FirebaseMessaging.instance.subscribeToTopic("user_${myServices.sharedPreference.getInt("id").toString()}");
+        FirebaseMessaging.instance.subscribeToTopic("chat_user_${myServices.sharedPreference.getInt("id").toString()}");
 
       }else if(response["status"] =='verify_email'){
         Get.defaultDialog(title: "Warning",middleText:  "You must Verify Email First ");

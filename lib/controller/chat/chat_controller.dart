@@ -12,7 +12,7 @@ class ChatController extends GetxController{
   late StatusRequest statusRequest;
   late int user_id ;
   late TextEditingController message;
-
+  ScrollController scrollController = ScrollController();
   ChatData chatData = ChatData(Get.find());
 
   GetChatList()async{
@@ -27,14 +27,32 @@ class ChatController extends GetxController{
 
   sendMessage()async{
     // if(message.text != null ){
-      var response = await chatData.SendMessage(user_id.toString(),'100',message.text);
-      print(response['message']);
-      ChatList.add(response['message']);
-      // ChatList.add({'message':message.text,'sender_id':user_id,'receiver_id':100});
+    late String receiver_id = '0';
+    if(ChatList[0]['receiver_id'] == user_id){
+      receiver_id = ChatList[0]['sender_id'].toString();
+    }else{
+      receiver_id = ChatList[0]['receiver_id'].toString();
+    }
+    var response = await chatData.SendMessage(user_id.toString(),receiver_id,message.text);
+      // print(response['message']);
+      // ChatList.add(response['message']);
+      ChatList.add({'message':message.text,'sender_id':user_id,'receiver_id':receiver_id});
       message.text = '';
+
+      scrollController.jumpTo(scrollController.position.maxScrollExtent);
+
       update();
     // }
 
+  }
+  receiveMessage()async{
+    print(ChatList.length);
+    var response = await chatData.GetChatList(myServices.sharedPreference.getInt("id"));
+    ChatList.clear();
+    ChatList =response['chatList'];
+    scrollController.jumpTo(scrollController.position.maxScrollExtent);
+
+    update();
 
   }
   @override
@@ -43,5 +61,7 @@ class ChatController extends GetxController{
     message = TextEditingController();
     GetChatList();
     super.onInit();
+    scrollController = ScrollController();
   }
+
 }

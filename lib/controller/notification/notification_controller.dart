@@ -33,7 +33,6 @@ class NotificationController extends GetxController{
 
   @override
   void onInit() {
-    print("ssssssssssssssssssss");
     getNotfs();
     super.onInit();
   }

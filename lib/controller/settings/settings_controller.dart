@@ -14,6 +14,8 @@ class SettingsControllerImp extends SettingsController {
   LogOut() {
     FirebaseMessaging.instance.unsubscribeFromTopic("users");
     FirebaseMessaging.instance.unsubscribeFromTopic("user_${myServices.sharedPreference.getInt("id").toString()}");
+    FirebaseMessaging.instance.unsubscribeFromTopic("chat_user_${myServices.sharedPreference.getInt("id").toString()}");
+
     String? currentLanguage = myServices.sharedPreference.getString("lang");
 
     myServices.sharedPreference.clear();
