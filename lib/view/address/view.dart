@@ -6,6 +6,7 @@ import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/address/cardviewaddress.dart';
+import 'package:shimmer/shimmer.dart';
 class addressView extends StatelessWidget {
   const addressView({Key? key}) : super(key: key);
 
@@ -23,7 +24,13 @@ class addressView extends StatelessWidget {
         child: Icon(Icons.add),
       ),
       body:GetBuilder<ViewAddressController>(builder: (controller)=>
-        HandlingDataView(statusRequest: controller.statusRequest,
+        HandlingDataView(
+            loadingWidget: Shimmer.fromColors(
+              baseColor: Colors.grey,
+              highlightColor: Colors.white10,
+              child:Text('ss'),
+            ),
+            statusRequest: controller.statusRequest,
             widget: Container(
               child: ListView.builder(
                   itemCount: controller.addresses.length,

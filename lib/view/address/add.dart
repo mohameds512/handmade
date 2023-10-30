@@ -7,6 +7,7 @@ import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/auth/custombuttonauth.dart';
+import 'package:shimmer/shimmer.dart';
 
 class addressAdd extends StatelessWidget {
   const addressAdd({Key? key}) : super(key: key);
@@ -21,7 +22,13 @@ class addressAdd extends StatelessWidget {
       body: Container(
         child: GetBuilder<AddressAddController>(
           builder: (controllerMap)=>
-              HandlingDataView(statusRequest: controllerMap.statusRequest,
+              HandlingDataView(
+                loadingWidget: Shimmer.fromColors(
+                  baseColor: Colors.grey,
+                  highlightColor: Colors.white10,
+                  child:Text('ss'),
+                ),
+                statusRequest: controllerMap.statusRequest,
                   widget:Column(
                       children: [
                         if(controllerMap.kGooglePlex != null)

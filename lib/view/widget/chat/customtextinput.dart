@@ -24,7 +24,6 @@ class CustomInputMessage extends StatelessWidget {
         child: Row(
           children: [
             Expanded(child: TextField(
-              onTapOutside: (event)=>FocusScope.of(context).unfocus(),
               controller: myController,
               decoration: InputDecoration(
                 border: InputBorder.none,

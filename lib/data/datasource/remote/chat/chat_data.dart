@@ -6,18 +6,19 @@ class ChatData{
   Crud crud;
   ChatData(this.crud);
   
-  GetChatList(user_id) async{
+  GetChatList(conver_id) async{
     var response = await crud.postDate(AppLink.listChat, {
-      "user_id":user_id.toString(),
+      "conver_id":conver_id,
     }
     );
     return response.fold((l) => l, (r) => r);
 
   }
-  SendMessage(sender_id,receiver_id,message) async{
+  SendMessage(sender_id,receiver_id,conver_id,message) async{
     var response = await crud.postDate(AppLink.sendMessage, {
       "sender_id":sender_id.toString(),
       "receiver_id":receiver_id.toString(),
+      "conver_id":conver_id.toString(),
       "message":message,
     }
     );

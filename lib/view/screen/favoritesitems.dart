@@ -10,6 +10,7 @@ import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/view/screen/search/listitemsearch.dart';
 import 'package:handmade/view/widget/items/customfavoriteitems.dart';
 import 'package:handmade/view/widget/items/customlistitems.dart';
+import 'package:shimmer/shimmer.dart';
 import '../widget/customappbar.dart';
 
 class FavoriteItems extends StatelessWidget {
@@ -48,6 +49,11 @@ class FavoriteItems extends StatelessWidget {
                       [
                         GetBuilder<FavoriteItemsController>(builder: (controllerImp)=>
                             HandlingDataView(
+                              loadingWidget: Shimmer.fromColors(
+                                baseColor: Colors.grey,
+                                highlightColor: Colors.white10,
+                                child:Text('ss'),
+                              ),
                               statusRequest: controllerImp.statusRequest,
                               widget:
                               controllerImp.isSearch == false ?

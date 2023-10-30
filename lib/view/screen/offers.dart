@@ -6,6 +6,7 @@ import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/view/screen/search/listitemsearch.dart';
 import 'package:handmade/view/widget/customappbar.dart';
 import 'package:handmade/view/widget/offers/customlistitemsoffer.dart';
+import 'package:shimmer/shimmer.dart';
 class Offers extends StatelessWidget {
   const Offers({Key? key}) : super(key: key);
 
@@ -42,6 +43,11 @@ class Offers extends StatelessWidget {
                     [
                       controller.isSearch == false ?
                       HandlingDataView(
+                          loadingWidget: Shimmer.fromColors(
+                            baseColor: Colors.grey,
+                            highlightColor: Colors.white10,
+                            child:Text('ss'),
+                          ),
                           statusRequest: controller.statusRequest,
                           widget:ItemsCustomListItemsOffer(Items: controller.items,)
                       ) :

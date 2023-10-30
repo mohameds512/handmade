@@ -8,6 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
 import 'package:handmade/view/screen/order/ratingdialog.dart';
 import 'package:handmade/view/widget/order/listorderitemsdetails.dart';
+import 'package:shimmer/shimmer.dart';
 
 class OrderDetails extends StatelessWidget {
   const OrderDetails({Key? key}) : super(key: key);
@@ -22,6 +23,11 @@ class OrderDetails extends StatelessWidget {
       body:
       GetBuilder<OrderDetailsController>(builder:
           (controller) => HandlingDataView(
+            loadingWidget: Shimmer.fromColors(
+              baseColor: Colors.grey,
+              highlightColor: Colors.white10,
+              child:Text('ss'),
+            ),
               statusRequest: controller.statusRequest,
               widget:
               Container(

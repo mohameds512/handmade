@@ -6,6 +6,7 @@ import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/functions/alertexitapp.dart';
 import 'package:handmade/core/functions/validinput.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../controller/auth/signup_controller.dart';
 import '../../../core/constant/ImageAssets.dart';
 import '../../widget/auth/custombuttonauth.dart';
@@ -32,7 +33,13 @@ class SignUp extends StatelessWidget {
       child: GetBuilder<SignUpControllerImp>(builder:
           (controller) =>
 
-            HandlingDataView(statusRequest: controller.statusRequest!, widget: Container(
+            HandlingDataView(
+                loadingWidget: Shimmer.fromColors(
+                  baseColor: Colors.grey,
+                  highlightColor: Colors.white10,
+                  child:Text('ss'),
+                ),
+                statusRequest: controller.statusRequest!, widget: Container(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30 ),
               child: Form(
                 key: controller.formstate ,

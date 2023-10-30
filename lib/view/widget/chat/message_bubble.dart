@@ -30,17 +30,23 @@ class _MessageBubbleState extends State<MessageBubble> {
                 });
               },
               child: Container(
-                width: 300,
+                constraints: BoxConstraints(
+                  maxWidth: 300
+                ),
                 padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(20),topLeft: Radius.circular(20),
+                        bottomLeft:widget.User_id == widget.message['sender_id'] ?  Radius.circular(20) :  Radius.circular(0),
+                        bottomRight:widget.User_id == widget.message['sender_id'] ?  Radius.circular(0) :  Radius.circular(20),
+                    ),
                     color: widget.User_id == widget.message['sender_id'] ? AppColor.secondColor :AppColor.thirdColor
                 ),
                 child: Text(
                   widget.message['message'],
                   style: TextStyle(
                       fontSize: 18,
-                      height: 1.4,
+                      height: 1.2,
                       fontWeight: FontWeight.w500
                   ),
                 ),

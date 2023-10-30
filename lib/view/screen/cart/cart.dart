@@ -11,6 +11,7 @@ import 'package:handmade/view/widget/cart/custombottomnavigationbarcart.dart';
 import 'package:handmade/view/widget/cart/customcardlist.dart';
 import 'package:handmade/view/widget/cart/topcardcart.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 class Cart extends StatelessWidget {
   const Cart({Key? key}) : super(key: key);
 
@@ -36,7 +37,13 @@ class Cart extends StatelessWidget {
       ),
 
       body: GetBuilder<CartController>(builder: ((controller)=>
-      HandlingDataView(statusRequest: controller.statusRequest,
+      HandlingDataView(
+        loadingWidget: Shimmer.fromColors(
+          baseColor: Colors.grey,
+          highlightColor: Colors.white10,
+          child:Text('ss'),
+        ),
+        statusRequest: controller.statusRequest,
           widget:ListView(
             children: [
               const SizedBox(height: 10,),

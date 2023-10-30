@@ -6,13 +6,16 @@ import 'package:lottie/lottie.dart';
 class HandlingDataView extends StatelessWidget {
   final StatusRequest statusRequest;
   final Widget widget;
-  const HandlingDataView({Key? key, required this.statusRequest, required this.widget}) : super(key: key);
+   final Widget loadingWidget;
+  const HandlingDataView({Key? key, required this.statusRequest, required this.widget,  required this.loadingWidget}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return
       statusRequest == StatusRequest.loading ?
-         Center(child: Lottie.asset(AppImageAssets.loading1,),) :
+        loadingWidget
+         // Center(child: Lottie.asset(AppImageAssets.loading1,),)
+          :
       statusRequest == StatusRequest.offlinefailure ?
       Center(child: Lottie.asset(AppImageAssets.offline,repeat: false),):
       statusRequest == StatusRequest.serverfailure ?

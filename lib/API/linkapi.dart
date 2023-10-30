@@ -55,4 +55,8 @@
   // ========================chat===============================
   static const String listChat = "$server/flutter/chat/ListChats";
   static const String sendMessage = "$server/flutter/chat/sendMessage";
+
+  // ========================conversations===============================
+  static const String listConversation = "$server/flutter/conversation/ListConversation";
+  static const String addConversation = "$server/flutter/conversation/addConversation";
  }

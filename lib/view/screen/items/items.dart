@@ -8,6 +8,7 @@ import 'package:handmade/view/screen/search/listitemsearch.dart';
 import 'package:handmade/view/widget/items/customlistitems.dart';
 import 'package:handmade/view/widget/items/listcategoriesitems.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../controller/favorite_controller.dart';
 import '../../widget/customappbar.dart';
 
@@ -51,6 +52,11 @@ class Items extends StatelessWidget {
                   const ListCategoriesItems(),
                   GetBuilder<ItemControllerImp>(builder: (controllerImp)=>
                       HandlingDataView(
+                        loadingWidget: Shimmer.fromColors(
+                          baseColor: Colors.grey,
+                          highlightColor: Colors.white10,
+                          child:Text('ss'),
+                        ),
                         statusRequest: controllerImp.statusRequest,
                         widget:
                         controller.isSearch == false ?

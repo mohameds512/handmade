@@ -8,6 +8,7 @@ import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/functions/validinput.dart';
 import 'package:handmade/view/widget/auth/custombuttonauth.dart';
 import 'package:handmade/view/widget/auth/customtextformauth.dart';
+import 'package:shimmer/shimmer.dart';
 
 class addressAddContinue extends StatelessWidget {
   const addressAddContinue({Key? key}) : super(key: key);
@@ -23,7 +24,13 @@ class addressAddContinue extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: GetBuilder<ContinueAddressAddController>(
               builder: (controllerMap)=>
-                  HandlingDataView(statusRequest: controllerMap.statusRequest,
+                  HandlingDataView(
+                      loadingWidget: Shimmer.fromColors(
+                        baseColor: Colors.grey,
+                        highlightColor: Colors.white10,
+                        child:Text('ss'),
+                      ),
+                      statusRequest: controllerMap.statusRequest,
                     widget:Form(
                       key:controllerMap.formstate ,
                       child: ListView(

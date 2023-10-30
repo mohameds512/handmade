@@ -7,6 +7,7 @@ import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/constant/ImageAssets.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
 
 class TestView extends StatelessWidget {
   const TestView({Key? key}) : super(key: key);
@@ -21,6 +22,11 @@ class TestView extends StatelessWidget {
       ),
       body: GetBuilder<TestController>(builder: (controller){
         return HandlingDataView(
+            loadingWidget: Shimmer.fromColors(
+              baseColor: Colors.grey,
+              highlightColor: Colors.white10,
+              child:Text('ss'),
+            ),
             statusRequest: controller.statusRequest,
             widget: ListView.builder(
                 itemCount: controller.data.length,

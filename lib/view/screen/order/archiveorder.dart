@@ -7,6 +7,7 @@ import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/view/widget/order/cardorderlist.dart';
+import 'package:shimmer/shimmer.dart';
 class ArchivedOrder extends StatelessWidget {
   const ArchivedOrder({Key? key}) : super(key: key);
 
@@ -22,6 +23,11 @@ class ArchivedOrder extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: GetBuilder<ArchivedController>(builder: (controller)=>
             HandlingDataView(
+                loadingWidget: Shimmer.fromColors(
+                  baseColor: Colors.grey,
+                  highlightColor: Colors.white10,
+                  child:Text('ss'),
+                ),
                 statusRequest: controller.statusRequest,
                 widget:
                 ListView.builder(

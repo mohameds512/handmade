@@ -9,6 +9,7 @@ import 'package:handmade/view/widget/checkout/cardAddress.dart';
 import 'package:handmade/view/widget/checkout/cardDeliverytype.dart';
 import 'package:handmade/view/widget/checkout/cardpaymentmethod.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CheckOut extends StatelessWidget {
   const CheckOut({Key? key}) : super(key: key);
@@ -95,6 +96,11 @@ class CheckOut extends StatelessWidget {
                 const SizedBox(height: 20,),
                 if(controller.deliveryType == "0")
                   HandlingDataView(
+                    loadingWidget: Shimmer.fromColors(
+                      baseColor: Colors.grey,
+                      highlightColor: Colors.white10,
+                      child:Text('ss'),
+                    ),
                       statusRequest: controller.statusRequest,
                       widget:Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

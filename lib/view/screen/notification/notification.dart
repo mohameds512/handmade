@@ -4,6 +4,7 @@ import 'package:handmade/controller/notification/notification_controller.dart';
 import 'package:get/get.dart';
 import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
+import 'package:shimmer/shimmer.dart';
 class NotificationView extends StatelessWidget {
   const NotificationView({Key? key}) : super(key: key);
 
@@ -16,6 +17,11 @@ class NotificationView extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: GetBuilder<NotificationController>(builder: (controller)=>
           HandlingDataView(
+              loadingWidget: Shimmer.fromColors(
+                baseColor: Colors.grey,
+                highlightColor: Colors.white10,
+                child:Text('ss'),
+              ),
               statusRequest: controller.statusRequest,
               widget: ListView(
                 children: [

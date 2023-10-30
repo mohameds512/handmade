@@ -13,6 +13,7 @@ import 'package:handmade/view/widget/auth/customtextformauth.dart';
 import 'package:handmade/view/widget/productDetails/pricequentityproduct.dart';
 import 'package:handmade/view/widget/productDetails/productcolorlist.dart';
 import 'package:handmade/view/widget/productDetails/toppageproductdetails.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductDetails extends GetView<ProductDetailsControllerImp> {
   const ProductDetails({Key? key}) : super(key: key);
@@ -35,7 +36,13 @@ class ProductDetails extends GetView<ProductDetailsControllerImp> {
           child: Text("Add to Card",style: TextStyle(color: AppColor.whiteColor,fontWeight: FontWeight.bold),),
         ),
       ),
-      body: GetBuilder<ProductDetailsControllerImp>(builder: (controllerImp)=>HandlingDataView(
+      body: GetBuilder<ProductDetailsControllerImp>(builder: (controllerImp)=>
+          HandlingDataView(
+              loadingWidget: Shimmer.fromColors(
+                baseColor: Colors.grey,
+                highlightColor: Colors.white10,
+                child:Text('ss'),
+              ),
           statusRequest: controllerImp.statusRequest,
           widget:
               ListView(

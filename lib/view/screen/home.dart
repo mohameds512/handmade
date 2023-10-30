@@ -17,6 +17,7 @@ import 'package:handmade/view/widget/home/customlistitem.dart';
 import 'package:handmade/view/widget/home/customtitlehome.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shimmer/shimmer.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -61,6 +62,11 @@ class _HomeState extends State<Home> {
                       [
 
                         HandlingDataView(
+                          loadingWidget: Shimmer.fromColors(
+                            baseColor: Colors.grey,
+                            highlightColor: Colors.white10,
+                            child:Text('ss'),
+                          ),
                           statusRequest: controller.statusRequest!,
                           widget: controller.isSearch == false
                               ? Column(
