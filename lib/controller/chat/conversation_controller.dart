@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
@@ -9,6 +10,12 @@ class ConversationController extends GetxController{
   List listConversation = [];
   MyServices myServices = Get.find();
   late StatusRequest statusRequest;
+  late StatusRequest statusRequestSearch;
+  TextEditingController? search;
+  List searchedUsers = [];
+  bool searchResolute = true;
+  bool isSearch = false;
+
 
   ConversationData conversationData = ConversationData(Get.find());
   GetConversations()async{
@@ -22,9 +29,50 @@ class ConversationController extends GetxController{
 
   }
 
+  getName(data){
+    if(data['user_id_1'] == myServices.sharedPreference.getInt("id")!){
+
+       return data['names'][data['user_id_2'].toString()];
+
+    }else{
+      return data['names'][data['user_id_1'].toString()];
+    }
+  }
+  checkSearch(val){
+    if(val == ""){
+      isSearch = false;
+    }else{
+      isSearch = true;
+      SearchUsers(val);
+    }
+    update();
+  }
+
+  @override
+  SearchUsers(val) async {
+    statusRequest = StatusRequest.loading;
+    searchedUsers.clear();
+    searchResolute = true;
+    update();
+    var response = await conversationData.searchUsers(val);
+    print("response : $response");
+    statusRequest = handlingData(response);
+    if(StatusRequest.success == statusRequest){
+        searchedUsers.addAll(response["users"]);
+    }else{
+      searchResolute = false;
+    }
+    if(searchedUsers.length == 0){
+      searchResolute = false;
+
+    }
+    update();
+  }
+
   @override
   void onInit() {
     GetConversations();
+    search = TextEditingController();
     super.onInit();
   }
 

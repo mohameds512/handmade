@@ -59,4 +59,5 @@
   // ========================conversations===============================
   static const String listConversation = "$server/flutter/conversation/ListConversation";
   static const String addConversation = "$server/flutter/conversation/addConversation";
+  static const String searchUsers = "$server/flutter/conversation/searchUsers";
  }

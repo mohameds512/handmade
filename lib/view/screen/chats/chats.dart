@@ -13,7 +13,6 @@ class AppChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ChatController controller = Get.put(ChatController());
-
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       controller.scrollController.jumpTo(controller.scrollController.position.maxScrollExtent);
     });
@@ -22,23 +21,27 @@ class AppChat extends StatelessWidget {
         appBar: AppBar(
           title: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(right: 10),
-                    child: Text("User Name"),
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: CachedNetworkImage(
-                      imageUrl: 'https://antika.dnsmsaeed.net/api/items/image/items/kSLVV1/3HCl',
-                      height: 42,
-
-                    ),
-                  ),
-                ],
+              GetBuilder<ChatController>(
+                  builder: (controller){
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(right: 10),
+                          child: Text(controller.receiver_name),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: CachedNetworkImage(
+                            imageUrl: 'https://antika.dnsmsaeed.net/api/items/image/items/kSLVV1/3HCl',
+                            height: 42,
+                          ),
+                        ),
+                      ],
+                    );
+                  }
               )
+
             ],
           ),
         ),

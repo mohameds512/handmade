@@ -24,6 +24,10 @@ class CustomInputMessage extends StatelessWidget {
         child: Row(
           children: [
             Expanded(child: TextField(
+              // onTap: () {
+              //   FocusScope.of(context).unfocus();
+              // },
+              // onTapOutside: (event)=>FocusScope.of(context).unfocus(),
               controller: myController,
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -38,7 +42,6 @@ class CustomInputMessage extends StatelessWidget {
                 height: 40,
                 width: 40,
                 decoration: BoxDecoration(
-
                   borderRadius: BorderRadius.circular(50)
                 ),
                 child:  Icon(

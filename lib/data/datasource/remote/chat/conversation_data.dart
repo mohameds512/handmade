@@ -14,14 +14,23 @@ class ConversationData{
     return response.fold((l) => l, (r) => r);
 
   }
-  addConversation(sender_id,receiver_id) async{
+  addConversation(user_id_1,user_id_2) async{
     var response = await crud.postDate(AppLink.addConversation, {
-      "sender_id":sender_id.toString(),
-      "receiver_id":receiver_id.toString(),
+      "user_id_1":user_id_1.toString(),
+      "user_id_2":user_id_2.toString(),
     }
     );
     return response.fold((l) => l, (r) => r);
+  }
 
+  searchUsers(keyword)async{
+
+    var response = await crud.postDate(AppLink.searchUsers, {
+      "keyword":keyword,
+    }
+    );
+
+    return response.fold((l) => l, (r) => r);
   }
 
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/chat/chat_data.dart';
+import 'package:handmade/data/datasource/remote/chat/conversation_data.dart';
 import 'package:handmade/services/services.dart';
 
 class ChatController extends GetxController{
@@ -12,10 +13,13 @@ class ChatController extends GetxController{
   late StatusRequest statusRequest;
   late int user_id ;
   late String receiver_id ;
+  late String receiver_name = '' ;
   late TextEditingController message;
+  bool waitConver = false;
   String? conver_id;
   ScrollController scrollController = ScrollController();
   ChatData chatData = ChatData(Get.find());
+  ConversationData conversationData = ConversationData(Get.find());
 
   GetChatList()async{
     statusRequest = StatusRequest.loading;
@@ -30,7 +34,9 @@ class ChatController extends GetxController{
     }else{
       receiver_id = response['Conversation']['user_id_1'].toString();
     }
-  print("receiver_id: $receiver_id");
+    receiver_name = response['names'][receiver_id];
+    print("receiver_name: $receiver_name");
+    update();
   }
 
   sendMessage()async{
@@ -38,12 +44,14 @@ class ChatController extends GetxController{
     if(message.text == '' ){
       return;
     }
+    print('conver_id');
+    print(conver_id);
     late String textMessage =message.text;
     ChatList.add({'message':textMessage,'sender_id':user_id});
     message.text = '';
     var response = await chatData.SendMessage(user_id.toString(),receiver_id,conver_id,textMessage);
-      // print(response['message']);
-      // ChatList.add(response['message']);
+      print('response');
+      print(response);
 
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
 
@@ -51,6 +59,7 @@ class ChatController extends GetxController{
 
 
   }
+
   receiveMessage()async{
     print(ChatList.length);
     var response = await chatData.GetChatList(conver_id);
@@ -61,12 +70,30 @@ class ChatController extends GetxController{
     update();
 
   }
+
+  createConversation()async{
+    waitConver = true ;
+    update();
+    var response = await conversationData.addConversation(user_id, receiver_id);
+
+    conver_id = response['conver']['id'].toString();
+    waitConver = false ;
+    update();
+
+  }
+
   @override
   void onInit() {
-    conver_id = Get.arguments['conver_id'].toString();
     user_id = myServices.sharedPreference.getInt("id")!;
+    conver_id = Get.arguments['conver_id'].toString();
+    if(conver_id == 'null' ){
+      receiver_id = Get.arguments['receiver_id'].toString();
+      createConversation();
+    }
     message = TextEditingController();
-    GetChatList();
+    if(waitConver == false){
+      GetChatList();
+    }
     super.onInit();
     scrollController = ScrollController();
   }

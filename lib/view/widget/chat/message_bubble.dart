@@ -33,7 +33,7 @@ class _MessageBubbleState extends State<MessageBubble> {
                 constraints: BoxConstraints(
                   maxWidth: 300
                 ),
-                padding: EdgeInsets.all(12),
+                padding: EdgeInsets.only(bottom: 5,top: 5,right: 10,left: 10),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(20),topLeft: Radius.circular(20),
