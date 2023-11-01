@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/core/constant/routes.dart';
+import 'package:handmade/view/widget/chat/custommesssageicon.dart';
 
 import '../../core/constant/color.dart';
 import 'package:get/get.dart';
@@ -43,38 +44,7 @@ class CustomAppBar extends StatelessWidget {
               fillColor: AppColor.backgroundColor
           ),
         )),
-        // const SizedBox(width:15),
-        // Container(
-        //   decoration: BoxDecoration(
-        //       color: AppColor.backgroundColor,
-        //       borderRadius: BorderRadius.circular(10)
-        //   ),
-        //
-        //   child: IconButton(
-        //     onPressed: onPressedIcon,
-        //     icon: const Icon(
-        //         Icons.notifications_active_outlined),
-        //     iconSize: 30 ,color: Colors.grey[600],
-        //   ),
-        // ),
-        // const SizedBox(width:15),
-        // Container(
-        //   // height: 55,
-        //   decoration: BoxDecoration(
-        //       color: AppColor.backgroundColor,
-        //       borderRadius: BorderRadius.circular(10),
-        //
-        //   ),
-        //   padding: EdgeInsets.symmetric(vertical: 8),
-        //   width: 60,
-        //   child: IconButton(
-        //     onPressed: onPressedIconFavorite,
-        //
-        //     icon: const Icon(
-        //         Icons.favorite,color: AppColor.primaryColor,size: 34,),
-        //     iconSize: 30 ,color: Colors.grey[600],
-        //   ),
-        // ),
+
         IconButton(
           onPressed: onPressedIconFavorite,
 
@@ -82,34 +52,7 @@ class CustomAppBar extends StatelessWidget {
             Icons.favorite,color: AppColor.primaryColor,size: 34,),
           iconSize: 30 ,color: Colors.grey[600],
         ),
-        IconButton(
-          onPressed: (){
-
-            Get.toNamed(AppRoute.ChatList);
-          },
-
-          icon: const Icon(
-            Icons.chat_outlined,color: AppColor.primaryColor,size: 34,),
-          iconSize: 30 ,color: Colors.grey[600],
-        ),
-        // Container(
-        //   // height: 55,
-        //   decoration: BoxDecoration(kkkk
-
-        //     color: AppColor.backgroundColor,
-        //     borderRadius: BorderRadius.circular(10),
-        //
-        //   ),
-        //   padding: EdgeInsets.symmetric(vertical: 8),
-        //   width: 60,
-        //   child: IconButton(
-        //     onPressed: onPressedIconFavorite,
-        //
-        //     icon: const Icon(
-        //       Icons.favorite,color: AppColor.primaryColor,size: 34,),
-        //     iconSize: 30 ,color: Colors.grey[600],
-        //   ),
-        // ),
+        CustomMessageIcon(),
 
       ],
       ),

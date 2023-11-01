@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:handmade/controller/chat/chat_controller.dart';
+import 'package:handmade/controller/home_controller.dart';
 import 'package:handmade/controller/notification/notification_controller.dart';
 import 'package:handmade/controller/order/order_controller.dart';
 requestNotificationPermission()async{
@@ -19,17 +20,26 @@ requestNotificationPermission()async{
 fcmConfig(){
 
   FirebaseMessaging.onMessage.listen((message) {
-
+    
     FlutterRingtonePlayer.playNotification();
     Get.snackbar(message.notification!.title!,message.notification!.body!);
     // refreshNotifications
     if(message.data['pagename'] == 'message'){
-      ChatController chatController = Get.find();
-      chatController.receiveMessage();
+      HomeControllerImp homeController = Get.put(HomeControllerImp());
+      homeController.getUnseen();
+      if(Get.currentRoute == "/Chats"){
+        print("ssssssssssssss");
+        ChatController chatController = Get.put(ChatController());
+        chatController.receiveMessage();
+      }
+
     }
-    NotificationController NotfController = Get.find();
-    NotfController.refreshNotf();
-    refreshOrderPage(message.data);
+    if(Get.currentRoute != "/Chats"){
+      NotificationController NotfController = Get.find();
+      NotfController.refreshNotf();
+      refreshOrderPage(message.data);
+    }
+
 
   });
 }

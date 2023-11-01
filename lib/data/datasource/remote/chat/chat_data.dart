@@ -25,5 +25,22 @@ class ChatData{
     return response.fold((l) => l, (r) => r);
 
   }
+  markAsSeen(user_id,conver_id) async{
+    var response = await crud.postDate(AppLink.markAsSeen, {
+      "user_id":user_id.toString(),
+      "conver_id":conver_id.toString(),
+    }
+    );
+    return response.fold((l) => l, (r) => r);
+
+  }
+  getCount(user_id) async{
+    var response = await crud.postDate(AppLink.countUnseean, {
+      "user_id":user_id.toString(),
+    }
+    );
+    return response.fold((l) => l, (r) => r);
+
+  }
 
 }

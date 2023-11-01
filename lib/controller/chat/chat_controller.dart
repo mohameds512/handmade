@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:handmade/controller/home_controller.dart';
 import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
 import 'package:handmade/data/datasource/remote/chat/chat_data.dart';
@@ -13,6 +14,7 @@ class ChatController extends GetxController{
   late StatusRequest statusRequest;
   late int user_id ;
   late String receiver_id ;
+  late String unseenCount ;
   late String receiver_name = '' ;
   late TextEditingController message;
   bool waitConver = false;
@@ -35,7 +37,6 @@ class ChatController extends GetxController{
       receiver_id = response['Conversation']['user_id_1'].toString();
     }
     receiver_name = response['names'][receiver_id];
-    print("receiver_name: $receiver_name");
     update();
   }
 
@@ -44,22 +45,26 @@ class ChatController extends GetxController{
     if(message.text == '' ){
       return;
     }
-    print('conver_id');
-    print(conver_id);
     late String textMessage =message.text;
     ChatList.add({'message':textMessage,'sender_id':user_id});
     message.text = '';
     var response = await chatData.SendMessage(user_id.toString(),receiver_id,conver_id,textMessage);
       print('response');
       print(response);
-
       scrollController.jumpTo(scrollController.position.maxScrollExtent);
-
       update();
-
 
   }
 
+  markAsSeen()async{
+    var response = await chatData.markAsSeen(user_id.toString(),conver_id);
+    getUnseen();
+
+  }
+  getUnseen()async{
+    HomeControllerImp homeController = Get.put(HomeControllerImp());
+    homeController.getUnseen();
+  }
   receiveMessage()async{
     print(ChatList.length);
     var response = await chatData.GetChatList(conver_id);
@@ -86,6 +91,7 @@ class ChatController extends GetxController{
   void onInit() {
     user_id = myServices.sharedPreference.getInt("id")!;
     conver_id = Get.arguments['conver_id'].toString();
+    receiver_id = Get.arguments['receiver_id'].toString();
     if(conver_id == 'null' ){
       receiver_id = Get.arguments['receiver_id'].toString();
       createConversation();
@@ -94,6 +100,7 @@ class ChatController extends GetxController{
     if(waitConver == false){
       GetChatList();
     }
+    markAsSeen();
     super.onInit();
     scrollController = ScrollController();
   }

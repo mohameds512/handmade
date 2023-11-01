@@ -143,7 +143,13 @@ class AppChatList extends GetView<ConversationController> {
                         ),
                         child: InkWell(
                           onTap: () {
-                            Get.toNamed(AppRoute.Chats, arguments: {'conver_id': controller.listConversation[index]['id']});
+                            Get.toNamed(
+                                AppRoute.Chats,
+                                arguments: {
+                                    'conver_id': controller.listConversation[index]['id'],
+                                    'receiver_id' : controller.receiver_id,
+                                  }
+                                  );
                           },
                           child: Row(
                             children: [

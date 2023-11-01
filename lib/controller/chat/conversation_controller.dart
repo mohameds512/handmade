@@ -15,7 +15,7 @@ class ConversationController extends GetxController{
   List searchedUsers = [];
   bool searchResolute = true;
   bool isSearch = false;
-
+  late String receiver_id ;
 
   ConversationData conversationData = ConversationData(Get.find());
   GetConversations()async{
@@ -31,10 +31,10 @@ class ConversationController extends GetxController{
 
   getName(data){
     if(data['user_id_1'] == myServices.sharedPreference.getInt("id")!){
-
+      receiver_id = data['user_id_2'].toString();
        return data['names'][data['user_id_2'].toString()];
-
     }else{
+      receiver_id = data['user_id_1'].toString();
       return data['names'][data['user_id_1'].toString()];
     }
   }

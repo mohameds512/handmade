@@ -7,6 +7,7 @@ import 'package:handmade/core/class/statusrequest.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
 import 'package:handmade/core/functions/handlingdatacontroller.dart';
+import 'package:handmade/data/datasource/remote/chat/chat_data.dart';
 import 'package:handmade/data/datasource/remote/homedata.dart';
 import 'package:handmade/services/services.dart';
 
@@ -14,6 +15,7 @@ import 'package:handmade/services/services.dart';
 abstract class HomeController extends GetxController {
   initialDAta();
   getData();
+  getUnseen();
   goToItems(List categories , int cat_id);
   TextEditingController? search;
 }
@@ -37,7 +39,7 @@ class HomeControllerImp extends HomeController {
   List searchItems = [];
   bool searchResolute = true;
   bool isSearch = false;
-
+  late String unseenCount = '0';
   checkSearch(val){
     if(val == ""){
       isSearch = false;
@@ -98,6 +100,14 @@ class HomeControllerImp extends HomeController {
     }
     update();
   }
+  getUnseen()async{
+    ChatData chatData = ChatData(Get.find());
+    var response = await chatData.getCount(myServices.sharedPreference.getInt("id").toString());
+    unseenCount = response['count'].toString();
+    print('unseenCount');
+    print(unseenCount);
+    update();
+  }
 
   @override
   goToProductDetails(selectedItem) {
@@ -112,6 +122,7 @@ class HomeControllerImp extends HomeController {
 
     getData();
     initialDAta();
+    getUnseen();
     search = TextEditingController();
     super.onInit();
   }
