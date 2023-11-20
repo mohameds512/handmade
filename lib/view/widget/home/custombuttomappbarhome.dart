@@ -11,7 +11,8 @@ class CustomButtomAppBarHome extends GetView<HomeScreenControllerImp> {
   Widget build(BuildContext context) {
     return BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        // notchMargin: 10,
+        notchMargin: 5,
+        height: 60,
         child:Row(
           children: [
             ...List.generate(

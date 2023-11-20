@@ -22,7 +22,8 @@ class HomeScreen extends StatelessWidget {
                 backgroundColor: AppColor.primaryColor,
                 onPressed: (){
                   Get.toNamed(AppRoute.cart);
-                },child: Icon(Icons.shopping_basket_outlined),
+                },child: Icon(Icons.shopping_basket_outlined,color: Colors.white,),
+                shape: CircleBorder(),
               ),
               floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar:

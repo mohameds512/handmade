@@ -41,8 +41,8 @@ class _HomeState extends State<Home> {
                   SliverAppBar(
                     pinned: true,
                     floating: false,
-
-                    backgroundColor: AppColor.whiteColor,
+                    automaticallyImplyLeading: false,
+                    backgroundColor: Colors.white12,
                     flexibleSpace: CustomAppBar(
                       myController: controller.search!,
                       onChanged: (val) {
@@ -60,7 +60,6 @@ class _HomeState extends State<Home> {
 
                     delegate: SliverChildListDelegate(
                       [
-
                         HandlingDataView(
                           loadingWidget: Shimmer.fromColors(
                             baseColor: Colors.grey,

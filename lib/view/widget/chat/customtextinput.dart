@@ -5,8 +5,9 @@ import 'package:handmade/core/constant/color.dart';
 class CustomInputMessage extends StatelessWidget {
   final TextEditingController? myController;
   final void Function()? onPressedSend;
+  final void Function()? onPressedFile;
 
-  const CustomInputMessage({Key? key, this.myController, this.onPressedSend}) : super(key: key);
+  const CustomInputMessage({Key? key, this.myController, this.onPressedSend, this.onPressedFile}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,20 @@ class CustomInputMessage extends StatelessWidget {
                 ),
                 child:  Icon(
                   Icons.send,
+                  color: AppColor.primaryColor,
+                ),
+              )
+            ),
+            InkWell(
+              onTap: onPressedFile,
+              child:Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50)
+                ),
+                child:  Icon(
+                  Icons.camera_alt,
                   color: AppColor.primaryColor,
                 ),
               )

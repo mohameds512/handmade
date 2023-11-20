@@ -6,6 +6,7 @@ import 'package:handmade/controller/chat/chat_controller.dart';
 import 'package:handmade/view/widget/chat/customtextinput.dart';
 import 'package:handmade/view/widget/chat/message_bubble.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AppChat extends StatelessWidget {
   const AppChat({Key? key}) : super(key: key);
@@ -49,7 +50,10 @@ class AppChat extends StatelessWidget {
             myController: controller.message ,
             onPressedSend: (){
               controller.sendMessage();
-            }
+            },
+          onPressedFile: ()async{
+              var file = await ImagePicker().pickImage(source: ImageSource.gallery);
+          },
         ),
         body: GetBuilder<ChatController>(
           builder: (controller) {
