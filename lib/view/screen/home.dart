@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
                       onChanged: (val) {
                         controller.checkSearch(val);
                       },
-                      titlehinttext: "search",
+                      titlehinttext: "search".tr,
                       // onPressedIcon: (){},
                       onPressedSearch: () {},
                       onPressedIconFavorite: () {
@@ -75,14 +75,14 @@ class _HomeState extends State<Home> {
                                 CustomCardHome(
                                     titletext: TransDB(controller.SettingData?["name"]),
                                     bodytext: TransDB(controller.SettingData?["body"])),
-                              const CustomTitleHome(texttitle: "Categories"),
+                              CustomTitleHome(texttitle: "Categories".tr),
                               CustomListCategory(
                                 Categories: controller.categories,
                               ),
 
-                              const CustomTitleHome(texttitle: "Top Selling"),
+                              CustomTitleHome(texttitle: "Top Selling".tr),
                               CustomListItem(Items: controller.top_sealing_items),
-                              const CustomTitleHome(texttitle: "All Products"),
+                              CustomTitleHome(texttitle: "All Products".tr),
                               CustomListItem(Items: controller.items),
                             ],
                           )

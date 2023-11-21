@@ -17,7 +17,7 @@ class ArchivedOrder extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Archived"),
+        title: Text("Archived".tr),
       ),
       body: Container(
         padding: EdgeInsets.all(10),

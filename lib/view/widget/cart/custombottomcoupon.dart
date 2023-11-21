@@ -17,7 +17,7 @@ class CustomBottomCoupon extends StatelessWidget {
         color: AppColor.primaryColor,
         textColor: Colors.white,
         onPressed: onPressed,
-        child: Text(desc,style: TextStyle(fontWeight: FontWeight.bold),),
+        child: Text(desc,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
       ),
     )
     ;

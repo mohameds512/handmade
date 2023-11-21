@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/view/screen/order/ratingdialog.dart';
-
+import 'package:get/get.dart';
 class CardOrderList extends StatelessWidget {
   final String? orderNum;
   final String? DeliveryType;
@@ -28,22 +28,55 @@ class CardOrderList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(children: [
-            Text("Number : $orderNum" ,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            Text("Number : ".tr ,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+            Text( "$orderNum",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
             Spacer(),
             Text("$added_ago",style: TextStyle(fontFamily: "sans",color: AppColor.primaryColor),),
             if(status == "Pending")
             IconButton(onPressed: onPressedDelete, icon: Icon(CupertinoIcons.trash,color: Colors.red,))
           ]),
           Divider(),
-          Text("Order Type : $DeliveryType"),
-          Text("Order Price : $orderPrice \$"),
-          Text("Delivery Price : $DeliveryPrice \$"),
-          Text("Payment Method : $paymentMethod"),
-          Text("Status : $status"),
+          Row(
+            children: [
+              Text("Order Type : ".tr),
+              Text("$DeliveryType")
+            ],
+          ),
+          Row(
+            children: [
+              Text("Order Price : ".tr),
+              Text("$orderPrice \$")
+            ],
+          ),
+          Row(
+            children: [
+              Text("Delivery Price : ".tr),
+              Text("$DeliveryPrice \$")
+            ],
+          ),
+          Row(
+            children: [
+              Text("Payment Method : ".tr),
+              Text("$paymentMethod")
+            ],
+          ),
+          Row(
+            children: [
+              Text("Status : ".tr),
+              Text("$status")
+            ],
+          ),
+          
           Divider(),
           Row(
             children: [
-              Text("Total Price : $totalPrice" ,style: TextStyle(color: AppColor.shadowPrimaryColor,fontSize: 18,fontWeight: FontWeight.bold),),
+              Row(
+                children: [
+                  Text("Total Price : " ,style: TextStyle(color: AppColor.shadowPrimaryColor,fontSize: 18,fontWeight: FontWeight.bold),),
+                  Text(" $totalPrice" ,style: TextStyle(color: AppColor.shadowPrimaryColor,fontSize: 18,fontWeight: FontWeight.bold),),
+                ],
+              ),
+
               Spacer(),
             ]
           ),
@@ -51,7 +84,7 @@ class CardOrderList extends StatelessWidget {
             children: [
               MaterialButton(
                 onPressed: onPressedDetails,
-                child: Text("Details",style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
+                child: Text("Details".tr,style: TextStyle(color: AppColor.primaryColor,fontWeight: FontWeight.bold),),
                 color: AppColor.grey,
               ),
               SizedBox(width: 10,),

@@ -10,6 +10,7 @@ class NotificationController extends GetxController{
   late StatusRequest statusRequest ;
   NotificationData notificationData = NotificationData(Get.find());
 
+  String? curr_lang ;
   getNotfs()async{
     statusRequest = StatusRequest.loading;
     Notfs.clear();
@@ -34,6 +35,7 @@ class NotificationController extends GetxController{
   @override
   void onInit() {
     getNotfs();
+    curr_lang = myServices.sharedPreference.getString("lang");
     super.onInit();
   }
 }

@@ -18,7 +18,7 @@ class OrderDetails extends StatelessWidget {
     OrderDetailsController controller = Get.put(OrderDetailsController());
     return Scaffold(
       appBar: AppBar(
-        title: Text("Order Details"),
+        title: Text("Order Details".tr),
       ),
       body:
       GetBuilder<OrderDetailsController>(builder:

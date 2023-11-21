@@ -20,7 +20,7 @@ class Cart extends StatelessWidget {
     CartController cartController  = Get.put(CartController());
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Cart"),
+        title: Text("My Cart".tr),
       ),
       bottomNavigationBar: GetBuilder<CartController>(builder: (controller) =>
           CustomBottomNavigationBarCart(price: "${cartController.Price}",
@@ -47,7 +47,7 @@ class Cart extends StatelessWidget {
           widget:ListView(
             children: [
               const SizedBox(height: 10,),
-              TopCardCart(desc: "You have ${controller.totalCount} items in your cart"),
+              TopCardCart(desc: "You have".tr + " ${controller.totalCount} " +"items in your cart".tr),
               Container(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -68,6 +68,7 @@ class Cart extends StatelessWidget {
                             imgLink: cartController.cartItems[index]["img_route"],
                             status: cartController.cartItems[index]["status"],
                             Item_info: cartController.cartItems[index]["item_info"],
+                            lang:cartController.curr_lang ,
                         ),
                       )
 

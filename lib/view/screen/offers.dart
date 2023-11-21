@@ -30,7 +30,7 @@ class Offers extends StatelessWidget {
                   onChanged: (val){
                     controller.checkSearch(val);
                   },
-                  titlehinttext: "search",
+                  titlehinttext: "search".tr,
                   // onPressedIcon: (){},
                   onPressedSearch: (){},
                   onPressedIconFavorite: (){

@@ -16,7 +16,7 @@ class PendingOrder extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Orders"),
+        title: Text("Orders".tr),
       ),
       body: Container(
         padding: EdgeInsets.all(10),

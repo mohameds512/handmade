@@ -13,6 +13,7 @@ import 'package:flutter/cupertino.dart';
 
     TextEditingController? controllerCoupon;
     Map? couponData;
+    late String curr_lang;
     late int couponDiscount = 0;
     late String couponName = '';
     CartData cartData = CartData(Get.find());
@@ -223,6 +224,7 @@ import 'package:flutter/cupertino.dart';
       );
       viewCart();
       controllerCoupon = TextEditingController() ;
+      curr_lang = myServices.sharedPreference.getString("lang")!;
       super.onInit();
     }
   }

@@ -39,7 +39,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
                   decoration: InputDecoration(
                     isDense: true,
                     contentPadding: EdgeInsets.symmetric(vertical: 8,horizontal: 10),
-                    hintText: "Coupon Code",
+                    hintText: "Coupon Code".tr,
                     border: OutlineInputBorder()
                   ),
                 ),
@@ -47,7 +47,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
             SizedBox(width: 10),
             Expanded(
               flex:1,
-                child: CustomBottomCoupon(desc: "applay",onPressed: onApplyCoupon)
+                child: CustomBottomCoupon(desc: "apply".tr,onPressed: onApplyCoupon)
             )
           ],
           ),
@@ -69,7 +69,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("price ",style: TextStyle(fontSize: 18),),
+                    child: Text("Price".tr,style: TextStyle(fontSize: 18),),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -95,7 +95,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("Shipping",style: TextStyle(fontSize: 18),),
+                    child: Text("Shipping".tr,style: TextStyle(fontSize: 18),),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -123,7 +123,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("Coupon Name",style: TextStyle(fontSize: 18),),
+                    child: Text("Coupon Code".tr,style: TextStyle(fontSize: 18),),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -141,7 +141,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("Total Price",style: TextStyle(fontSize: 18,color: AppColor.shadowPrimaryColor),),
+                    child: Text("Total Price".tr,style: TextStyle(fontSize: 18,color: AppColor.shadowPrimaryColor),),
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
@@ -152,7 +152,7 @@ class CustomBottomNavigationBarCart extends GetView<CartController> {
             ],
           ),
         ),
-        CustomButtonOrderCart(textbutton: "Order",onPressed: (){
+        CustomButtonOrderCart(textbutton: "Order".tr,onPressed: (){
           controller.goToCheckoutPage();
         })
       ],

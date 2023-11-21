@@ -47,7 +47,7 @@ class Settings extends StatelessWidget {
                         controllerImp.muteNotification();
 
                       },value: controller.switchValue!,),
-                      title: Text("Disable  Notification"),
+                      title: Text("Disable Notification".tr),
                     ),
                     Divider(),
                     ListTile(
@@ -55,7 +55,7 @@ class Settings extends StatelessWidget {
                         Get.toNamed(AppRoute.pendingOrder);
                       },
                       trailing: Icon(Icons.countertops_outlined),
-                      title: Text("Orders"),
+                      title: Text("Orders".tr),
                     ),
                     Divider(),
                     ListTile(
@@ -63,7 +63,7 @@ class Settings extends StatelessWidget {
                         Get.toNamed(AppRoute.archivedOrder);
                       },
                       trailing: Icon(Icons.location_on_outlined),
-                      title: Text("Archive"),
+                      title: Text("Archive".tr),
                     ),
                     Divider(),
                     ListTile(
@@ -71,7 +71,7 @@ class Settings extends StatelessWidget {
                         Get.toNamed(AppRoute.AddressView);
                       },
                       trailing: Icon(CupertinoIcons.building_2_fill),
-                      title: Text("Address"),
+                      title: Text("Address".tr),
                     ),
                     Divider(),
                     ListTile(
@@ -79,7 +79,7 @@ class Settings extends StatelessWidget {
 
                       },
                       trailing: Icon(Icons.help_outline),
-                      title: Text("About us"),
+                      title: Text("About us".tr),
                     ),
                     Divider(),
                     ListTile(
@@ -87,14 +87,14 @@ class Settings extends StatelessWidget {
                         Get.toNamed(AppRoute.contactUs);
                       },
                       trailing: Icon(Icons.contact_mail_outlined),
-                      title: Text("Contact us"),
+                      title: Text("Contact us".tr),
                     ),
                     Divider(),
                     ListTile(
                       onTap: (){
                         controllerImp.LogOut();
                       },
-                      title: Text("Logout"),
+                      title: Text("Logout".tr),
                       trailing: Icon(Icons.exit_to_app),
                     )
                   ],

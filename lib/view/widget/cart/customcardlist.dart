@@ -8,13 +8,14 @@ import 'package:handmade/core/constant/color.dart';
 class CustomCardList extends StatelessWidget {
   final String name;
   final String price;
+  final String lang;
   final int status;
   final List Item_info;
   final String count;
   final String imgLink;
   final void Function()? onAdd;
   final void Function()? onRemove;
-  const CustomCardList({Key? key, required this.name, required this.price, required this.count, required this.imgLink,required this.onAdd,required this.onRemove, required this.status, required this.Item_info}) : super(key: key);
+  const CustomCardList({Key? key, required this.name, required this.price, required this.count, required this.imgLink,required this.onAdd,required this.onRemove, required this.status, required this.Item_info, required this.lang}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,8 @@ class CustomCardList extends StatelessWidget {
           status == 0 ?
           Positioned(
               top: 0,
-              right: 0,
+              right: lang != 'ar'? 0:null,
+              left: lang == 'ar'? 0:null,
               child: IconButton(onPressed: onRemove, icon: Icon(Icons.delete_outlined,color: AppColor.redColor,))
           ) : Text(''),
 

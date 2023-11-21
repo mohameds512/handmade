@@ -12,7 +12,7 @@ class NotificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     NotificationController controller = Get.put(NotificationController());
     return Scaffold(
-      appBar: AppBar(title: Text("Notifications")),
+      appBar: AppBar(title: Text("Notifications".tr)),
       body: Container(
         padding: EdgeInsets.all(10),
         child: GetBuilder<NotificationController>(builder: (controller)=>
@@ -37,7 +37,8 @@ class NotificationView extends StatelessWidget {
                                 ),
                                 Positioned(
                                   top: 15,
-                                  right: 5,
+                                  right: controller.curr_lang != 'ar' ? 5 : null,
+                                  left: controller.curr_lang == 'ar' ? 5 : null,
                                     child: Text(controller.Notfs[index]["added_ago"],style: TextStyle(fontFamily: "sans",color: AppColor.primaryColor),)
                                 )
                               ],

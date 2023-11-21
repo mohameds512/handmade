@@ -37,7 +37,7 @@ class FavoriteItems extends StatelessWidget {
                     onChanged: (val){
                       controller.checkSearch(val);
                     },
-                    titlehinttext: "Find Product",
+                    titlehinttext: "Search".tr,
                     onPressedSearch: (){},
                     onPressedIconFavorite: (){
                       Get.toNamed(AppRoute.favoritesItems);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:handmade/core/constant/color.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
 import 'package:handmade/view/screen/order/ratingdialog.dart';
+import 'package:get/get.dart';
 
 class ListOrderItemDetail extends StatelessWidget {
   final Map orderItem;
@@ -23,7 +24,7 @@ class ListOrderItemDetail extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
-                        child: Text("Name",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
+                        child: Text("Name".tr,textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
@@ -38,7 +39,7 @@ class ListOrderItemDetail extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
-                        child: Text("Count",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
+                        child: Text("Count".tr,textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
@@ -50,7 +51,7 @@ class ListOrderItemDetail extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
-                        child: Text("Price",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
+                        child: Text("Price".tr,textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
@@ -65,7 +66,7 @@ class ListOrderItemDetail extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
-                        child: Text("Code",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
+                        child: Text("Code".tr,textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
@@ -78,7 +79,7 @@ class ListOrderItemDetail extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
-                        child: Text("Shipping",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
+                        child: Text("Shipping".tr,textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
@@ -93,7 +94,7 @@ class ListOrderItemDetail extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
-                        child: Text("Status",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
+                        child: Text("Status".tr,textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
@@ -106,7 +107,7 @@ class ListOrderItemDetail extends StatelessWidget {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
-                        child: Text("Total Price",textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
+                        child: Text("Total Price".tr,textAlign: TextAlign.center,style: TextStyle(color: AppColor.shadowPrimaryColor,fontWeight: FontWeight.bold)),
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 5),
@@ -125,7 +126,7 @@ class ListOrderItemDetail extends StatelessWidget {
                           onTap: (){
                             showRatingDialog(context,orderItem!["cart_order_id"].toString()!,orderItem!["id"].toString()!);
                           },
-                          child: Text("+ add Rate",style: TextStyle(color: AppColor.primaryColor,),textAlign: TextAlign.right,),
+                          child: Text("+ add Rate".tr,style: TextStyle(color: AppColor.primaryColor,),textAlign: TextAlign.right,),
                         ),
                       )
 
