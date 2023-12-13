@@ -59,7 +59,6 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
                 border: Border(
                   top:  BorderSide(width: 2,color: AppColor.primaryColor)
                 ),
-
               ),
               child: Text("${controllerImp.cumulativePrice} \$",style: TextStyle(color: AppColor.primaryColor,),),
             ) : Text('')
@@ -70,7 +69,11 @@ class PriceQuentityProduct extends GetView<ProductDetailsControllerImp> {
 
         SizedBox(width: 10,),
         if(controllerImp.Item?["discount"] != 0)
-        Text("${controllerImp.Item?["price"]} \$",style: TextStyle(decorationColor: AppColor.primaryColor, decorationThickness: 2.0,decoration: TextDecoration.lineThrough, fontFamily: "sans"),),
+        Text("${controllerImp.Item?["price"]} \$",
+          style: TextStyle(
+              decorationColor: AppColor.primaryColor, decorationThickness: 2.0,
+              decoration: TextDecoration.lineThrough, fontFamily: "sans"),
+        ),
       ],
     );
   }

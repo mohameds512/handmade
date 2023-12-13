@@ -7,17 +7,14 @@ import 'package:handmade/localization/changelocal.dart';
 import 'package:handmade/localization/translation.dart';
 import 'package:handmade/routes.dart';
 import 'package:handmade/services/services.dart';
-import 'package:handmade/test.dart';
-import 'package:handmade/view/screen/language.dart';
-import 'package:handmade/view/screen/onboarding.dart';
-
-import 'core/constant/color.dart';
+import 'package:uni_links/uni_links.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseApi().initNotification();
   await initialServices();
+  await initUniLinks();
   runApp(const MyApp());
 }
 

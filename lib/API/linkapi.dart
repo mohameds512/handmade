@@ -13,7 +13,7 @@
   static const String resetPassword = "$server/flutter/resetPassword";
  // ========================= home_controller ======================
   static const String homePage = "$server/flutter/home/get_all_data";
-
+  static const String nearestStores = "$server/flutter/item/nearestStores";
   // ========================= item_controller ======================
   static const String cat_items = "$server/flutter/item/get_cat_items";
   static const String add_remove_favorite = "$server/flutter/item/AddRemoveFavorite";

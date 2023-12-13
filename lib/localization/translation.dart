@@ -3,9 +3,12 @@ class MyTranslation extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
     "ar":{
+      ' KM ':' كم ',
+      'Nearest':'الأقرب اليك',
       "search":"بحث",
       "Categories":"التصنيفات",
       "Top Selling":"الأعلي مبيعا",
+      "Fastest selling":"الأسرع مبيعا",
       "All Products":"جميع المنتجات",
       "Notifications":"الأشعارات",
       "Disable Notification":"ايقاف الاشعارات",
@@ -79,9 +82,12 @@ class MyTranslation extends Translations {
       "cancel":"ألغاء",
     },
     "en":{
+      ' KM ':' KM ',
+      'Nearest':'Nearest',
       "search":"Search",
       "Categories":"Categories",
       "Top Selling":"Top Selling",
+      "Fastest selling":"Fastest selling",
       "All Products":"All Products",
       "Notifications":"Notifications",
       "Disable Notification":"Disable Notification",

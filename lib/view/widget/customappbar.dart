@@ -25,9 +25,10 @@ class CustomAppBar extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       height: 50,
+
       // padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Row(children: [
-        Expanded(child: TextFormField(
+        Expanded(child: TextFormField (
           onTapOutside: (event)=>FocusScope.of(context).unfocus(),
           controller: myController,
           onChanged: onChanged,

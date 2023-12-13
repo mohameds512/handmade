@@ -23,6 +23,8 @@ abstract class HomeController extends GetxController {
 class HomeControllerImp extends HomeController {
 
   MyServices myServices = Get.find();
+  String? curLat;
+  String? curLong;
   String? username ;
   String? email ;
   String? phone ;
@@ -35,6 +37,7 @@ class HomeControllerImp extends HomeController {
   List data = [];
   List categories = [];
   List items = [];
+  List Nearest = [];
   List top_sealing_items = [];
   List searchItems = [];
   bool searchResolute = true;
@@ -58,6 +61,8 @@ class HomeControllerImp extends HomeController {
     img_route = myServices.sharedPreference.getString("img_route");
 
     Lang = myServices.sharedPreference.getString("lang");
+    curLat = myServices.sharedPreference.getDouble("curLat").toString();
+    curLong = myServices.sharedPreference.getDouble("curLong").toString();
     update();
 
   }
@@ -72,6 +77,7 @@ class HomeControllerImp extends HomeController {
       categories.addAll(response["data"]["data"]["categories"]);
       items.addAll(response["data"]["data"]["items"]);
       top_sealing_items.addAll(response["data"]["data"]["top_sealing"]);
+
       if(response["data"]["data"]["setting"] != null){
         SettingData = response["data"]["data"]["setting"];
       }
@@ -80,6 +86,17 @@ class HomeControllerImp extends HomeController {
     await FirebaseApi().initNotification();
   }
 
+  @override
+  getNearest() async {
+    statusRequest = StatusRequest.loading;
+    var response = await homeData.getNearest(curLat, curLong, 100,200000);
+
+    statusRequest = handlingData(response);
+    if(StatusRequest.success == statusRequest){
+      Nearest.addAll(response["data"]["items"]);
+    }
+    update();
+  }
 
   @override
   SearchItems(val) async {
@@ -104,8 +121,7 @@ class HomeControllerImp extends HomeController {
     ChatData chatData = ChatData(Get.find());
     var response = await chatData.getCount(myServices.sharedPreference.getInt("id").toString());
     unseenCount = response['count'].toString();
-    print('unseenCount');
-    print(unseenCount);
+
     update();
   }
 
@@ -122,6 +138,7 @@ class HomeControllerImp extends HomeController {
 
     getData();
     initialDAta();
+    getNearest();
     getUnseen();
     search = TextEditingController();
     super.onInit();

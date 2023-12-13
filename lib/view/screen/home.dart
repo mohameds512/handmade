@@ -2,21 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:handmade/controller/home_controller.dart';
 import 'package:get/get.dart';
-import 'package:handmade/controller/homescreen_controller.dart';
 import 'package:handmade/core/class/handlingdata.dart';
 import 'package:handmade/core/constant/color.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:handmade/core/constant/routes.dart';
 import 'package:handmade/core/functions/DBtranslation.dart';
-import 'package:handmade/view/screen/items/items.dart';
 import 'package:handmade/view/screen/search/listitemsearch.dart';
 import 'package:handmade/view/widget/customappbar.dart';
 import 'package:handmade/view/widget/home/customcardhome.dart';
 import 'package:handmade/view/widget/home/customlistcategory.dart';
 import 'package:handmade/view/widget/home/customlistitem.dart';
 import 'package:handmade/view/widget/home/customtitlehome.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:handmade/view/widget/items/customnearsetitems.dart';
 import 'package:shimmer/shimmer.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -33,7 +29,7 @@ class _HomeState extends State<Home> {
 
         Scaffold(
           body: Container(
-              padding: const EdgeInsets.symmetric(vertical:25,horizontal: 15),
+              padding: const EdgeInsets.symmetric(vertical:25,horizontal: 3),
 
               child:
               CustomScrollView(
@@ -42,12 +38,12 @@ class _HomeState extends State<Home> {
                     pinned: true,
                     floating: false,
                     automaticallyImplyLeading: false,
-                    backgroundColor: Colors.white12,
+                    backgroundColor: AppColor.mintColor,
                     flexibleSpace: CustomAppBar(
                       myController: controller.search!,
                       onChanged: (val) {
                         controller.checkSearch(val);
-                      },
+                        },
                       titlehinttext: "search".tr,
                       // onPressedIcon: (){},
                       onPressedSearch: () {},
@@ -79,7 +75,8 @@ class _HomeState extends State<Home> {
                               CustomListCategory(
                                 Categories: controller.categories,
                               ),
-
+                              CustomTitleHome(texttitle: "Nearest".tr),
+                              CustomNearestItems(Items: controller.Nearest,Lang: controller.Lang),
                               CustomTitleHome(texttitle: "Top Selling".tr),
                               CustomListItem(Items: controller.top_sealing_items),
                               CustomTitleHome(texttitle: "All Products".tr),

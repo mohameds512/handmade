@@ -9,7 +9,7 @@ ThemeData themeEnglish  = ThemeData(
       iconTheme: const IconThemeData(color: AppColor.primaryColor),
       backgroundColor: AppColor.secWhiteColor,
       titleTextStyle: const TextStyle(color: AppColor.primaryColor,
-          fontWeight: FontWeight.bold,fontFamily: "Cairo",fontSize: 20),
+          fontWeight: FontWeight.bold,fontFamily: "sans",fontSize: 20),
     ),
     floatingActionButtonTheme:const FloatingActionButtonThemeData(
           backgroundColor: AppColor.primaryColor,
@@ -37,7 +37,8 @@ ThemeData themeArabic  = ThemeData(
         elevation: 0,
         iconTheme: const IconThemeData(color: AppColor.primaryColor),
         backgroundColor: AppColor.secWhiteColor,
-        titleTextStyle: const TextStyle( fontFamily: "Cairo",color: AppColor.primaryColor,fontWeight: FontWeight.bold),
+        titleTextStyle: const TextStyle( fontFamily: "sans",color: AppColor.primaryColor,fontWeight: FontWeight.bold),
+        // titleTextStyle: const TextStyle( fontFamily: "Cairo",color: AppColor.primaryColor,fontWeight: FontWeight.bold),
       ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
           backgroundColor: AppColor.primaryColor,

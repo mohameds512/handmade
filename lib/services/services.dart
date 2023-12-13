@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uni_links/uni_links.dart';
 
 class MyServices extends GetxService {
   late SharedPreferences sharedPreference;
@@ -19,4 +21,20 @@ class MyServices extends GetxService {
 
 initialServices() async{
   await Get.putAsync(() => MyServices().init());
+}
+Future<void> initUniLinks() async {
+  try {
+    await getInitialLink();
+
+  } on PlatformException {
+
+  }
+
+  // Listen to incoming links throughout the app lifetime
+  linkStream.listen((String? link) {
+    print(link);
+    if (link != null) {
+
+    }
+  });
 }

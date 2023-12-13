@@ -12,7 +12,7 @@ class LocaleController extends GetxController {
 
   MyServices myServices = Get.find();
   ThemeData appTheme = themeEnglish;
-
+  Position? currentPosition ;
   getLocationPermission() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -21,8 +21,14 @@ class LocaleController extends GetxController {
       return Get.snackbar("notification", "Plz open your location");
     }
     permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.whileInUse){
+      currentPosition = await Geolocator.getCurrentPosition();
+      myServices.sharedPreference.setDouble("curLat", currentPosition!.latitude);
+      myServices.sharedPreference.setDouble("curLong", currentPosition!.longitude);
+
+    }
     if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
+        permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         return Get.snackbar("notification", "Plz open location permission");
       }

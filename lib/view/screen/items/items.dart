@@ -9,7 +9,6 @@ import 'package:handmade/view/widget/items/customlistitems.dart';
 import 'package:handmade/view/widget/items/listcategoriesitems.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../controller/favorite_controller.dart';
 import '../../widget/customappbar.dart';
 
 
@@ -39,7 +38,6 @@ class Items extends StatelessWidget {
                   controller.checkSearch(val);
                 },
                 titlehinttext: "search".tr,
-                // onPressedIcon: (){},
                 onPressedSearch: (){},
                 onPressedIconFavorite: (){
                   Get.toNamed(AppRoute.favoritesItems);
